@@ -1,0 +1,29 @@
+### Positive test: User can deposit money
+POST http://localhost:4111/api/v1/accounts/deposit
+Content-Type: application/json
+Authorization: Basic a2F0ZTE5OTgxOkthdGUxOTk4JA==
+
+{
+  "id": 1,
+  "balance": 100
+}
+
+### Positive test: User can transfer money from one account to another
+POST http://localhost:4111/api/v1/accounts/deposit
+Content-Type: application/json
+Authorization: Basic a2F0ZTE5OTgxOkthdGUxOTk4JA==
+
+{
+  "senderAccountId": 1,
+  "receiverAccountId": 2,
+  "amount": 50
+}
+
+### Positive test: User can change its name
+PUT http://localhost:4111/api/v1/customer/profile
+Content-Type: application/json
+Authorization: Basic a2F0ZTE5OTgxOkthdGUxOTk4JA==
+
+{
+  "name": "new name"
+}
