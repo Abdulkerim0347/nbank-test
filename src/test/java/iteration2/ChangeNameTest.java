@@ -11,29 +11,27 @@ import org.junit.jupiter.api.Test;
 
 import static io.restassured.RestAssured.given;
 
-public class DepositMoneyTest {
+public class ChangeNameTest {
     @BeforeAll
     public static void setupRestAssured() {
         RestAssured.filters(new RequestLoggingFilter(), new ResponseLoggingFilter());
     }
 
     @Test
-    public void userCanDepositMoneyTest() {
+    public void userCanChangeItsNameTest() {
         given()
                 .header("Authorization", "Basic a2F0ZTE5OTgxOkthdGUxOTk4JA==")
                 .contentType(ContentType.JSON)
                 .accept(ContentType.JSON)
                 .body("""
                         {
-                          "id": 1,
-                          "balance": 100
+                          "name": "new name"
                         }
-                        
                         """)
-                .post("http://localhost:4111/api/v1/accounts/deposit")
+                .put("http://localhost:4111/api/v1/customer/profile")
                 .then()
                 .assertThat()
                 .statusCode(HttpStatus.SC_OK)
-                .body("id", Matchers.equalTo(1));
+                .body("customer.name", Matchers.equalTo("new name"));
     }
 }

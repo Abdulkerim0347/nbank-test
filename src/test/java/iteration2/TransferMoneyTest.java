@@ -11,29 +11,31 @@ import org.junit.jupiter.api.Test;
 
 import static io.restassured.RestAssured.given;
 
-public class DepositMoneyTest {
+public class TransferMoneyTest {
     @BeforeAll
     public static void setupRestAssured() {
         RestAssured.filters(new RequestLoggingFilter(), new ResponseLoggingFilter());
     }
 
     @Test
-    public void userCanDepositMoneyTest() {
+    public void userCanTransferMoneyTest() {
         given()
                 .header("Authorization", "Basic a2F0ZTE5OTgxOkthdGUxOTk4JA==")
                 .contentType(ContentType.JSON)
                 .accept(ContentType.JSON)
                 .body("""
                         {
-                          "id": 1,
-                          "balance": 100
+                          "senderAccountId": 1,
+                          "receiverAccountId": 2,
+                          "amount": 50
                         }
-                        
                         """)
-                .post("http://localhost:4111/api/v1/accounts/deposit")
+                .post("http://localhost:4111/api/v1/accounts/transfer")
                 .then()
                 .assertThat()
                 .statusCode(HttpStatus.SC_OK)
-                .body("id", Matchers.equalTo(1));
+                .body("senderAccountId", Matchers.equalTo(1))
+                .body("receiverAccountId", Matchers.equalTo(2));
     }
+
 }
