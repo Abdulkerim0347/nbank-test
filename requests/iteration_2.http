@@ -8,6 +8,36 @@ Authorization: Basic a2F0ZTE5OTgxOkthdGUxOTk4JA==
   "balance": 100
 }
 
+### Edge case: User cannot deposit zero money
+POST http://localhost:4111/api/v1/accounts/deposit
+Content-Type: application/json
+Authorization: Basic a2F0ZTE5OTgxOkthdGUxOTk4JA==
+
+{
+  "id": 1,
+  "balance": 0
+}
+
+### Negative test: User cannot deposit negative amount
+POST http://localhost:4111/api/v1/accounts/deposit
+Content-Type: application/json
+Authorization: Basic a2F0ZTE5OTgxOkthdGUxOTk4JA==
+
+{
+  "id": 1,
+  "balance": -100
+}
+
+### Positive test: User can deposit a huge amount of money
+POST http://localhost:4111/api/v1/accounts/deposit
+Content-Type: application/json
+Authorization: Basic a2F0ZTE5OTgxOkthdGUxOTk4JA==
+
+{
+  "id": 1,
+  "balance": 100000
+}
+
 ### Positive test: User can transfer money from one account to another
 POST http://localhost:4111/api/v1/accounts/transfer
 Content-Type: application/json
@@ -19,6 +49,50 @@ Authorization: Basic a2F0ZTE5OTgxOkthdGUxOTk4JA==
   "amount": 50
 }
 
+### Edge case: User cannot transfer zero money from one account to another
+POST http://localhost:4111/api/v1/accounts/transfer
+Content-Type: application/json
+Authorization: Basic a2F0ZTE5OTgxOkthdGUxOTk4JA==
+
+{
+  "senderAccountId": 1,
+  "receiverAccountId": 2,
+  "amount": 0
+}
+
+### Negative test: User cannot transfer negative amount of money from one account to another
+POST http://localhost:4111/api/v1/accounts/transfer
+Content-Type: application/json
+Authorization: Basic a2F0ZTE5OTgxOkthdGUxOTk4JA==
+
+{
+  "senderAccountId": 1,
+  "receiverAccountId": 2,
+  "amount": -100
+}
+
+### Negative test: User cannot transfer money to a nonexistent account
+POST http://localhost:4111/api/v1/accounts/transfer
+Content-Type: application/json
+Authorization: Basic a2F0ZTE5OTgxOkthdGUxOTk4JA==
+
+{
+  "senderAccountId": 1,
+  "receiverAccountId": 5,
+  "amount": 100
+}
+
+### Positive test: User can transfer huge amount of money from one account to another
+POST http://localhost:4111/api/v1/accounts/transfer
+Content-Type: application/json
+Authorization: Basic a2F0ZTE5OTgxOkthdGUxOTk4JA==
+
+{
+  "senderAccountId": 1,
+  "receiverAccountId": 2,
+  "amount": 100000
+}
+
 ### Positive test: User can change its name
 PUT http://localhost:4111/api/v1/customer/profile
 Content-Type: application/json
@@ -26,4 +100,13 @@ Authorization: Basic a2F0ZTE5OTgxOkthdGUxOTk4JA==
 
 {
   "name": "new name"
+}
+
+### Negative test: User cannot change its name to a blank name
+PUT http://localhost:4111/api/v1/customer/profile
+Content-Type: application/json
+Authorization: Basic a2F0ZTE5OTgxOkthdGUxOTk4JA==
+
+{
+  "name": ""
 }
