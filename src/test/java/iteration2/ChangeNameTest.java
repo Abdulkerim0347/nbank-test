@@ -9,18 +9,18 @@ import org.apache.http.HttpStatus;
 import org.hamcrest.Matchers;
 import org.junit.jupiter.api.Test;
 import requests.AdminCreateUserRequester;
-import requests.CreateAccountRequester;
-import requests.DepositRequester;
+import requests.ChangeNameRequester;
 import requests.LoginUserRequester;
 import specs.RequestSpecs;
 import specs.ResponseSpecs;
 
 import static io.restassured.RestAssured.given;
+import static io.restassured.RestAssured.requestSpecification;
 
-public class DepositMoneyTest extends BaseTest {
+public class ChangeNameTest extends BaseTest {
 
     @Test
-    public void userCanDepositMoneyTest() {
+    public void userCanChangeItsNameTest() {
         var userRequest = CreateUserRequest.builder()
                 .username(RandomData.getUsername())
                 .password(RandomData.getPassword())
@@ -32,26 +32,15 @@ public class DepositMoneyTest extends BaseTest {
                 ResponseSpecs.entityWasCreated())
                 .post(userRequest);
 
-        var account = new CreateAccountRequester(
-                RequestSpecs.authAsUser(userRequest.getUsername(), userRequest.getPassword()),
-                ResponseSpecs.entityWasCreated())
-                .post(null).extract().as(DepositResponse.class);
-
-        int depositAmount = 100;
-
-        var depositRequest = DepositRequest.builder()
-                .id(account.getId())
-                .balance(depositAmount)
+        var request = ChangeNameRequest.builder()
+                .name(RandomData.getName())
                 .build();
 
-        var response = new DepositRequester(
+        var response = new ChangeNameRequester(
                 RequestSpecs.authAsUser(userRequest.getUsername(), userRequest.getPassword()),
                 ResponseSpecs.requestReturnsOK())
-                .post(depositRequest).extract().as(DepositResponse.class);
+                .post(request).extract().as(ChangeNameResponse.class);
 
-        softly.assertThat(response.getBalance()).isEqualTo(account.getBalance() + depositAmount);
-        softly.assertThat(response.getAccountNumber()).isNotNull();
-        softly.assertThat(response.getId()).isNotNull();
-
+        softly.assertThat(response.getMessage()).isEqualTo("Profile updated successfully");
     }
 }
