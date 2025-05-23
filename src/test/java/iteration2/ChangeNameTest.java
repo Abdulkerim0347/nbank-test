@@ -1,37 +1,46 @@
 package iteration2;
 
-import io.restassured.RestAssured;
-import io.restassured.filter.log.RequestLoggingFilter;
-import io.restassured.filter.log.ResponseLoggingFilter;
+import generators.RandomData;
 import io.restassured.http.ContentType;
+import io.restassured.response.Response;
+import iteration1.BaseTest;
+import models.*;
 import org.apache.http.HttpStatus;
 import org.hamcrest.Matchers;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
+import requests.AdminCreateUserRequester;
+import requests.ChangeNameRequester;
+import requests.LoginUserRequester;
+import specs.RequestSpecs;
+import specs.ResponseSpecs;
 
 import static io.restassured.RestAssured.given;
+import static io.restassured.RestAssured.requestSpecification;
 
-public class ChangeNameTest {
-    @BeforeAll
-    public static void setupRestAssured() {
-        RestAssured.filters(new RequestLoggingFilter(), new ResponseLoggingFilter());
-    }
+public class ChangeNameTest extends BaseTest {
 
     @Test
     public void userCanChangeItsNameTest() {
-        given()
-                .header("Authorization", "Basic a2F0ZTE5OTgxOkthdGUxOTk4JA==")
-                .contentType(ContentType.JSON)
-                .accept(ContentType.JSON)
-                .body("""
-                        {
-                          "name": "new name"
-                        }
-                        """)
-                .put("http://localhost:4111/api/v1/customer/profile")
-                .then()
-                .assertThat()
-                .statusCode(HttpStatus.SC_OK)
-                .body("customer.name", Matchers.equalTo("new name"));
+        var userRequest = CreateUserRequest.builder()
+                .username(RandomData.getUsername())
+                .password(RandomData.getPassword())
+                .role(UserRole.USER.toString())
+                .build();
+
+        new AdminCreateUserRequester(
+                RequestSpecs.adminSpec(),
+                ResponseSpecs.entityWasCreated())
+                .post(userRequest);
+
+        var request = ChangeNameRequest.builder()
+                .name(RandomData.getName())
+                .build();
+
+        var response = new ChangeNameRequester(
+                RequestSpecs.authAsUser(userRequest.getUsername(), userRequest.getPassword()),
+                ResponseSpecs.requestReturnsOK())
+                .post(request).extract().as(ChangeNameResponse.class);
+
+        softly.assertThat(response.getMessage()).isEqualTo("Profile updated successfully");
     }
 }

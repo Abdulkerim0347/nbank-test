@@ -1,3 +1,23 @@
+### Positive test: User can login
+### Authorization: Basic a2F0ZTE5OTgxOkthdGUxOTk4JA==
+POST http://localhost:4111/api/v1/auth/login
+Content-Type: application/json
+
+{
+  "username": "kate19981",
+  "password": "Kate1998$"
+}
+
+### Positive test: create user account
+POST http://localhost:4111/api/v1/accounts
+Content-Type: application/json
+Authorization: Basic a2F0ZTE5OTgxOkthdGUxOTk4JA==
+
+### Positive test: get account details
+GET http://localhost:4111/api/v1/customer/accounts
+Content-Type: application/json
+Authorization: Basic a2F0ZTE5OTgxOkthdGUxOTk4JA==
+
 ### Positive test: User can deposit money
 POST http://localhost:4111/api/v1/accounts/deposit
 Content-Type: application/json
@@ -88,9 +108,9 @@ Content-Type: application/json
 Authorization: Basic a2F0ZTE5OTgxOkthdGUxOTk4JA==
 
 {
-  "senderAccountId": 1,
-  "receiverAccountId": 2,
-  "amount": 100000
+  "senderAccountId": 10,
+  "receiverAccountId": 4,
+  "amount": 10
 }
 
 ### Positive test: User can change its name

@@ -5,6 +5,7 @@ import io.restassured.specification.ResponseSpecification;
 import org.apache.http.HttpStatus;
 import org.hamcrest.Matchers;
 
+// utility class: contains only static methods and/or constants
 public class ResponseSpecs {
     private ResponseSpecs() {}
 

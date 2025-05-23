@@ -10,7 +10,9 @@ import requests.LoginUserRequester;
 
 import java.util.List;
 
+// utility class: contains only static methods and/or constants
 public class RequestSpecs {
+    // to prevent instantiation of a class
     private RequestSpecs() {}
 
     private static RequestSpecBuilder defaultRequestBuilder() {
@@ -29,9 +31,7 @@ public class RequestSpecs {
         return defaultRequestBuilder()
                 .addHeader("Authorization", "Basic YWRtaW46YWRtaW4=")
                 .build();
-    }
-
-    public static RequestSpecification authAsUser(String username, String password) {
+    }   public static RequestSpecification authAsUser(String username, String password) {
         String userAuthHeader = new LoginUserRequester(
                 RequestSpecs.unauthSpec(),
                 ResponseSpecs.requestReturnsOK())
@@ -46,4 +46,6 @@ public class RequestSpecs {
                 .addHeader("Authorization", userAuthHeader)
                 .build();
     }
+
+
 }
