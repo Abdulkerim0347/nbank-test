@@ -1,26 +1,25 @@
 package iteration2;
 
 import generators.RandomData;
-import io.restassured.http.ContentType;
-import io.restassured.response.Response;
 import iteration1.BaseTest;
-import models.*;
-import org.apache.http.HttpStatus;
-import org.hamcrest.Matchers;
+import models.CreateUserRequest;
+import models.DepositRequest;
+import models.DepositResponse;
+import models.UserRole;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 import requests.AdminCreateUserRequester;
 import requests.CreateAccountRequester;
 import requests.DepositRequester;
-import requests.LoginUserRequester;
 import specs.RequestSpecs;
 import specs.ResponseSpecs;
 
-import static io.restassured.RestAssured.given;
-
 public class DepositMoneyTest extends BaseTest {
 
-    @Test
-    public void userCanDepositMoneyTest() {
+    @ParameterizedTest
+    @ValueSource(ints = {50, 1000000})
+    public void userCanDepositMoneyTest(int depositAmount) {
         var userRequest = CreateUserRequest.builder()
                 .username(RandomData.getUsername())
                 .password(RandomData.getPassword())
@@ -37,8 +36,6 @@ public class DepositMoneyTest extends BaseTest {
                 ResponseSpecs.entityWasCreated())
                 .post(null).extract().as(DepositResponse.class);
 
-        int depositAmount = 100;
-
         var depositRequest = DepositRequest.builder()
                 .id(account.getId())
                 .balance(depositAmount)
@@ -52,6 +49,6 @@ public class DepositMoneyTest extends BaseTest {
         softly.assertThat(response.getBalance()).isEqualTo(account.getBalance() + depositAmount);
         softly.assertThat(response.getAccountNumber()).isNotNull();
         softly.assertThat(response.getId()).isNotNull();
-
     }
+
 }
