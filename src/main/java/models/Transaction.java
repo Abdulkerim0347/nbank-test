@@ -9,8 +9,10 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class ChangeNameResponse extends BaseModel {
-    private String message;
-    private CreateUserResponse customer;
+public class Transaction {
+    private int id;
+    private double amount;
+    private String type;
+    private String timestamp;
+    private int relatedAccountId;
 }
-

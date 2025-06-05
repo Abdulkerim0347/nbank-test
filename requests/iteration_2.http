@@ -1,5 +1,4 @@
 ### Positive test: User can login
-### Authorization: Basic a2F0ZTE5OTgxOkthdGUxOTk4JA==
 POST http://localhost:4111/api/v1/auth/login
 Content-Type: application/json
 

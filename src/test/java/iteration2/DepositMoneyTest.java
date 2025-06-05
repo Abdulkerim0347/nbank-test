@@ -1,17 +1,14 @@
 package iteration2;
 
-import generators.RandomData;
 import iteration1.BaseTest;
-import models.CreateUserRequest;
+import models.CreateAccountResponse;
 import models.DepositRequest;
 import models.DepositResponse;
-import models.UserRole;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
-import requests.AdminCreateUserRequester;
-import requests.CreateAccountRequester;
-import requests.DepositRequester;
+import requests.skelethon.Endpoint;
+import requests.skelethon.requesters.ValidatedCrudRequester;
+import requests.steps.AdminSteps;
 import specs.RequestSpecs;
 import specs.ResponseSpecs;
 
@@ -20,35 +17,28 @@ public class DepositMoneyTest extends BaseTest {
     @ParameterizedTest
     @ValueSource(ints = {50, 1000000})
     public void userCanDepositMoneyTest(int depositAmount) {
-        var userRequest = CreateUserRequest.builder()
-                .username(RandomData.getUsername())
-                .password(RandomData.getPassword())
-                .role(UserRole.USER.toString())
-                .build();
+        var userRequest = AdminSteps.createUser();
 
-        new AdminCreateUserRequester(
-                RequestSpecs.adminSpec(),
-                ResponseSpecs.entityWasCreated())
-                .post(userRequest);
-
-        var account = new CreateAccountRequester(
+        var account = new ValidatedCrudRequester<CreateAccountResponse>(
                 RequestSpecs.authAsUser(userRequest.getUsername(), userRequest.getPassword()),
+                Endpoint.ACCOUNTS,
                 ResponseSpecs.entityWasCreated())
-                .post(null).extract().as(DepositResponse.class);
+                .post(null);
 
         var depositRequest = DepositRequest.builder()
                 .id(account.getId())
                 .balance(depositAmount)
                 .build();
 
-        var response = new DepositRequester(
+        var response = new ValidatedCrudRequester<DepositResponse>(
                 RequestSpecs.authAsUser(userRequest.getUsername(), userRequest.getPassword()),
+                Endpoint.DEPOSIT,
                 ResponseSpecs.requestReturnsOK())
-                .post(depositRequest).extract().as(DepositResponse.class);
+                .post(depositRequest);
 
         softly.assertThat(response.getBalance()).isEqualTo(account.getBalance() + depositAmount);
-        softly.assertThat(response.getAccountNumber()).isNotNull();
-        softly.assertThat(response.getId()).isNotNull();
+        softly.assertThat(response.getAccountNumber()).isEqualTo(account.getAccountNumber());
+        softly.assertThat(response.getId()).isEqualTo(account.getId());
     }
 
 }

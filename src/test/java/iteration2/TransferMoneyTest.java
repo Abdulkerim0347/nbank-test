@@ -1,55 +1,35 @@
 package iteration2;
 
-import generators.RandomData;
 import iteration1.BaseTest;
 import models.*;
 import org.junit.jupiter.api.Test;
-import requests.AdminCreateUserRequester;
-import requests.CreateAccountRequester;
-import requests.DepositRequester;
-import requests.TransferMoneyRequester;
+import requests.skelethon.Endpoint;
+import requests.skelethon.requesters.CrudRequester;
+import requests.skelethon.requesters.ValidatedCrudRequester;
+import requests.steps.AdminSteps;
 import specs.RequestSpecs;
 import specs.ResponseSpecs;
 
 public class TransferMoneyTest extends BaseTest {
     @Test
     public void userCanTransferMoneyTest() {
-        // create 2 users
-        var userRequest1 = CreateUserRequest.builder()
-                .username(RandomData.getUsername())
-                .password(RandomData.getPassword())
-                .role(UserRole.USER.toString())
-                .build();
+        var userRequest = AdminSteps.createUser();
 
-        var userRequest2 = CreateUserRequest.builder()
-                .username(RandomData.getUsername())
-                .password(RandomData.getPassword())
-                .role(UserRole.USER.toString())
-                .build();
-
-        new AdminCreateUserRequester(
-                RequestSpecs.adminSpec(),
+        // create 2 accounts
+        var account1 = new ValidatedCrudRequester<CreateAccountResponse>(
+                RequestSpecs.authAsUser(userRequest.getUsername(), userRequest.getPassword()),
+                Endpoint.ACCOUNTS,
                 ResponseSpecs.entityWasCreated())
-                .post(userRequest1);
+                .post(null);
 
-        new AdminCreateUserRequester(
-                RequestSpecs.adminSpec(),
+        var account2 = new ValidatedCrudRequester<CreateAccountResponse>(
+                RequestSpecs.authAsUser(userRequest.getUsername(), userRequest.getPassword()),
+                Endpoint.ACCOUNTS,
                 ResponseSpecs.entityWasCreated())
-                .post(userRequest2);
+                .post(null);
 
-        // create accounts for both users
-        var account1 = new CreateAccountRequester(
-                RequestSpecs.authAsUser(userRequest1.getUsername(), userRequest1.getPassword()),
-                ResponseSpecs.entityWasCreated())
-                .post(null).extract().as(DepositResponse.class);
-
-        var account2 = new CreateAccountRequester(
-                RequestSpecs.authAsUser(userRequest2.getUsername(), userRequest2.getPassword()),
-                ResponseSpecs.entityWasCreated())
-                .post(null).extract().as(DepositResponse.class);
-
-        int initialDeposit = 100;
-        int transferAmount = 50;
+        double initialDeposit = 100;
+        double transferAmount = 50;
 
         // depositing some money on sender account
         var depositRequest = DepositRequest.builder()
@@ -57,8 +37,9 @@ public class TransferMoneyTest extends BaseTest {
                 .balance(initialDeposit)
                 .build();
 
-        new DepositRequester(
-                RequestSpecs.authAsUser(userRequest1.getUsername(), userRequest1.getPassword()),
+       new CrudRequester(
+                RequestSpecs.authAsUser(userRequest.getUsername(), userRequest.getPassword()),
+                Endpoint.DEPOSIT,
                 ResponseSpecs.requestReturnsOK())
                 .post(depositRequest);
 
@@ -69,13 +50,15 @@ public class TransferMoneyTest extends BaseTest {
                 .amount(transferAmount)
                 .build();
 
-        var transferResponse = new TransferMoneyRequester(
-                RequestSpecs.authAsUser(userRequest1.getUsername(), userRequest1.getPassword()),
+        var transferResponse = new ValidatedCrudRequester<TransferMoneyResponse>(
+                RequestSpecs.authAsUser(userRequest.getUsername(), userRequest.getPassword()),
+                Endpoint.TRANSFER,
                 ResponseSpecs.requestReturnsOK())
-                .post(transferRequest).extract().as(TransferMoneyResponse.class);
+                .post(transferRequest);
 
         softly.assertThat(transferResponse.getMessage()).isEqualTo("Transfer successful");
-        softly.assertThat(transferResponse.getAmount()).isEqualTo(account2.getBalance() + transferAmount);
         softly.assertThat(transferResponse.getReceiverAccountId()).isEqualTo(transferRequest.getReceiverAccountId());
+        softly.assertThat(transferResponse.getAmount()).isEqualTo(account2.getBalance() + transferAmount);
+//        softly.assertThat(account1.getBalance() + initialDeposit).isEqualTo(account1.getBalance() - transferAmount);
     }
 }
