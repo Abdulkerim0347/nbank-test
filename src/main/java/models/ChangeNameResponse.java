@@ -11,6 +11,6 @@ import lombok.NoArgsConstructor;
 @Builder
 public class ChangeNameResponse {
     private String message;
-    private Customer customer;
+    private BaseUserResponse customer;
 }
 

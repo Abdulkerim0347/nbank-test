@@ -13,7 +13,7 @@ public class ChangeNameRequester extends Request {
     }
 
     @Override
-    public ValidatableResponse post(BaseModel model) {
+    public ValidatableResponse put(BaseModel model) {
         return given()
                 .spec(requestSpecification)
                 .body(model)
@@ -21,5 +21,20 @@ public class ChangeNameRequester extends Request {
                 .then()
                 .assertThat()
                 .spec(responseSpecification);
+    }
+
+    @Override
+    public ValidatableResponse post(BaseModel model) {
+        return null;
+    }
+
+    @Override
+    public ValidatableResponse get(BaseModel model) {
+        return null;
+    }
+
+    @Override
+    public ValidatableResponse delete(BaseModel model) {
+        return null;
     }
 }

@@ -22,4 +22,19 @@ public class AdminCreateUserRequester extends Request<CreateUserRequest> {
                 .assertThat()
                 .spec(responseSpecification);
     }
+
+    @Override
+    public ValidatableResponse put(CreateUserRequest model) {
+        return null;
+    }
+
+    @Override
+    public ValidatableResponse get(CreateUserRequest model) {
+        return null;
+    }
+
+    @Override
+    public ValidatableResponse delete(CreateUserRequest model) {
+        return null;
+    }
 }

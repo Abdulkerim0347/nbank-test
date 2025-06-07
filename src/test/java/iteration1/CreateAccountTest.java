@@ -1,13 +1,17 @@
 package iteration1;
 
 import generators.RandomData;
+import models.BaseAccountResponse;
 import models.CreateUserRequest;
 import models.UserRole;
 import org.junit.jupiter.api.Test;
 import requests.AdminCreateUserRequester;
 import requests.CreateAccountRequester;
+import requests.GetAccountsRequester;
 import specs.RequestSpecs;
 import specs.ResponseSpecs;
+
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class CreateAccountTest extends BaseTest {
 
@@ -26,10 +30,20 @@ public class CreateAccountTest extends BaseTest {
                 ResponseSpecs.entityWasCreated()) // checking status code
                 .post(userRequest);
 
-        new CreateAccountRequester(
+        var account = new CreateAccountRequester(
                 RequestSpecs.authAsUser(userRequest.getUsername(), userRequest.getPassword()),
                 ResponseSpecs.entityWasCreated())
-                .post(null);
+                .post(null).extract().as(BaseAccountResponse.class);
 
+        var accounts = new GetAccountsRequester(
+                RequestSpecs.authAsUser(userRequest.getUsername(), userRequest.getPassword()),
+                ResponseSpecs.requestReturnsOK())
+                .post(null)
+                .extract()
+                .jsonPath()
+                .getList("", BaseAccountResponse.class);
+
+        assertTrue(accounts.stream().anyMatch(a -> a.getId() == account.getId()),
+                "Created account should exist in the account list");
     }
 }

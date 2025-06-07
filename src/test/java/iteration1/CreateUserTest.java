@@ -2,7 +2,7 @@ package iteration1;
 
 import generators.RandomData;
 import models.CreateUserRequest;
-import models.CreateUserResponse;
+import models.BaseUserResponse;
 import models.UserRole;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -27,7 +27,7 @@ public class CreateUserTest extends BaseTest {
         var userResponse = new AdminCreateUserRequester(
                 RequestSpecs.adminSpec(),
                 ResponseSpecs.entityWasCreated())
-                .post(userRequest).extract().as(CreateUserResponse.class);
+                .post(userRequest).extract().as(BaseUserResponse.class);
 
         softly.assertThat(userRequest.getUsername()).isEqualTo(userResponse.getUsername());
         softly.assertThat(userRequest.getPassword()).isNotEqualTo(userResponse.getPassword());

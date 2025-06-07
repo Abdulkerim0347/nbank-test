@@ -22,4 +22,19 @@ public class TransferMoneyRequester extends Request {
                 .assertThat()
                 .spec(responseSpecification);
     }
+
+    @Override
+    public ValidatableResponse put(BaseModel model) {
+        return null;
+    }
+
+    @Override
+    public ValidatableResponse get(BaseModel model) {
+        return null;
+    }
+
+    @Override
+    public ValidatableResponse delete(BaseModel model) {
+        return null;
+    }
 }
