@@ -1,53 +1,38 @@
 package iteration2;
 
 import iteration1.BaseTest;
-import models.*;
+import models.BaseAccountResponse;
+import models.TransferMoneyRequest;
+import models.TransferMoneyResponse;
 import org.junit.jupiter.api.Test;
 import requests.skelethon.Endpoint;
 import requests.skelethon.requesters.CrudRequester;
 import requests.skelethon.requesters.ValidatedCrudRequester;
 import requests.steps.AdminSteps;
+import requests.steps.DepositSteps;
 import specs.RequestSpecs;
 import specs.ResponseSpecs;
 
 public class TransferMoneyTest extends BaseTest {
     @Test
     public void userCanTransferMoneyTest() {
+        final double INITIAL_DEPOSIT = 100;
+        final double TRANSFER_AMOUNT = 50;
+
         var userRequest = AdminSteps.createUser();
 
         // create 2 accounts
-        var account1 = new ValidatedCrudRequester<CreateAccountResponse>(
-                RequestSpecs.authAsUser(userRequest.getUsername(), userRequest.getPassword()),
-                Endpoint.ACCOUNTS,
-                ResponseSpecs.entityWasCreated())
-                .post(null);
-
-        var account2 = new ValidatedCrudRequester<CreateAccountResponse>(
-                RequestSpecs.authAsUser(userRequest.getUsername(), userRequest.getPassword()),
-                Endpoint.ACCOUNTS,
-                ResponseSpecs.entityWasCreated())
-                .post(null);
-
-        double initialDeposit = 100;
-        double transferAmount = 50;
+        var account1 = DepositSteps.createAccount(userRequest);
+        var account2 = DepositSteps.createAccount(userRequest);
 
         // depositing some money on sender account
-        var depositRequest = DepositRequest.builder()
-                .id(account1.getId())
-                .balance(initialDeposit)
-                .build();
-
-       new CrudRequester(
-                RequestSpecs.authAsUser(userRequest.getUsername(), userRequest.getPassword()),
-                Endpoint.DEPOSIT,
-                ResponseSpecs.requestReturnsOK())
-                .post(depositRequest);
+        DepositSteps.depositMoney(userRequest, account1, INITIAL_DEPOSIT);
 
         // money transfer request
         var transferRequest = TransferMoneyRequest.builder()
                 .senderAccountId(account1.getId())
                 .receiverAccountId(account2.getId())
-                .amount(transferAmount)
+                .amount(TRANSFER_AMOUNT)
                 .build();
 
         var transferResponse = new ValidatedCrudRequester<TransferMoneyResponse>(
@@ -56,9 +41,78 @@ public class TransferMoneyTest extends BaseTest {
                 ResponseSpecs.requestReturnsOK())
                 .post(transferRequest);
 
-        softly.assertThat(transferResponse.getMessage()).isEqualTo("Transfer successful");
-        softly.assertThat(transferResponse.getReceiverAccountId()).isEqualTo(transferRequest.getReceiverAccountId());
-        softly.assertThat(transferResponse.getAmount()).isEqualTo(account2.getBalance() + transferAmount);
-//        softly.assertThat(account1.getBalance() + initialDeposit).isEqualTo(account1.getBalance() - transferAmount);
+        var updatedAccounts = new CrudRequester(
+                RequestSpecs.authAsUser(userRequest.getUsername(), userRequest.getPassword()),
+                Endpoint.CUSTOMER_ACCOUNTS,
+                ResponseSpecs.requestReturnsOK())
+                .get(null)
+                .extract()
+                .jsonPath()
+                .getList("", BaseAccountResponse.class);
+
+        var updatedSender = updatedAccounts.stream()
+                .filter(a -> a.getId() == account1.getId())
+                .findFirst()
+                .orElseThrow();
+
+        var updatedReceiver = updatedAccounts.stream()
+                .filter(a -> a.getId() == account2.getId())
+                .findFirst()
+                .orElseThrow();
+
+        softly.assertThat(updatedSender.getBalance()).isEqualTo(INITIAL_DEPOSIT - TRANSFER_AMOUNT);
+        softly.assertThat(updatedReceiver.getBalance()).isEqualTo(TRANSFER_AMOUNT);
+        softly.assertThat(transferResponse.getReceiverAccountId()).isEqualTo(account2.getId());
+    }
+
+    @Test
+    public void userCannotTransferMoreThanBalance() {
+        final double INITIAL_DEPOSIT = 50;
+        final double TRANSFER_AMOUNT = 100;
+        final String ERROR = "Invalid transfer: insufficient funds or invalid accounts";
+
+        var userRequest = AdminSteps.createUser();
+
+        // create 2 accounts
+        var account1 = DepositSteps.createAccount(userRequest);
+        var account2 = DepositSteps.createAccount(userRequest);
+
+        // depositing some money on sender account
+        DepositSteps.depositMoney(userRequest, account1, INITIAL_DEPOSIT);
+
+        // money transfer request
+        var transferRequest = TransferMoneyRequest.builder()
+                .senderAccountId(account1.getId())
+                .receiverAccountId(account2.getId())
+                .amount(TRANSFER_AMOUNT)
+                .build();
+
+        new CrudRequester(
+                RequestSpecs.authAsUser(userRequest.getUsername(), userRequest.getPassword()),
+                Endpoint.TRANSFER,
+                ResponseSpecs.requestReturnsBadRequest(ERROR))
+                .post(transferRequest);
+
+        var updatedAccounts = new CrudRequester(
+                RequestSpecs.authAsUser(userRequest.getUsername(), userRequest.getPassword()),
+                Endpoint.CUSTOMER_ACCOUNTS,
+                ResponseSpecs.requestReturnsOK())
+                .get(null)
+                .extract()
+                .jsonPath()
+                .getList("", BaseAccountResponse.class);
+
+        var updatedSender = updatedAccounts.stream()
+                .filter(a -> a.getId() == account1.getId())
+                .findFirst()
+                .orElseThrow();
+
+        var updatedReceiver = updatedAccounts.stream()
+                .filter(a -> a.getId() == account2.getId())
+                .findFirst()
+                .orElseThrow();
+
+        softly.assertThat(updatedSender.getBalance()).isEqualTo(account1.getBalance() + INITIAL_DEPOSIT);
+        softly.assertThat(updatedReceiver.getBalance()).isEqualTo(account2.getBalance());
     }
 }

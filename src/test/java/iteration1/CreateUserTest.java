@@ -2,7 +2,7 @@ package iteration1;
 
 import generators.RandomModelGenerator;
 import models.CreateUserRequest;
-import models.CreateUserResponse;
+import models.BaseUserResponse;
 import models.comparison.ModelAssertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -22,7 +22,7 @@ public class CreateUserTest extends BaseTest {
     public void adminCanCreateUserWithCorrectData() {
         var userRequest = RandomModelGenerator.generate(CreateUserRequest.class);
 
-        var userResponse = new ValidatedCrudRequester<CreateUserResponse>(
+        var userResponse = new ValidatedCrudRequester<BaseUserResponse>(
                 RequestSpecs.adminSpec(),
                 Endpoint.ADMIN_USER,
                 ResponseSpecs.entityWasCreated())
@@ -34,7 +34,7 @@ public class CreateUserTest extends BaseTest {
     public static Stream<Arguments> userInvalidData() {
         return Stream.of(
                 // username field validation
-                Arguments.of("   ", "Kate1998$", "USER", "username", "Username must contain only letters, digits, dashes, underscores, and dots"),
+                Arguments.of("   ", "Kate1998$", "USER", "username", "Username cannot be blank"),
                 Arguments.of("ab", "Kate1998$", "USER", "username", "Username must be between 3 and 15 characters"),
                 Arguments.of("ab123456789Cde-.", "Kate1998$", "USER", "username", "Username must be between 3 and 15 characters"),
                 Arguments.of("Ak1234.-_@", "Kate1998$", "USER", "username", "Username must contain only letters, digits, dashes, underscores, and dots"),

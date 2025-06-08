@@ -1,10 +1,6 @@
 package iteration1;
 
-import generators.RandomData;
-import generators.RandomModelGenerator;
-import models.CreateUserRequest;
 import models.LoginUserRequest;
-import models.UserRole;
 import org.hamcrest.Matchers;
 import org.junit.jupiter.api.Test;
 import requests.skelethon.Endpoint;

@@ -23,9 +23,9 @@ public class ChangeNameTest extends BaseTest {
 
         var response = new ValidatedCrudRequester<ChangeNameResponse>(
                 RequestSpecs.authAsUser(userRequest.getUsername(), userRequest.getPassword()),
-                Endpoint.PROFILE,
+                Endpoint.CUSTOMER_PROFILE,
                 ResponseSpecs.requestReturnsOK())
-                .post(request);
+                .update(request);
 
         softly.assertThat(response.getMessage()).isEqualTo("Profile updated successfully");
         softly.assertThat(response.getCustomer().getName()).isEqualTo(request.getName());

@@ -11,6 +11,6 @@ import lombok.NoArgsConstructor;
 @Builder
 public class ChangeNameResponse extends BaseModel {
     private String message;
-    private CreateUserResponse customer;
+    private BaseUserResponse customer;
 }
 

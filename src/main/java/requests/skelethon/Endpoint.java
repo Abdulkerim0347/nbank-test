@@ -10,7 +10,7 @@ public enum Endpoint {
     ADMIN_USER(
             "/admin/users",
             CreateUserRequest.class,
-            CreateUserResponse.class
+            BaseUserResponse.class
     ),
 
     LOGIN(
@@ -22,10 +22,10 @@ public enum Endpoint {
     DEPOSIT(
             "/accounts/deposit",
             DepositRequest.class,
-            DepositResponse.class
+            BaseAccountResponse.class
     ),
 
-    PROFILE(
+    CUSTOMER_PROFILE(
             "/customer/profile",
             ChangeNameRequest.class,
             ChangeNameResponse.class
@@ -37,10 +37,16 @@ public enum Endpoint {
             TransferMoneyResponse.class
     ),
 
+    CUSTOMER_ACCOUNTS(
+            "/customer/accounts",
+            BaseModel.class,
+            BaseAccountResponse.class
+    ),
+
     ACCOUNTS(
             "/accounts",
             BaseModel.class,
-            CreateAccountResponse.class
+            BaseAccountResponse.class
     );
 
     private final String url;
