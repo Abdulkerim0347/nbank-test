@@ -2,6 +2,9 @@ package generators;
 
 import org.apache.commons.lang3.RandomStringUtils;
 
+import java.math.BigDecimal;
+import java.util.Random;
+
 public class RandomData {
     private RandomData() {}
 
@@ -17,5 +20,9 @@ public class RandomData {
 
     public static String getName() {
         return RandomStringUtils.randomAlphabetic(8);
+    }
+
+    public static Random getRandom() {
+        return new Random();
     }
 }

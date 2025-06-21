@@ -38,4 +38,25 @@ public class ResponseSpecs {
                 .expectBody(Matchers.equalTo(error))
                 .build();
     }
+
+    public static ResponseSpecification requestReturnsInvalidAccount() {
+        return defaultResponseBuilder()
+                .expectStatusCode(HttpStatus.SC_BAD_REQUEST)
+                .expectBody(Matchers.equalTo("Invalid account or amount"))
+                .build();
+    }
+
+    public static ResponseSpecification requestReturnsInvalidTransfer() {
+        return defaultResponseBuilder()
+                .expectStatusCode(HttpStatus.SC_BAD_REQUEST)
+                .expectBody(Matchers.equalTo("Invalid transfer: insufficient funds or invalid accounts"))
+                .build();
+    }
+
+    public static ResponseSpecification requestReturnsDepositAmountExceedsLimit() {
+        return defaultResponseBuilder()
+                .expectStatusCode(HttpStatus.SC_BAD_REQUEST)
+                .expectBody(Matchers.equalTo("Deposit amount exceeds the 5000 limit"))
+                .build();
+    }
 }
