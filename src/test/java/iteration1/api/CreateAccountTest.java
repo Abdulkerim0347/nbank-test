@@ -1,4 +1,4 @@
-package iteration1;
+package iteration1.api;
 
 import models.BaseAccountResponse;
 import org.junit.jupiter.api.Test;

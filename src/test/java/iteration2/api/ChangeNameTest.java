@@ -1,7 +1,7 @@
-package iteration2;
+package iteration2.api;
 
 import generators.RandomData;
-import iteration1.BaseTest;
+import iteration1.api.BaseTest;
 import models.ChangeNameRequest;
 import models.ChangeNameResponse;
 import org.junit.jupiter.api.Test;
