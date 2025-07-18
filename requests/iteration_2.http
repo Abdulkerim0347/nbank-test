@@ -121,6 +121,11 @@ Authorization: Basic a2F0ZTE5OTgxOkthdGUxOTk4JA==
   "name": "new name"
 }
 
+### Positive test: User can get its profile info
+GET http://localhost:4111/api/v1/customer/profile
+Content-Type: application/json
+Authorization: Basic a2F0ZTE5OTgxOkthdGUxOTk4JA==
+
 ### Negative test: User cannot change its name to a blank name
 PUT http://localhost:4111/api/v1/customer/profile
 Content-Type: application/json
