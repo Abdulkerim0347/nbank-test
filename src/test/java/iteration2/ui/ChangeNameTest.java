@@ -49,9 +49,7 @@ public class ChangeNameTest {
                 .header("Authorization");
 
         Selenide.open("/");
-
         executeJavaScript("localStorage.setItem('authToken', arguments[0]);", userAuthHeader);
-
         Selenide.open("/dashboard");
 
         // generate new name for user
