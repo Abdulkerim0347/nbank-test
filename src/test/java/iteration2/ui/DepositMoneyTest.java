@@ -6,6 +6,7 @@ import com.codeborne.selenide.Selectors;
 import com.codeborne.selenide.Selenide;
 import generators.RandomData;
 import models.BaseAccountResponse;
+import models.LoginUserRequest;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.Alert;
@@ -25,8 +26,8 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 public class DepositMoneyTest {
     @BeforeAll
     public static void setupSelenoid() {
-        Configuration.remote = "http://localhost:4444/wd/hub";
-        Configuration.baseUrl = "http://172.18.0.1:3000";
+//        Configuration.remote = "http://localhost:4444/wd/hub";
+        Configuration.baseUrl = "http://localhost:3000";
         Configuration.browser = "chrome";
         Configuration.browserSize = "1920x1080";
 
@@ -39,20 +40,30 @@ public class DepositMoneyTest {
     public void userCanDepositMoneyTest() {
         // create user
         var user = AdminSteps.createUser();
+
         // create account for user
         var account = DepositSteps.createAccount(user);
 
-        Selenide.open("/login");
-        $(Selectors.byAttribute("placeholder", "Username")).sendKeys(user.getUsername());
-        $(Selectors.byAttribute("placeholder", "Password")).sendKeys(user.getPassword());
-        $("button").click();
+        var userAuthHeader = new CrudRequester(
+                RequestSpecs.unauthSpec(),
+                Endpoint.LOGIN,
+                ResponseSpecs.requestReturnsOK())
+                .post(LoginUserRequest.builder().username(user.getUsername()).password(user.getPassword()).build())
+                .extract()
+                .header("Authorization");
+
+        Selenide.open("/");
+
+        executeJavaScript("localStorage.setItem('authToken', arguments[0]);", userAuthHeader);
+
+        Selenide.open("/dashboard");
 
         $(Selectors.byClassName("welcome-text")).shouldBe(Condition.visible).shouldHave(text("Welcome, noname!"));
 
         // UI deposit process
         $(Selectors.byText("\uD83D\uDCB0 Deposit Money")).click();
-        $(Selectors.byClassName("form-control account-selector")).click();
-        $$("ul li").filter(Condition.visible)
+        $(Selectors.byText("-- Choose an account --")).click();
+        $$("option").filter(Condition.visible)
                 .findBy(text(account.getAccountNumber()))
                 .click();
 
@@ -83,25 +94,35 @@ public class DepositMoneyTest {
     public void userCannotDepositMoneyTest() {
         // create user
         var user = AdminSteps.createUser();
+
         // create account for user
         var account = DepositSteps.createAccount(user);
 
-        Selenide.open("/login");
-        $(Selectors.byAttribute("placeholder", "Username")).sendKeys(user.getUsername());
-        $(Selectors.byAttribute("placeholder", "Password")).sendKeys(user.getPassword());
-        $("button").click();
+        var userAuthHeader = new CrudRequester(
+                RequestSpecs.unauthSpec(),
+                Endpoint.LOGIN,
+                ResponseSpecs.requestReturnsOK())
+                .post(LoginUserRequest.builder().username(user.getUsername()).password(user.getPassword()).build())
+                .extract()
+                .header("Authorization");
+
+        Selenide.open("/");
+
+        executeJavaScript("localStorage.setItem('authToken', arguments[0]);", userAuthHeader);
+
+        Selenide.open("/dashboard");
 
         $(Selectors.byClassName("welcome-text")).shouldBe(Condition.visible).shouldHave(text("Welcome, noname!"));
 
         // UI deposit process
         $(Selectors.byText("\uD83D\uDCB0 Deposit Money")).click();
-        $(Selectors.byClassName("form-control account-selector")).click();
-        $$("ul li").filter(Condition.visible)
+        $(Selectors.byText("-- Choose an account --")).click();
+        $$("option").filter(Condition.visible)
                 .findBy(text(account.getAccountNumber()))
                 .click();
 
-        int limitAmount = 5000;
-        int depositAmount = RandomData.getRandom().nextInt(5000) + limitAmount;
+        final int MAX_DEPOSIT = 5000;
+        int depositAmount = RandomData.getRandom().nextInt(5000) + MAX_DEPOSIT;
         $("[placeholder='Enter amount']").setValue(depositAmount + "");
         $(Selectors.byText("\uD83D\uDCB5 Deposit")).click();
 

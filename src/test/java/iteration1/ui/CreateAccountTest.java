@@ -26,8 +26,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class CreateAccountTest {
     @BeforeAll
     public static void setupSelenoid() {
-        Configuration.remote = "http://localhost:4444/wd/hub";
-        Configuration.baseUrl = "http://172.18.0.1:3000";
+//        Configuration.remote = "http://localhost:4444/wd/hub";
+        Configuration.baseUrl = "http://localhost:3000";
         Configuration.browser = "chrome";
         Configuration.browserSize = "1920x1080";
 

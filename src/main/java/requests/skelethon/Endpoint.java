@@ -31,6 +31,12 @@ public enum Endpoint {
             ChangeNameResponse.class
     ),
 
+    GET_CUSTOMER_PROFILE(
+            "/customer/profile",
+            ChangeNameRequest.class,
+            BaseUserResponse.class
+    ),
+
     TRANSFER(
             "/accounts/transfer",
             TransferMoneyRequest.class,
