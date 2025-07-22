@@ -3,17 +3,16 @@ package iteration1.ui;
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selectors;
 import com.codeborne.selenide.Selenide;
-import models.BaseAccountResponse;
-import models.CreateUserRequest;
-import models.LoginUserRequest;
+import api.models.BaseAccountResponse;
+import api.models.LoginUserRequest;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.Alert;
-import requests.skelethon.Endpoint;
-import requests.skelethon.requesters.CrudRequester;
-import requests.steps.AdminSteps;
-import specs.RequestSpecs;
-import specs.ResponseSpecs;
+import api.requests.skelethon.Endpoint;
+import api.requests.skelethon.requesters.CrudRequester;
+import api.requests.steps.AdminSteps;
+import api.specs.RequestSpecs;
+import api.specs.ResponseSpecs;
 
 import java.util.Map;
 import java.util.regex.Matcher;
@@ -26,8 +25,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class CreateAccountTest {
     @BeforeAll
     public static void setupSelenoid() {
-        Configuration.remote = "http://localhost:4444/wd/hub";
-        Configuration.baseUrl = "http://172.18.0.1:3000";
+//        Configuration.remote = "http://localhost:4444/wd/hub";
+        Configuration.baseUrl = "http://localhost:3000";
         Configuration.browser = "chrome";
         Configuration.browserSize = "1920x1080";
 

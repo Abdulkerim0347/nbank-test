@@ -1,0 +1,24 @@
+Title: user can deposit money
+Positive case:
+    pre step: create user and account for user
+    steps:
+   1. click on deposit money button
+   2. choose deposit account
+   3. enter deposit amount less than or equal to 5000
+   4. click Deposit button
+
+    expectation:
+   1. alert that money was deposited successfully
+   2. money was deposited on api
+
+Negative case:
+    pre step: create user and account for user
+    steps:
+   1. click on deposit money button
+   2. choose deposit account
+   3. enter deposit amount more than 5000
+   4. click Deposit button
+
+    expectation:
+   1. alert that money was not deposited and description why
+   2. money was not deposited on api

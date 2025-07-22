@@ -4,17 +4,17 @@ import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selectors;
 import com.codeborne.selenide.Selenide;
-import generators.RandomData;
-import models.BaseAccountResponse;
+import api.generators.RandomData;
+import api.models.BaseAccountResponse;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.Alert;
-import requests.skelethon.Endpoint;
-import requests.skelethon.requesters.CrudRequester;
-import requests.steps.AdminSteps;
-import requests.steps.DepositSteps;
-import specs.RequestSpecs;
-import specs.ResponseSpecs;
+import api.requests.skelethon.Endpoint;
+import api.requests.skelethon.requesters.CrudRequester;
+import api.requests.steps.AdminSteps;
+import api.requests.steps.DepositSteps;
+import api.specs.RequestSpecs;
+import api.specs.ResponseSpecs;
 
 import java.util.Map;
 
@@ -25,8 +25,8 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 public class DepositMoneyTest {
     @BeforeAll
     public static void setupSelenoid() {
-        Configuration.remote = "http://localhost:4444/wd/hub";
-        Configuration.baseUrl = "http://172.18.0.1:3000";
+//        Configuration.remote = "http://localhost:4444/wd/hub";
+        Configuration.baseUrl = "http://localhost:3000";
         Configuration.browser = "chrome";
         Configuration.browserSize = "1920x1080";
 
@@ -51,7 +51,7 @@ public class DepositMoneyTest {
 
         // UI deposit process
         $(Selectors.byText("\uD83D\uDCB0 Deposit Money")).click();
-        $(Selectors.byClassName("form-control account-selector")).click();
+        $(Selectors.byText("-- Choose an account --")).click();
         $$("ul li").filter(Condition.visible)
                 .findBy(text(account.getAccountNumber()))
                 .click();

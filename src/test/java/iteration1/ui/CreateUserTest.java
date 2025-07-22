@@ -1,15 +1,15 @@
 package iteration1.ui;
 
 import com.codeborne.selenide.*;
-import generators.RandomModelGenerator;
-import models.BaseUserResponse;
-import models.CreateUserRequest;
-import models.comparison.ModelAssertions;
+import api.generators.RandomModelGenerator;
+import api.models.BaseUserResponse;
+import api.models.CreateUserRequest;
+import api.models.comparison.ModelAssertions;
 import org.apache.hc.core5.http.HttpStatus;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.Alert;
-import specs.RequestSpecs;
+import api.specs.RequestSpecs;
 
 import java.util.Arrays;
 import java.util.Map;
@@ -23,8 +23,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class CreateUserTest {
     @BeforeAll
     public static void setupSelenoid() {
-        Configuration.remote = "http://localhost:4444/wd/hub";
-        Configuration.baseUrl = "http://172.18.0.1:3000";
+//        Configuration.remote = "http://localhost:4444/wd/hub";
+        Configuration.baseUrl = "http://localhost:3000";
         Configuration.browser = "chrome";
         Configuration.browserSize = "1920x1080";
 
