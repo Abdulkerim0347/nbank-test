@@ -6,10 +6,12 @@ import com.codeborne.selenide.Selectors;
 import com.codeborne.selenide.Selenide;
 import generators.RandomData;
 import models.BaseUserResponse;
+import models.LoginUserRequest;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.Alert;
 import requests.skelethon.Endpoint;
+import requests.skelethon.requesters.CrudRequester;
 import requests.skelethon.requesters.ValidatedCrudRequester;
 import requests.steps.AdminSteps;
 import specs.RequestSpecs;
@@ -17,16 +19,15 @@ import specs.ResponseSpecs;
 
 import java.util.Map;
 
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.switchTo;
+import static com.codeborne.selenide.Selenide.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 public class ChangeNameTest {
     @BeforeAll
     public static void setupSelenoid() {
-        Configuration.remote = "http://localhost:4444/wd/hub";
-        Configuration.baseUrl = "http://172.18.0.1:3000";
+//        Configuration.remote = "http://localhost:4444/wd/hub";
+        Configuration.baseUrl = "http://localhost:3000";
         Configuration.browser = "chrome";
         Configuration.browserSize = "1920x1080";
 
@@ -36,23 +37,32 @@ public class ChangeNameTest {
     }
 
     @Test
-    public void userCanChangeItsNameTest() {
+    public void userCanChangeItsNameTest() throws InterruptedException {
         var user = AdminSteps.createUser();
 
-        Selenide.open("/login");
-        $(Selectors.byAttribute("placeholder", "Username")).sendKeys(user.getUsername());
-        $(Selectors.byAttribute("placeholder", "Password")).sendKeys(user.getPassword());
-        $("button").click();
+        var userAuthHeader = new CrudRequester(
+                RequestSpecs.unauthSpec(),
+                Endpoint.LOGIN,
+                ResponseSpecs.requestReturnsOK())
+                .post(LoginUserRequest.builder().username(user.getUsername()).password(user.getPassword()).build())
+                .extract()
+                .header("Authorization");
+
+        Selenide.open("/");
+        executeJavaScript("localStorage.setItem('authToken', arguments[0]);", userAuthHeader);
+        Selenide.open("/dashboard");
 
         // generate new name for user
         String newName = RandomData.getName() + " A";
         $(Selectors.byClassName("user-info")).click();
         $(Selectors.byAttribute("placeholder", "Enter new name")).sendKeys(newName);
-        $(Selectors.byClassName("btn btn-primary mt-3")).click();
+        $(Selectors.byText("\uD83D\uDCBE Save Changes")).click();
 
         Alert alert = switchTo().alert();
         assertEquals(alert.getText(), "✅ Name updated successfully!");
         alert.accept();
+
+        Thread.sleep(1000);
 
         // validate on UI
         $(Selectors.byText("\uD83C\uDFE0 Home")).click();
@@ -61,7 +71,7 @@ public class ChangeNameTest {
         // validate on API
         var updatedProfile = new ValidatedCrudRequester<BaseUserResponse>(
                 RequestSpecs.authAsUser(user.getUsername(), user.getPassword()),
-                Endpoint.CUSTOMER_PROFILE,
+                Endpoint.GET_CUSTOMER_PROFILE,
                 ResponseSpecs.requestReturnsOK())
                 .get(null);
 
@@ -72,16 +82,25 @@ public class ChangeNameTest {
     public void userCannotChangeItsNameTest() {
         var user = AdminSteps.createUser();
 
-        Selenide.open("/login");
-        $(Selectors.byAttribute("placeholder", "Username")).sendKeys(user.getUsername());
-        $(Selectors.byAttribute("placeholder", "Password")).sendKeys(user.getPassword());
-        $("button").click();
+        var userAuthHeader = new CrudRequester(
+                RequestSpecs.unauthSpec(),
+                Endpoint.LOGIN,
+                ResponseSpecs.requestReturnsOK())
+                .post(LoginUserRequest.builder().username(user.getUsername()).password(user.getPassword()).build())
+                .extract()
+                .header("Authorization");
+
+        Selenide.open("/");
+
+        executeJavaScript("localStorage.setItem('authToken', arguments[0]);", userAuthHeader);
+
+        Selenide.open("/dashboard");
 
         // generate invalid name for user
         String newName = RandomData.getName();
         $(Selectors.byClassName("user-info")).click();
         $(Selectors.byAttribute("placeholder", "Enter new name")).sendKeys(newName);
-        $(Selectors.byClassName("btn btn-primary mt-3")).click();
+        $(Selectors.byText("\uD83D\uDCBE Save Changes")).click();
 
         Alert alert = switchTo().alert();
         assertEquals(alert.getText(), "Name must contain two words with letters only");
@@ -94,7 +113,7 @@ public class ChangeNameTest {
         // validate on API
         var updatedProfile = new ValidatedCrudRequester<BaseUserResponse>(
                 RequestSpecs.authAsUser(user.getUsername(), user.getPassword()),
-                Endpoint.CUSTOMER_PROFILE,
+                Endpoint.GET_CUSTOMER_PROFILE,
                 ResponseSpecs.requestReturnsOK())
                 .get(null);
 
