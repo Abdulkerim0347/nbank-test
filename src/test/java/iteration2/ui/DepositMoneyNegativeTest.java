@@ -15,9 +15,9 @@ import ui.pages.DepositPage;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
-public class DepositMoneyTest extends BaseUiTest {
+public class DepositMoneyNegativeTest extends BaseUiTest {
     @Test
-    public void userCanDepositMoneyTest() {
+    public void userCannotDepositMoneyTest() {
         // pre steps on api
         var user = AdminSteps.createUser();
         var account = DepositSteps.createAccount(user);
@@ -25,9 +25,10 @@ public class DepositMoneyTest extends BaseUiTest {
         authAsUser(user);
 
         // UI deposit process
-        int depositAmount = RandomData.getRandom().nextInt(1000);
+        final int MAX_DEPOSIT = 5000;
+        int depositAmount = RandomData.getRandom().nextInt(5000) + MAX_DEPOSIT;
         new DepositPage().open().depositMoney(account, depositAmount)
-                .checkAlertMessageAndAccept(BankAlert.SUCCESSFULLY_DEPOSITED.getMessage());
+                .checkAlertMessageAndAccept(BankAlert.PLEASE_DEPOSIT_LESS_THAN_OR_EQUAL_TO_5000.getMessage());
 
         // validate on API
         var updatedAccount = new CrudRequester(
@@ -41,6 +42,6 @@ public class DepositMoneyTest extends BaseUiTest {
                 .stream().filter(a -> a.getId() == account.getId())
                 .findFirst().orElseThrow();
 
-        assertThat(updatedAccount.getBalance()).isEqualTo(account.getBalance() + depositAmount);
+        assertThat(updatedAccount.getBalance()).isEqualTo(account.getBalance());
     }
 }

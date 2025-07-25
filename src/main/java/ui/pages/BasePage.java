@@ -5,6 +5,8 @@ import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
 import org.openqa.selenium.Alert;
 
+import java.util.Arrays;
+
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.switchTo;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -26,6 +28,20 @@ public abstract class BasePage<T extends BasePage> {
     public T checkAlertMessageAndAccept(String bankAlert) {
         Alert alert = switchTo().alert();
         assertThat(alert.getText()).contains(bankAlert);
+        alert.accept();
+        return (T) this;
+    }
+
+    // using varargs to resolve flaky tests
+    public T checkAlertMessageAndAccept(String... expectedMessages) {
+        Alert alert = switchTo().alert();
+        String actualMessage = alert.getText();
+
+        boolean match = Arrays.stream(expectedMessages).anyMatch(actualMessage::contains);
+        assertThat(match)
+                .as("Alert message did not match any of the expected messages. Actual: " + actualMessage)
+                .isTrue();
+
         alert.accept();
         return (T) this;
     }

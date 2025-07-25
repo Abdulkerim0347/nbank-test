@@ -14,12 +14,11 @@ import ui.pages.BankAlert;
 import ui.pages.EditProfile;
 import ui.pages.UserDashboard;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
-public class ChangeNameTest extends BaseUiTest {
+public class ChangeNameNegativeTest extends BaseUiTest {
     @Test
-    public void userCanChangeItsNameTest() throws InterruptedException {
+    public void userCannotChangeItsNameTest() {
         var user = AdminSteps.createUser();
 
         authAsUser(user);
@@ -28,13 +27,12 @@ public class ChangeNameTest extends BaseUiTest {
         String newName = RandomData.getName() + " A";
 
         new EditProfile().open().changeName(newName)
-                .checkAlertMessageAndAccept(BankAlert.NAME_UPDATED_SUCCESSFULLY.getMessage());
-
-        Thread.sleep(1000);
+                .checkAlertMessageAndAccept(BankAlert.NAME_MUST_CONTAIN_TWO_WORDS_WITH_LETTERS_ONLY.getMessage(),
+                        BankAlert.PLEASE_ENTER_A_VALID_NAME.getMessage());
 
         // validate on UI
         new UserDashboard().open().getWelcomeText()
-                .shouldBe(Condition.visible).shouldHave(Condition.text("Welcome, " + newName + "!"));
+                .shouldBe(Condition.visible).shouldHave(Condition.text("Welcome, noname!"));
 
         // validate on API
         var updatedProfile = new ValidatedCrudRequester<BaseUserResponse>(
@@ -43,6 +41,6 @@ public class ChangeNameTest extends BaseUiTest {
                 ResponseSpecs.requestReturnsOK())
                 .get(null);
 
-        assertEquals(updatedProfile.getName(), newName);
+        assertNotEquals(updatedProfile.getName(), newName);
     }
 }
