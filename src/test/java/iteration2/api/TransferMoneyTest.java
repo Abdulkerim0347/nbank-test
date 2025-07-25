@@ -1,18 +1,18 @@
 package iteration2.api;
 
-import generators.RandomData;
+import api.generators.RandomData;
 import iteration1.api.BaseTest;
-import models.BaseAccountResponse;
-import models.TransferMoneyRequest;
-import models.TransferMoneyResponse;
+import api.models.BaseAccountResponse;
+import api.models.TransferMoneyRequest;
+import api.models.TransferMoneyResponse;
 import org.junit.jupiter.api.Test;
-import requests.skelethon.Endpoint;
-import requests.skelethon.requesters.CrudRequester;
-import requests.skelethon.requesters.ValidatedCrudRequester;
-import requests.steps.AdminSteps;
-import requests.steps.DepositSteps;
-import specs.RequestSpecs;
-import specs.ResponseSpecs;
+import api.requests.skelethon.Endpoint;
+import api.requests.skelethon.requesters.CrudRequester;
+import api.requests.skelethon.requesters.ValidatedCrudRequester;
+import api.requests.steps.AdminSteps;
+import api.requests.steps.DepositSteps;
+import api.specs.RequestSpecs;
+import api.specs.ResponseSpecs;
 
 public class TransferMoneyTest extends BaseTest {
     @Test

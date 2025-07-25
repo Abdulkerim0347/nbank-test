@@ -1,15 +1,15 @@
 package iteration1.api;
 
-import models.LoginUserRequest;
+import api.models.LoginUserRequest;
 import org.hamcrest.Matchers;
 import org.junit.jupiter.api.Test;
-import requests.skelethon.Endpoint;
-import requests.skelethon.requesters.CrudRequester;
-import requests.steps.AdminSteps;
-import specs.RequestSpecs;
-import specs.ResponseSpecs;
+import api.requests.skelethon.Endpoint;
+import api.requests.skelethon.requesters.CrudRequester;
+import api.requests.steps.AdminSteps;
+import api.specs.RequestSpecs;
+import api.specs.ResponseSpecs;
 
-public class LoginUserTest {
+public class LoginUserTest extends BaseTest {
 
     @Test
     public void adminCanGenerateAuthTokenTest() {

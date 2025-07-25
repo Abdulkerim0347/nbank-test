@@ -1,10 +1,10 @@
 package iteration2.api;
 
-import generators.RandomData;
+import api.generators.RandomData;
 import iteration1.api.BaseTest;
 import org.junit.jupiter.api.Test;
-import requests.steps.AdminSteps;
-import requests.steps.DepositSteps;
+import api.requests.steps.AdminSteps;
+import api.requests.steps.DepositSteps;
 
 public class DepositMoneyTest extends BaseTest {
 
