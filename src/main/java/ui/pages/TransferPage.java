@@ -25,16 +25,22 @@ public class TransferPage extends BasePage<TransferPage> {
         return "/transfer";
     }
 
-    public TransferPage makeTransfer(BaseAccountResponse accountSender, String recipientName, BaseAccountResponse accountReceiver, int transferAmount) {
+    public TransferPage makeTransfer(BaseAccountResponse accountSender, String recipientName, String accountReceiver, int transferAmount) {
         makeTransferText.click();
         chooseAccountText.click();
         accountsOption.filter(Condition.visible)
                 .findBy(text(accountSender.getAccountNumber()))
                 .click();
         recepientNamePlaceholder.sendKeys(recipientName);
-        recepientAccNumberPlaceholder.sendKeys(accountReceiver.getAccountNumber());
+        recepientAccNumberPlaceholder.sendKeys(accountReceiver);
         enterAmountPlaceholder.sendKeys(String.valueOf(transferAmount));
         checkbox.click();
+        button.click();
+        return this;
+    }
+
+    public TransferPage makeTransferBlankFields() {
+        makeTransferText.click();
         button.click();
         return this;
     }

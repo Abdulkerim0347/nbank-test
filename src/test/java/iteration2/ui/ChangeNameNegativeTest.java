@@ -24,7 +24,34 @@ public class ChangeNameNegativeTest extends BaseUiTest {
         authAsUser(user);
 
         // generate new name for user
-        String newName = RandomData.getName() + " A";
+        String newName = RandomData.getName();
+
+        new EditProfile().open().changeName(newName)
+                .checkAlertMessageAndAccept(BankAlert.NAME_MUST_CONTAIN_TWO_WORDS_WITH_LETTERS_ONLY.getMessage(),
+                        BankAlert.PLEASE_ENTER_A_VALID_NAME.getMessage());
+
+        // validate on UI
+        new UserDashboard().open().getWelcomeText()
+                .shouldBe(Condition.visible).shouldHave(Condition.text("Welcome, noname!"));
+
+        // validate on API
+        var updatedProfile = new ValidatedCrudRequester<BaseUserResponse>(
+                RequestSpecs.authAsUser(user.getUsername(), user.getPassword()),
+                Endpoint.GET_CUSTOMER_PROFILE,
+                ResponseSpecs.requestReturnsOK())
+                .get(null);
+
+        assertNotEquals(updatedProfile.getName(), newName);
+    }
+
+    @Test
+    public void userCannotChangeItsNameToBlankTest() {
+        var user = AdminSteps.createUser();
+
+        authAsUser(user);
+
+        // generate new name for user
+        String newName = "";
 
         new EditProfile().open().changeName(newName)
                 .checkAlertMessageAndAccept(BankAlert.NAME_MUST_CONTAIN_TWO_WORDS_WITH_LETTERS_ONLY.getMessage(),

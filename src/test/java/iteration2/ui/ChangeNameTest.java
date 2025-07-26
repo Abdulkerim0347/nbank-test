@@ -15,7 +15,6 @@ import ui.pages.EditProfile;
 import ui.pages.UserDashboard;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 public class ChangeNameTest extends BaseUiTest {
     @Test

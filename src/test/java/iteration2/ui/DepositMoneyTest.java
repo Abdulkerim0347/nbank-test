@@ -43,4 +43,32 @@ public class DepositMoneyTest extends BaseUiTest {
 
         assertThat(updatedAccount.getBalance()).isEqualTo(account.getBalance() + depositAmount);
     }
+
+    @Test
+    public void userCanDepositMoneyEdgeCaseTest() {
+        // pre steps on api
+        var user = AdminSteps.createUser();
+        var account = DepositSteps.createAccount(user);
+
+        authAsUser(user);
+
+        // UI deposit process
+        final int MAX_DEPOSIT = 5000;
+        new DepositPage().open().depositMoney(account, MAX_DEPOSIT)
+                .checkAlertMessageAndAccept(BankAlert.SUCCESSFULLY_DEPOSITED.getMessage());
+
+        // validate on API
+        var updatedAccount = new CrudRequester(
+                RequestSpecs.authAsUser(user.getUsername(), user.getPassword()),
+                Endpoint.CUSTOMER_ACCOUNTS,
+                ResponseSpecs.requestReturnsOK())
+                .get(null)
+                .extract()
+                .jsonPath()
+                .getList("", BaseAccountResponse.class)
+                .stream().filter(a -> a.getId() == account.getId())
+                .findFirst().orElseThrow();
+
+        assertThat(updatedAccount.getBalance()).isEqualTo(account.getBalance() + MAX_DEPOSIT);
+    }
 }

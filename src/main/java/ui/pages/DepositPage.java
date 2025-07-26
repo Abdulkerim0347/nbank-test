@@ -32,4 +32,22 @@ public class DepositPage extends BasePage<DepositPage> {
         button.click();
         return this;
     }
+
+    public DepositPage depositMoneyNoAmount(BaseAccountResponse account) {
+        depositMoneyText.click();
+        chooseAccountText.click();
+        accountsOption.filter(Condition.visible)
+                .findBy(text(account.getAccountNumber()))
+                .click();
+        button.click();
+        return this;
+    }
+
+    public DepositPage depositMoneyNoAccount(int depositAmount) {
+        depositMoneyText.click();
+        chooseAccountText.click();
+        enterAmountPlaceholder.setValue(depositAmount + "");
+        button.click();
+        return this;
+    }
 }
