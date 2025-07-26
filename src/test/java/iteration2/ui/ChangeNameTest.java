@@ -119,4 +119,46 @@ public class ChangeNameTest {
 
         assertNotEquals(updatedProfile.getName(), newName);
     }
+
+    @Test
+    public void userCannotChangeItsNameToBlankTest() {
+        var user = AdminSteps.createUser();
+
+        var userAuthHeader = new CrudRequester(
+                RequestSpecs.unauthSpec(),
+                Endpoint.LOGIN,
+                ResponseSpecs.requestReturnsOK())
+                .post(LoginUserRequest.builder().username(user.getUsername()).password(user.getPassword()).build())
+                .extract()
+                .header("Authorization");
+
+        Selenide.open("/");
+
+        executeJavaScript("localStorage.setItem('authToken', arguments[0]);", userAuthHeader);
+
+        Selenide.open("/dashboard");
+
+        // blank name
+        String newName = "";
+        $(Selectors.byClassName("user-info")).click();
+        $(Selectors.byAttribute("placeholder", "Enter new name")).sendKeys(newName);
+        $(Selectors.byText("\uD83D\uDCBE Save Changes")).click();
+
+        Alert alert = switchTo().alert();
+        assertEquals(alert.getText(), "❌ Please enter a valid name.");
+        alert.accept();
+
+        // validate on UI
+        $(Selectors.byText("\uD83C\uDFE0 Home")).click();
+        $(Selectors.byClassName("welcome-text")).shouldBe(Condition.visible).shouldHave(Condition.text("Welcome, noname!"));
+
+        // validate on API
+        var updatedProfile = new ValidatedCrudRequester<BaseUserResponse>(
+                RequestSpecs.authAsUser(user.getUsername(), user.getPassword()),
+                Endpoint.GET_CUSTOMER_PROFILE,
+                ResponseSpecs.requestReturnsOK())
+                .get(null);
+
+        assertNotEquals(updatedProfile.getName(), newName);
+    }
 }

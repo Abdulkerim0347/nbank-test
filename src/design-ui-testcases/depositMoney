@@ -10,6 +10,7 @@ Positive case:
     expectation:
    1. alert that money was deposited successfully
    2. money was deposited on api
+   3. money was deposited on ui
 
 Negative case:
     pre step: create user and account for user
@@ -22,3 +23,41 @@ Negative case:
     expectation:
    1. alert that money was not deposited and description why
    2. money was not deposited on api
+   3. money was not deposited on ui
+
+Negative case:
+    pre step: create user
+    steps:
+   1. leave all fields empty
+   2. click Deposit button
+
+    expectation:
+   1. alert asking to select an account
+   2. money was not deposited on api
+   3. money was not deposited on ui
+
+Negative case:
+    pre step: create user and account for user
+    steps:
+   1. click on deposit money button
+   2. choose deposit account
+   3. leave deposit field blank
+   4. click Deposit button
+
+    expectation:
+   1. alert asking to enter a valid amount
+   2. money was not deposited on api
+   3. money was not deposited on ui
+
+Edge case:
+     pre step: create user and account for user
+     steps:
+    1. click on deposit money button
+    2. choose deposit account
+    3. enter deposit amount 5000
+    4. click Deposit button
+
+     expectation:
+    1. alert that money was deposited successfully
+    2. money was deposited on api
+    3. money was deposited on ui

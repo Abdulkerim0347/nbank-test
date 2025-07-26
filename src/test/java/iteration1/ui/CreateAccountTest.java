@@ -4,7 +4,6 @@ import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selectors;
 import com.codeborne.selenide.Selenide;
 import models.BaseAccountResponse;
-import models.CreateUserRequest;
 import models.LoginUserRequest;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;

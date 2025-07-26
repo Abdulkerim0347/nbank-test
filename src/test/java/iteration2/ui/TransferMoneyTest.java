@@ -37,9 +37,12 @@ public class TransferMoneyTest {
         );
     }
 
+    final String DEFAULT_NAME = "noname";
+    final int MAX_DEPOSIT = 5000;
+    final int TRANSFER_LIMIT = 10000;
+
     @Test
-    public void userCanTransferMoneyTest() {
-        String defaultName = "noname";
+    public void userCanTransferMoneyLessThanTenThousandTest() {
         // generate random int between 500 and 1000
         final int INITIAL_DEPOSIT = RandomData.getRandom().nextInt(1001) + 500;
         // generate random int between 0 and 500
@@ -74,7 +77,7 @@ public class TransferMoneyTest {
                 .findBy(text(accountSender.getAccountNumber()))
                 .click();
 
-        $(Selectors.byAttribute("placeholder", "Enter recipient name")).sendKeys(defaultName);
+        $(Selectors.byAttribute("placeholder", "Enter recipient name")).sendKeys(DEFAULT_NAME);
         $(Selectors.byAttribute("placeholder", "Enter recipient account number")).sendKeys(accountReceiver.getAccountNumber());
         $(Selectors.byAttribute("placeholder", "Enter amount")).sendKeys(TRANSFER_AMOUNT + "");
         $("#confirmCheck").click();
@@ -109,8 +112,77 @@ public class TransferMoneyTest {
     }
 
     @Test
-    public void userCannotTransferMoneyTest() {
-        String defaultName = "noname";
+    public void userCannotTransferMoneyToWrongAccountTest() {
+        // generate random int between 500 and 1000
+        final int INITIAL_DEPOSIT = RandomData.getRandom().nextInt(1001) + 500;
+        // generate random int between 0 and 500
+        final int TRANSFER_AMOUNT = RandomData.getRandom().nextInt(501);
+
+        var user = AdminSteps.createUser();
+
+        // create 2 accounts
+        var accountSender = DepositSteps.createAccount(user);
+        var accountReceiver = DepositSteps.createAccount(user);
+
+        // depositing some money on sender account
+        DepositSteps.depositMoney(user, accountSender, INITIAL_DEPOSIT);
+
+        var userAuthHeader = new CrudRequester(
+                RequestSpecs.unauthSpec(),
+                Endpoint.LOGIN,
+                ResponseSpecs.requestReturnsOK())
+                .post(LoginUserRequest.builder().username(user.getUsername()).password(user.getPassword()).build())
+                .extract()
+                .header("Authorization");
+
+        Selenide.open("/");
+        executeJavaScript("localStorage.setItem('authToken', arguments[0]);", userAuthHeader);
+        Selenide.open("/dashboard");
+
+        $(Selectors.byClassName("welcome-text")).shouldBe(Condition.visible).shouldHave(Condition.text("Welcome, noname!"));
+        $(Selectors.byText("\uD83D\uDD04 Make a Transfer")).click();
+
+        $(Selectors.byText("-- Choose an account --")).click();
+        $$("option").filter(Condition.visible)
+                .findBy(text(accountSender.getAccountNumber()))
+                .click();
+
+        $(Selectors.byAttribute("placeholder", "Enter recipient name")).sendKeys(DEFAULT_NAME);
+        $(Selectors.byAttribute("placeholder", "Enter recipient account number")).sendKeys(RandomData.getRandom().nextInt() + "");
+        $(Selectors.byAttribute("placeholder", "Enter amount")).sendKeys(TRANSFER_AMOUNT + "");
+        $("#confirmCheck").click();
+        $(Selectors.byText("\uD83D\uDE80 Send Transfer")).click();
+
+        Alert alert = switchTo().alert();
+        assertEquals("❌ No user found with this account number.", alert.getText());
+        alert.accept();
+
+        // validate on API
+        var updatedAccounts = new CrudRequester(
+                RequestSpecs.authAsUser(user.getUsername(), user.getPassword()),
+                Endpoint.CUSTOMER_ACCOUNTS,
+                ResponseSpecs.requestReturnsOK())
+                .get(null)
+                .extract()
+                .jsonPath()
+                .getList("", BaseAccountResponse.class);
+
+        var updatedSender = updatedAccounts.stream()
+                .filter(a -> a.getId() == accountSender.getId())
+                .findFirst()
+                .orElseThrow();
+
+        var updatedReceiver = updatedAccounts.stream()
+                .filter(a -> a.getId() == accountReceiver.getId())
+                .findFirst()
+                .orElseThrow();
+
+        assertThat(updatedSender.getBalance()).isEqualTo(INITIAL_DEPOSIT);
+        assertThat(updatedReceiver.getBalance()).isEqualTo(accountReceiver.getBalance());
+    }
+
+    @Test
+    public void userCannotTransferMoneyWithInsufficientFundsTest() {
         // generate random int between 0 and 500
         final int INITIAL_DEPOSIT = RandomData.getRandom().nextInt(501);
         // generate random int between 500 and 1500
@@ -145,7 +217,7 @@ public class TransferMoneyTest {
                 .findBy(text(accountSender.getAccountNumber()))
                 .click();
 
-        $(Selectors.byAttribute("placeholder", "Enter recipient name")).sendKeys(defaultName);
+        $(Selectors.byAttribute("placeholder", "Enter recipient name")).sendKeys(DEFAULT_NAME);
         $(Selectors.byAttribute("placeholder", "Enter recipient account number")).sendKeys(accountReceiver.getAccountNumber());
         $(Selectors.byAttribute("placeholder", "Enter amount")).sendKeys(INVALID_TRANSFER_AMOUNT + "");
         $("#confirmCheck").click();
@@ -180,11 +252,33 @@ public class TransferMoneyTest {
     }
 
     @Test
-    public void userCannotTransferMoreThanTenThousandTest() {
-        String defaultName = "noname";
-        final int MAX_DEPOSIT = 5000;
-        final int TRANSFER_LIMIT = 10000;
+    public void userCannotTransferMoneyWithBlankFieldsTest() {
+        var user = AdminSteps.createUser();
 
+        var userAuthHeader = new CrudRequester(
+                RequestSpecs.unauthSpec(),
+                Endpoint.LOGIN,
+                ResponseSpecs.requestReturnsOK())
+                .post(LoginUserRequest.builder().username(user.getUsername()).password(user.getPassword()).build())
+                .extract()
+                .header("Authorization");
+
+        Selenide.open("/");
+        executeJavaScript("localStorage.setItem('authToken', arguments[0]);", userAuthHeader);
+        Selenide.open("/dashboard");
+
+        $(Selectors.byClassName("welcome-text")).shouldBe(Condition.visible).shouldHave(Condition.text("Welcome, noname!"));
+        $(Selectors.byText("\uD83D\uDD04 Make a Transfer")).click();
+
+        $(Selectors.byText("\uD83D\uDE80 Send Transfer")).click();
+
+        Alert alert = switchTo().alert();
+        assertEquals("❌ Please fill all fields and confirm.", alert.getText());
+        alert.accept();
+    }
+
+    @Test
+    public void userCannotTransferMoreThanTenThousandTest() {
         // generate random int between 10 000 and 11 000
         final int EXCEEDED_TRANSFER_AMOUNT = RandomData.getRandom().nextInt(1001) + TRANSFER_LIMIT;
 
@@ -219,7 +313,7 @@ public class TransferMoneyTest {
                 .findBy(text(accountSender.getAccountNumber()))
                 .click();
 
-        $(Selectors.byAttribute("placeholder", "Enter recipient name")).sendKeys(defaultName);
+        $(Selectors.byAttribute("placeholder", "Enter recipient name")).sendKeys(DEFAULT_NAME);
         $(Selectors.byAttribute("placeholder", "Enter recipient account number")).sendKeys(accountReceiver.getAccountNumber());
         $(Selectors.byAttribute("placeholder", "Enter amount")).sendKeys(EXCEEDED_TRANSFER_AMOUNT + "");
         $("#confirmCheck").click();
@@ -251,5 +345,71 @@ public class TransferMoneyTest {
 
         assertThat(updatedSender.getBalance()).isEqualTo(MAX_DEPOSIT * 3);
         assertThat(updatedReceiver.getBalance()).isEqualTo(accountReceiver.getBalance());
+    }
+
+    @Test
+    public void userCanTransferTenThousandTest() {
+        var user = AdminSteps.createUser();
+
+        // create 2 accounts
+        var accountSender = DepositSteps.createAccount(user);
+        var accountReceiver = DepositSteps.createAccount(user);
+
+        // depositing 10 000 on sender account
+        DepositSteps.depositMoney(user, accountSender, MAX_DEPOSIT);
+        DepositSteps.depositMoney(user, accountSender, MAX_DEPOSIT);
+
+        var userAuthHeader = new CrudRequester(
+                RequestSpecs.unauthSpec(),
+                Endpoint.LOGIN,
+                ResponseSpecs.requestReturnsOK())
+                .post(LoginUserRequest.builder().username(user.getUsername()).password(user.getPassword()).build())
+                .extract()
+                .header("Authorization");
+
+        Selenide.open("/");
+        executeJavaScript("localStorage.setItem('authToken', arguments[0]);", userAuthHeader);
+        Selenide.open("/dashboard");
+
+        $(Selectors.byClassName("welcome-text")).shouldBe(Condition.visible).shouldHave(Condition.text("Welcome, noname!"));
+        $(Selectors.byText("\uD83D\uDD04 Make a Transfer")).click();
+
+        $(Selectors.byText("-- Choose an account --")).click();
+        $$("option").filter(Condition.visible)
+                .findBy(text(accountSender.getAccountNumber()))
+                .click();
+
+        $(Selectors.byAttribute("placeholder", "Enter recipient name")).sendKeys(DEFAULT_NAME);
+        $(Selectors.byAttribute("placeholder", "Enter recipient account number")).sendKeys(accountReceiver.getAccountNumber());
+        $(Selectors.byAttribute("placeholder", "Enter amount")).sendKeys(TRANSFER_LIMIT + "");
+        $("#confirmCheck").click();
+        $(Selectors.byText("\uD83D\uDE80 Send Transfer")).click();
+
+        Alert alert = switchTo().alert();
+        assertEquals("✅ Successfully transferred $" + TRANSFER_LIMIT + " to account " +  accountReceiver.getAccountNumber() + "!", alert.getText());
+        alert.accept();
+
+        // validate on API
+        var updatedAccounts = new CrudRequester(
+                RequestSpecs.authAsUser(user.getUsername(), user.getPassword()),
+                Endpoint.CUSTOMER_ACCOUNTS,
+                ResponseSpecs.requestReturnsOK())
+                .get(null)
+                .extract()
+                .jsonPath()
+                .getList("", BaseAccountResponse.class);
+
+        var updatedSender = updatedAccounts.stream()
+                .filter(a -> a.getId() == accountSender.getId())
+                .findFirst()
+                .orElseThrow();
+
+        var updatedReceiver = updatedAccounts.stream()
+                .filter(a -> a.getId() == accountReceiver.getId())
+                .findFirst()
+                .orElseThrow();
+
+        assertThat(updatedSender.getBalance()).isEqualTo(MAX_DEPOSIT * 2 - TRANSFER_LIMIT);
+        assertThat(updatedReceiver.getBalance()).isEqualTo(TRANSFER_LIMIT);
     }
 }

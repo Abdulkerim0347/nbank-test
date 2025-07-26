@@ -9,6 +9,8 @@ import models.BaseAccountResponse;
 import models.LoginUserRequest;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 import org.openqa.selenium.Alert;
 import requests.skelethon.Endpoint;
 import requests.skelethon.requesters.CrudRequester;
@@ -36,8 +38,9 @@ public class DepositMoneyTest {
         );
     }
 
-    @Test
-    public void userCanDepositMoneyTest() {
+    @ParameterizedTest
+    @ValueSource(ints = {5000,})
+    public void userCanDepositMoneyTest(int depositAmount) {
         // create user
         var user = AdminSteps.createUser();
 
@@ -67,13 +70,19 @@ public class DepositMoneyTest {
                 .findBy(text(account.getAccountNumber()))
                 .click();
 
-        int depositAmount = RandomData.getRandom().nextInt(1000);
         $("[placeholder='Enter amount']").setValue(depositAmount + "");
         $(Selectors.byText("\uD83D\uDCB5 Deposit")).click();
 
         Alert alert = switchTo().alert();
         assertThat(alert.getText()).contains("✅ Successfully deposited");
         alert.accept();
+
+        // validate on UI
+        $(Selectors.byText("\uD83D\uDCB0 Deposit Money")).click();
+        $(Selectors.byText("-- Choose an account --")).click();
+        $$("option").filter(Condition.visible)
+                .findBy(text(account.getAccountNumber()))
+                .click();
 
         // validate on API
         var updatedAccount = new CrudRequester(
@@ -128,6 +137,86 @@ public class DepositMoneyTest {
 
         Alert alert = switchTo().alert();
         assertThat(alert.getText()).contains("❌ Please deposit less or equal to 5000$.");
+        alert.accept();
+
+        // validate on API
+        var updatedAccount = new CrudRequester(
+                RequestSpecs.authAsUser(user.getUsername(), user.getPassword()),
+                Endpoint.CUSTOMER_ACCOUNTS,
+                ResponseSpecs.requestReturnsOK())
+                .get(null)
+                .extract()
+                .jsonPath()
+                .getList("", BaseAccountResponse.class)
+                .stream().filter(a -> a.getId() == account.getId())
+                .findFirst().orElseThrow();
+
+        assertThat(updatedAccount.getBalance()).isEqualTo(account.getBalance());
+    }
+
+    @Test
+    public void userCannotDepositMoneyWithBlankFieldsTest() {
+        // create user
+        var user = AdminSteps.createUser();
+
+        var userAuthHeader = new CrudRequester(
+                RequestSpecs.unauthSpec(),
+                Endpoint.LOGIN,
+                ResponseSpecs.requestReturnsOK())
+                .post(LoginUserRequest.builder().username(user.getUsername()).password(user.getPassword()).build())
+                .extract()
+                .header("Authorization");
+
+        Selenide.open("/");
+
+        executeJavaScript("localStorage.setItem('authToken', arguments[0]);", userAuthHeader);
+
+        Selenide.open("/dashboard");
+
+        $(Selectors.byClassName("welcome-text")).shouldBe(Condition.visible).shouldHave(text("Welcome, noname!"));
+
+        // UI deposit process
+        $(Selectors.byText("\uD83D\uDCB0 Deposit Money")).click();
+        $(Selectors.byText("\uD83D\uDCB5 Deposit")).click();
+
+        Alert alert = switchTo().alert();
+        assertThat(alert.getText()).contains("❌ Please select an account.");
+        alert.accept();
+    }
+
+    @Test
+    public void userCannotDepositMoneyWithBlankAmountTest() {
+        // create user
+        var user = AdminSteps.createUser();
+        var account = DepositSteps.createAccount(user);
+
+        var userAuthHeader = new CrudRequester(
+                RequestSpecs.unauthSpec(),
+                Endpoint.LOGIN,
+                ResponseSpecs.requestReturnsOK())
+                .post(LoginUserRequest.builder().username(user.getUsername()).password(user.getPassword()).build())
+                .extract()
+                .header("Authorization");
+
+        Selenide.open("/");
+
+        executeJavaScript("localStorage.setItem('authToken', arguments[0]);", userAuthHeader);
+
+        Selenide.open("/dashboard");
+
+        $(Selectors.byClassName("welcome-text")).shouldBe(Condition.visible).shouldHave(text("Welcome, noname!"));
+
+        // UI deposit process
+        $(Selectors.byText("\uD83D\uDCB0 Deposit Money")).click();
+        $(Selectors.byText("-- Choose an account --")).click();
+        $$("option").filter(Condition.visible)
+                .findBy(text(account.getAccountNumber()))
+                .click();
+
+        $(Selectors.byText("\uD83D\uDCB5 Deposit")).click();
+
+        Alert alert = switchTo().alert();
+        assertThat(alert.getText()).contains("❌ Please enter a valid amount.");
         alert.accept();
 
         // validate on API
