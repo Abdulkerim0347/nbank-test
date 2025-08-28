@@ -1,0 +1,33 @@
+Title: user can change its name
+Positive case:
+    pre step: user is created by admin and user logins
+    steps:
+   1. generate new name for user that consists of 2 words
+   2. click save changes
+
+    expectation:
+   1. alert that name was changed successfully
+   2. on user dashboard there is a welcome text with new name
+   3. name is changed on api
+
+Negative case:
+    pre step: user is created by admin and user logins
+    steps:
+   1. generate new name for user that does not consist of 2 words
+   2. click save changes
+
+    expectation:
+   1. alert that name was not changed and description from backend
+   2. on user dashboard there is not a welcome text with new name but the old one (noname default)
+   3. name is not changed on api
+
+Edge case:
+    pre step: user is created by admin and user logins
+    steps:
+   1. input blank name or spaces
+   2. click save changes
+
+    expectation:
+   1. alert that name was not changed and description from backend
+   2. on user dashboard there is not a welcome text with new name but the old one (noname default)
+   3. name is not changed on api

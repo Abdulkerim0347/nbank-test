@@ -1,0 +1,101 @@
+Title: user can transfer money
+Positive case:
+    pre step: create user and 2 accounts for user, deposit some money on sender account
+    steps:
+   1. click on make a transfer button
+   2. choose sender account
+   3. enter recipient name (ex. noname)
+   4. enter recipient account number (ex. ACC4)
+   5. enter transfer amount less than 10000
+   4. click Send Transfer button
+
+    expectation:
+   1. alert that money was transferred successfully
+   2. money was transferred on api
+   3. money transfer appears on ui
+
+Edge case:
+    pre step: create user and 2 accounts for user, deposit some money on sender account
+    steps:
+   1. click on make a transfer button
+   2. choose sender account
+   3. enter recipient name (ex. noname)
+   4. enter recipient account number (ex. ACC4)
+   5. enter transfer amount 10000
+   4. click Send Transfer button
+
+    expectation:
+   1. alert that money was transferred successfully
+   2. money was transferred on api
+   3. money transfer appears on ui
+
+Negative case:
+    pre step: create user and 2 accounts for user, deposit some money on sender account
+    steps:
+   1. click on make a transfer button
+   2. choose sender account
+   3. enter recipient name (ex. noname)
+   4. enter recipient account number (ex. ACC4)
+   5. enter transfer amount more than 10000
+   4. click Send Transfer button
+
+    expectation:
+   1. alert that transfer amount exceeded 10000
+   2. money was not transferred on api
+   3. money transfer does not appear on ui
+
+Negative case:
+    pre step: create user and 2 accounts for user, deposit some money on sender account
+    steps:
+   1. click on make a transfer button
+   2. choose sender account
+   3. enter incorrect recipient name
+   4. enter recipient account number (ex. ACC4)
+   5. enter transfer amount less than deposited amount
+   4. click Send Transfer button
+
+    expectation:
+   1. alert that recipient name does not match
+   2. money was not transferred on api
+   3. money transfer does not appear on ui
+
+Negative case:
+    pre step: create user and 2 accounts for user, deposit some money on sender account
+    steps:
+   1. click on make a transfer button
+   2. choose sender account
+   3. enter recipient name (ex. noname)
+   4. enter recipient account number (ex. ACC4)
+   5. enter transfer amount less than deposited amount
+   4. click Send Transfer button
+
+    expectation:
+   1. alert that transfer is invalid, insufficient funds
+   2. money was not transferred on api
+   3. money transfer does not appear on ui
+
+Negative case:
+    pre step: create user and 2 accounts for user, deposit some money on sender account
+    steps:
+   1. leave all fields blank
+   2. click Send Transfer button
+
+    expectation:
+   1. alert asking to fill all fields and confirm
+   2. money was not transferred on api
+   3. money transfer does not appear on ui
+
+Negative case:
+    pre step: create user and 2 accounts for user, deposit some money on sender account
+    steps:
+   1. click on make a transfer button
+   2. choose sender account
+   3. enter recipient name (ex. noname)
+   4. enter wrong recipient account number
+   5. enter transfer amount less than deposited amount
+   4. click Send Transfer button
+
+    expectation:
+   1. alert that no user is found with that account number
+   2. money was not transferred on api
+   3. money transfer does not appear on ui
