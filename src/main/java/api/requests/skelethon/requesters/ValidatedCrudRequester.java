@@ -38,6 +38,10 @@ public class ValidatedCrudRequester<T extends BaseModel> extends HttpRequest imp
     public Object delete(int id) {
         return null;
     }
+    
+    public Object delete(String path) {
+        return crudRequester.delete(path);
+    }
 
     @Override
     public List<T> getAll(Class<?> clazz) {

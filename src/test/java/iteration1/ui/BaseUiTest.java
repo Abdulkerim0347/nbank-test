@@ -6,6 +6,7 @@ import api.specs.RequestSpecs;
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;
 import iteration1.api.BaseTest;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 
 import java.util.Map;
@@ -23,6 +24,18 @@ public class BaseUiTest extends BaseTest {
         Configuration.browserCapabilities.setCapability("selenoid:options",
                 Map.of("enableVNC", true, "enableLog", true)
         );
+    }
+
+    @AfterEach
+    public void cleanupBrowser() {
+        // Clear browser data after each UI test
+        try {
+            Selenide.clearBrowserCookies();
+            Selenide.clearBrowserLocalStorage();
+            Selenide.closeWebDriver();
+        } catch (Exception e) {
+            System.out.println("Failed to cleanup browser: " + e.getMessage());
+        }
     }
 
     public void authAsUser(String username, String password) {

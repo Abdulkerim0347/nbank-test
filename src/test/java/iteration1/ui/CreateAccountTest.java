@@ -2,12 +2,6 @@ package iteration1.ui;
 
 import api.requests.steps.AdminSteps;
 import api.requests.steps.UserSteps;
-import com.codeborne.selenide.Configuration;
-import com.codeborne.selenide.Selectors;
-import com.codeborne.selenide.Selenide;
-import models.BaseAccountResponse;
-import models.LoginUserRequest;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import ui.pages.BankAlert;
 import ui.pages.UserDashboard;

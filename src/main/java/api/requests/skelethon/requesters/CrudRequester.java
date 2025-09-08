@@ -56,6 +56,15 @@ public class CrudRequester extends HttpRequest implements CrudEndpointInterface,
     public Object delete(int id) {
         return null;
     }
+    
+    public Object delete(String path) {
+        return given()
+                .spec(requestSpecification)
+                .delete(endpoint.getUrl() + path)
+                .then()
+                .assertThat()
+                .spec(responseSpecification);
+    }
 
     @Override
     public ValidatableResponse getAll(Class<?> clazz) {
