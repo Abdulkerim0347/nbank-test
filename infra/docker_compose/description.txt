@@ -1,0 +1,17 @@
+Все контейнеры, что необходимо запустить:
+
+1) Контейнер бекенда nobugsme/nbank:with_validation_fix // бекенд 4111 -> 4111
+
+2) Контейнер фронтенда nobugsme/nbank-ui:latest // фронтенд 80
+
+3) Контейнер Nginx nginx:latest // nginx 80 -> 80
+
+3) Контейнер Selenoid aerokube/selenoid:latest // selenoid 4444 -> 4444
+
+4) Контейнер Selenoid UI aerokube/selenoid-ui:latest // selenoid ui 6567 -> 8080
+
+Шаги по внедрению Docker Compose:
+
+1) Создать docker-compose.yaml файл
+2) Описать каждый из докер контейнеров (образ, порт, последовательность, общая докер сеть)
+3) Скрипт по поднятию всех докер контейнеров с помощью Docker Compose

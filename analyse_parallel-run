@@ -1,0 +1,60 @@
+Thread ForkJoinPool-1-worker-1: Test started iteration2.api.userCanTransferMoneyTest()
+Thread ForkJoinPool-1-worker-2: Test started iteration1.api.userCanCreateAccountTest()
+Thread ForkJoinPool-1-worker-3: Test started iteration1.api.adminCanCreateUserWithCorrectData()
+Thread ForkJoinPool-1-worker-5: Test started iteration2.api.userCanChangeItsNameTest()
+Thread ForkJoinPool-1-worker-4: Test started iteration1.api.adminCanGenerateAuthTokenTest()
+Thread ForkJoinPool-1-worker-6: Test started iteration2.api.userCannotExceedDepositLimitTest()
+Thread ForkJoinPool-1-worker-4: Test finished iteration1.api.adminCanGenerateAuthTokenTest(), test duration: 2373 ms
+Thread ForkJoinPool-1-worker-3: Test finished iteration1.api.adminCanCreateUserWithCorrectData(), test duration: 2486 ms
+Thread ForkJoinPool-1-worker-4: Test started iteration1.api.userCanGenerateAuthTokenTest()
+Thread ForkJoinPool-1-worker-3: Test started iteration1.api.[6] kate1998, A123456!, USER, password, Password must contain at least one digit, one lower case, one upper case, one special character, no spaces, and be at least 8 characters long
+Thread ForkJoinPool-1-worker-5: Test finished iteration2.api.userCanChangeItsNameTest(), test duration: 2759 ms
+Thread ForkJoinPool-1-worker-5: Test started iteration1.api.[1] ab, Kate1998$, USER, username, Username must be between 3 and 15 characters
+Thread ForkJoinPool-1-worker-4: Test finished iteration1.api.userCanGenerateAuthTokenTest(), test duration: 365 ms
+Thread ForkJoinPool-1-worker-4: Test started iteration1.api.[2] ab123456789Cde-., Kate1998$, USER, username, Username must be between 3 and 15 characters
+Thread ForkJoinPool-1-worker-6: Test finished iteration2.api.userCannotExceedDepositLimitTest(), test duration: 1832 ms
+Thread ForkJoinPool-1-worker-6: Test finished iteration2.api.userCannotExceedDepositLimitTest(), test duration: 1832 ms
+Thread ForkJoinPool-1-worker-2: Test finished iteration1.api.userCanCreateAccountTest(), test duration: 3123 ms
+Thread ForkJoinPool-1-worker-6: Test started iteration2.api.[1] -1000
+Thread ForkJoinPool-1-worker-6: Test started iteration2.api.[1] -1000
+Thread ForkJoinPool-1-worker-2: Test started iteration2.api.userCanDepositMoneyTest()
+Thread ForkJoinPool-1-worker-5: Test finished iteration1.api.[1] ab, Kate1998$, USER, username, Username must be between 3 and 15 characters, test duration: 1008 ms
+Thread ForkJoinPool-1-worker-4: Test finished iteration1.api.[2] ab123456789Cde-., Kate1998$, USER, username, Username must be between 3 and 15 characters, test duration: 806 ms
+Thread ForkJoinPool-1-worker-3: Test finished iteration1.api.[6] kate1998, A123456!, USER, password, Password must contain at least one digit, one lower case, one upper case, one special character, no spaces, and be at least 8 characters long, test duration: 1245 ms
+Thread ForkJoinPool-1-worker-4: Test started iteration1.api.[3] Ak1234.-_@, Kate1998$, USER, username, Username must contain only letters, digits, dashes, underscores, and dots
+Thread ForkJoinPool-1-worker-5: Test started iteration1.api.[4] kate1998, Ab1234!, USER, password, Password must contain at least one digit, one lower case, one upper case, one special character, no spaces, and be at least 8 characters long
+Thread ForkJoinPool-1-worker-6: Test finished iteration2.api.[1] -1000, test duration: 822 ms
+Thread ForkJoinPool-1-worker-4: Test finished iteration1.api.[3] Ak1234.-_@, Kate1998$, USER, username, Username must contain only letters, digits, dashes, underscores, and dots, test duration: 141 ms
+Thread ForkJoinPool-1-worker-6: Test started iteration2.api.[2] 0
+Thread ForkJoinPool-1-worker-5: Test finished iteration1.api.[4] kate1998, Ab1234!, USER, password, Password must contain at least one digit, one lower case, one upper case, one special character, no spaces, and be at least 8 characters long, test duration: 146 ms
+Thread ForkJoinPool-1-worker-3: Test started iteration1.api.[8] kate1998, Ab123456!, MODERATOR, role, Role must be either 'ADMIN' or 'USER'
+Thread ForkJoinPool-1-worker-4: Test started iteration2.api.userCannotTransferMoreThanBalance()
+Thread ForkJoinPool-1-worker-5: Test started iteration1.api.[5] kate1998, Ab12 3!, USER, password, Password must contain at least one digit, one lower case, one upper case, one special character, no spaces, and be at least 8 characters long
+Thread ForkJoinPool-1-worker-3: Test finished iteration1.api.[8] kate1998, Ab123456!, MODERATOR, role, Role must be either 'ADMIN' or 'USER', test duration: 154 ms
+Thread ForkJoinPool-1-worker-5: Test finished iteration1.api.[5] kate1998, Ab12 3!, USER, password, Password must contain at least one digit, one lower case, one upper case, one special character, no spaces, and be at least 8 characters long, test duration: 142 ms
+Thread ForkJoinPool-1-worker-5: Test started iteration1.api.[7] kate1998, Ab123456, USER, password, Password must contain at least one digit, one lower case, one upper case, one special character, no spaces, and be at least 8 characters long
+Thread ForkJoinPool-1-worker-5: Test finished iteration1.api.[7] kate1998, Ab123456, USER, password, Password must contain at least one digit, one lower case, one upper case, one special character, no spaces, and be at least 8 characters long, test duration: 132 ms
+Thread ForkJoinPool-1-worker-1: Test finished iteration2.api.userCanTransferMoneyTest(), test duration: 4879 ms
+Thread ForkJoinPool-1-worker-2: Test finished iteration2.api.userCanDepositMoneyTest(), test duration: 1671 ms
+Thread ForkJoinPool-1-worker-6: Test finished iteration2.api.[2] 0, test duration: 749 ms
+Thread ForkJoinPool-1-worker-4: Test finished iteration2.api.userCannotTransferMoreThanBalance(), test duration: 918 ms
+
+
+| Worker Thread           | Test 1                            | Time 1 (ms) | Test 2                                  | Time 2 (ms) | Test 3                                    | Time 3 (ms) | Test 4                                 | Time 4 (ms) | Test 5                                  | Time 5 (ms) | Total Time (ms) |
+| ----------------------- | --------------------------------- | ----------- | --------------------------------------- | ----------- | ----------------------------------------- | ----------- | -------------------------------------- | ----------- | --------------------------------------- | ----------- | --------------- |
+| ForkJoinPool-1-worker-1 | userCanTransferMoneyTest          | 4879        |                                         |             |                                           |             |                                        |             |                                         |             | 4879            |
+| ForkJoinPool-1-worker-2 | userCanCreateAccountTest          | 3123        | userCanDepositMoneyTest                 | 1671        |                                           |             |                                        |             |                                         |             | 4794            |
+| ForkJoinPool-1-worker-3 | adminCanCreateUserWithCorrectData | 2486        | \[6] kate1998, A123456!, USER, password | 1245        | \[8] kate1998, Ab123456!, MODERATOR, role | 154         |                                        |             |                                         |             | 3885            |
+| ForkJoinPool-1-worker-4 | adminCanGenerateAuthTokenTest     | 2373        | userCanGenerateAuthTokenTest            | 365         | \[2] ab123456789Cde-., USER, username     | 806         | \[3] Ak1234.-\_@, USER, username       | 141         | userCannotTransferMoreThanBalance       | 918         | 4603            |
+| ForkJoinPool-1-worker-5 | userCanChangeItsNameTest          | 2759        | \[1] ab, Kate1998\$, USER, username     | 1008        | \[4] kate1998, Ab1234!, USER, password    | 146         | \[5] kate1998, Ab12 3!, USER, password | 142         | \[7] kate1998, Ab123456, USER, password | 132         | 4187            |
+| ForkJoinPool-1-worker-6 | userCannotExceedDepositLimitTest  | 1832        | \[1] -1000                              | 822         | \[2] 0                                    | 749         |                                        |             |                                         |             | 3403            |
+
+Longest test: 4.879 s
+Maven: 2 s
+Tests: 16 s
+Total time:  18.487 s
+
+
+
+
+

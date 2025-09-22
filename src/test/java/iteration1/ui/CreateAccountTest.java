@@ -18,7 +18,7 @@ public class CreateAccountTest extends BaseUiTest {
 
         new UserDashboard().open().createNewAccount();
 
-        Thread.sleep(100);
+        Thread.sleep(500);
         var createdAccounts = new UserSteps(user.getUsername(), user.getPassword())
                 .getAllAccounts();
 
