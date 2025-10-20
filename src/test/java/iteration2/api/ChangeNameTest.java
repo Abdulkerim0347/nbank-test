@@ -18,7 +18,7 @@ public class ChangeNameTest extends BaseTest {
         var userRequest = AdminSteps.createUser();
 
         var request = ChangeNameRequest.builder()
-                .name(RandomData.getName())
+                .name(RandomData.getNewValidName())
                 .build();
 
         var response = new ValidatedCrudRequester<ChangeNameResponse>(

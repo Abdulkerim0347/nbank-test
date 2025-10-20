@@ -1,17 +1,16 @@
 package iteration2.api;
 
 import api.generators.RandomData;
-import iteration1.api.BaseTest;
-
 import api.models.BaseAccountResponse;
 import api.models.TransferMoneyRequest;
-import org.junit.jupiter.api.Test;
 import api.requests.skelethon.Endpoint;
 import api.requests.skelethon.requesters.CrudRequester;
 import api.requests.steps.AdminSteps;
 import api.requests.steps.DepositSteps;
 import api.specs.RequestSpecs;
 import api.specs.ResponseSpecs;
+import iteration1.api.BaseTest;
+import org.junit.jupiter.api.Test;
 
 public class TransferMoneyNegativeTest extends BaseTest {
     @Test

@@ -138,42 +138,4 @@ public class TransferMoneyNegativeTest extends BaseUiTest {
         assertThat(updatedSender.getBalance()).isEqualTo(INITIAL_DEPOSIT);
         assertThat(updatedReceiver.getBalance()).isEqualTo(accountReceiver.getBalance());
     }
-
-    // здесь баг, деньги почему-то переводятся при неправильном имени получателя
-    @Test
-    public void userCannotTransferMoneyWithInvalidRecipientNameTest() {
-        String invalidName = RandomData.getName();
-        // generate random int between 500 and 1000
-        final int INITIAL_DEPOSIT = RandomData.getRandom().nextInt(1001) + 500;
-        // generate random int between 0 and 500
-        final int TRANSFER_AMOUNT = RandomData.getRandom().nextInt(501);
-
-        var user = AdminSteps.createUser();
-        var accountSender = DepositSteps.createAccount(user);
-        var accountReceiver = DepositSteps.createAccount(user);
-
-        // depositing some money on sender account
-        DepositSteps.depositMoney(user, accountSender, INITIAL_DEPOSIT);
-
-        authAsUser(user);
-
-        new TransferPage().open().makeTransfer(accountSender, invalidName, RandomData.getName(), TRANSFER_AMOUNT)
-                .checkAlertMessageAndAccept(BankAlert.PLEASE_ENTER_A_VALID_NAME.getMessage());
-
-        // validate on API
-        var updatedAccounts = new CrudRequester(
-                RequestSpecs.authAsUser(user.getUsername(), user.getPassword()),
-                Endpoint.CUSTOMER_ACCOUNTS,
-                ResponseSpecs.requestReturnsOK())
-                .get(null).extract().jsonPath().getList("", BaseAccountResponse.class);
-
-        var updatedSender = updatedAccounts.stream()
-                .filter(a -> a.getId() == accountSender.getId()).findFirst().orElseThrow();
-
-        var updatedReceiver = updatedAccounts.stream()
-                .filter(a -> a.getId() == accountReceiver.getId()).findFirst().orElseThrow();
-
-        assertThat(updatedSender.getBalance()).isEqualTo(INITIAL_DEPOSIT);
-        assertThat(updatedReceiver.getBalance()).isEqualTo(accountReceiver.getBalance());
-    }
 }

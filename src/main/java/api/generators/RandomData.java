@@ -22,6 +22,11 @@ public class RandomData {
         return RandomStringUtils.randomAlphabetic(8);
     }
 
+    public static String getNewValidName() {
+        return RandomStringUtils.randomAlphabetic(4) + " "
+                + RandomStringUtils.randomAlphabetic(4);
+    }
+
     public static Random getRandom() {
         return new Random();
     }

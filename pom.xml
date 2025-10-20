@@ -57,6 +57,13 @@
             <artifactId>junit-jupiter-params</artifactId>
             <version>5.10.2</version>
         </dependency>
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+            <version>1.4.14</version>
+            <scope>test</scope>
+        </dependency>
+
     </dependencies>
 
     <build>
