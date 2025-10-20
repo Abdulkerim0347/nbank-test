@@ -29,7 +29,8 @@ jobs: # Этапы работы пайплайна
         run: cd infra/docker_compose && bash restart_docker.sh && cd ../..
 
       - name: Run tests # Запуск тестов с Maven
-        run: pwd && ./mvnw clean test -q
+        # /home/runner/work/nbank-test/nbank-test
+        run: ls -a && ./mvnw clean test -q
         env:
           APIBASEURL: http://localhost:4111
           UIBASEURL: http://frontend
