@@ -30,7 +30,7 @@ jobs: # Этапы работы пайплайна
 
       - name: Run tests # Запуск тестов с Maven
         # /home/runner/work/nbank-test/nbank-test
-        run: ./mvnw clean test -q
+        run: chmod +x ./mvnw && ./mvnw clean test -q
         env:
           APIBASEURL: http://localhost:4111
           UIBASEURL: http://frontend
