@@ -32,7 +32,7 @@ public class DepositMoneyNegativeTest extends BaseTest {
         new CrudRequester(
                 RequestSpecs.authAsUser(userRequest.getUsername(), userRequest.getPassword()),
                 Endpoint.DEPOSIT,
-                ResponseSpecs.requestReturnsInvalidAccount())
+                ResponseSpecs.requestReturnsDepositAmountMustBeAtLeast001())
                 .post(depositRequest);
 
         var updatedAccount = new CrudRequester(
@@ -64,7 +64,7 @@ public class DepositMoneyNegativeTest extends BaseTest {
         new CrudRequester(
                 RequestSpecs.authAsUser(userRequest.getUsername(), userRequest.getPassword()),
                 Endpoint.DEPOSIT,
-                ResponseSpecs.requestReturnsDepositAmountExceedsLimit())
+                ResponseSpecs.requestReturnsDepositAmountCannotExceed5000())
                 .post(depositRequest);
 
         var updatedAccount = new CrudRequester(

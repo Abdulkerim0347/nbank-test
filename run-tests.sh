@@ -22,6 +22,8 @@ MSYS_NO_PATHCONV=1 MSYS2_ARG_CONV_EXCL="*" docker run --rm \
   -e TEST_PROFILE="$TEST_PROFILE" \
   -e APIBASEURL=http://host.docker.internal:4111 \
   -e UIBASEURL=http://host.docker.internal:80 \
+  -e UIREMOTE=http://host.docker.internal:4444/wd/hub \
+  -e BROWSER=chrome -e BROWSERVERSION=115.0 \
   "$IMAGE_NAME"
 
 echo "Log:     $OUT_POSIX/logs/run.log"

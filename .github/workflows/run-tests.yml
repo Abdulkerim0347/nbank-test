@@ -1,6 +1,5 @@
 name: Run tests
 
-# Триггер
 on: [ push, workflow_dispatch ]
 
 jobs: # Этапы работы пайплайна
@@ -11,13 +10,13 @@ jobs: # Этапы работы пайплайна
       - name: Checkout repository # Копирование файлов репозитория внутрь CI агента
         uses: actions/checkout@v4
 
-      - name: Set up JDK # Установка JDK для работы с проектом
+      - name: Set up JDK
         uses: actions/setup-java@v4
         with:
           distribution: 'temurin'
           java-version: '23'
 
-      - name: Cache Maven repository # Кэширование репозитория Maven для ускорения сборки
+      - name: Cache Maven repository
         uses: actions/cache@v4
         with:
           path: ~/.m2/repository
@@ -25,11 +24,10 @@ jobs: # Этапы работы пайплайна
           restore-keys: |
             ${{ runner.os }}-maven-
 
-      - name: Set up services # Настройка сервисов, например, запуск Docker контейнеров
+      - name: Set up services
         run: cd infra/docker_compose && bash restart_docker.sh && cd ../..
 
       - name: Run tests # Запуск тестов с Maven
-        # /home/runner/work/nbank-test/nbank-test
         run: chmod +x ./mvnw && ./mvnw clean test -q
         env:
           APIBASEURL: http://localhost:4111

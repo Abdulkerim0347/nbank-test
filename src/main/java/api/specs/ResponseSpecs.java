@@ -1,16 +1,21 @@
 package api.specs;
 
 import io.restassured.builder.ResponseSpecBuilder;
+import io.restassured.http.ContentType;
 import io.restassured.specification.ResponseSpecification;
 import org.apache.http.HttpStatus;
-import org.hamcrest.Matchers;
 
-// utility class: contains only static methods and/or constants
-public class ResponseSpecs {
+import java.util.List;
+
+import static org.hamcrest.Matchers.*;
+
+public final class ResponseSpecs {
+
     private ResponseSpecs() {}
 
     private static ResponseSpecBuilder defaultResponseBuilder() {
-        return new ResponseSpecBuilder();
+        return new ResponseSpecBuilder()
+                .expectContentType(ContentType.JSON);
     }
 
     public static ResponseSpecification entityWasCreated() {
@@ -28,28 +33,32 @@ public class ResponseSpecs {
     public static ResponseSpecification requestReturnsBadRequest(String errorKey, String errorValue) {
         return defaultResponseBuilder()
                 .expectStatusCode(HttpStatus.SC_BAD_REQUEST)
-                .expectBody(errorKey, Matchers.equalTo(errorValue))
+                .expectBody(errorKey, anyOf(
+                        equalTo(errorValue),                 // если строка
+                        hasItem(errorValue),                 // если список
+                        equalTo(List.of(errorValue))         // если список из одного
+                ))
                 .build();
     }
 
-    public static ResponseSpecification requestReturnsInvalidAccount() {
+    public static ResponseSpecification requestReturnsDepositAmountMustBeAtLeast001() {
         return defaultResponseBuilder()
                 .expectStatusCode(HttpStatus.SC_BAD_REQUEST)
-                .expectBody(Matchers.equalTo("Invalid account or amount"))
+                .expectBody(equalTo("Deposit amount must be at least 0.01"))
                 .build();
     }
 
     public static ResponseSpecification requestReturnsInvalidTransfer() {
         return defaultResponseBuilder()
                 .expectStatusCode(HttpStatus.SC_BAD_REQUEST)
-                .expectBody(Matchers.equalTo("Invalid transfer: insufficient funds or invalid accounts"))
+                .expectBody(equalTo("Invalid transfer: insufficient funds or invalid accounts"))
                 .build();
     }
 
-    public static ResponseSpecification requestReturnsDepositAmountExceedsLimit() {
+    public static ResponseSpecification requestReturnsDepositAmountCannotExceed5000() {
         return defaultResponseBuilder()
                 .expectStatusCode(HttpStatus.SC_BAD_REQUEST)
-                .expectBody(Matchers.equalTo("Deposit amount exceeds the 5000 limit"))
+                .expectBody(equalTo("Deposit amount cannot exceed 5000"))
                 .build();
     }
 }
