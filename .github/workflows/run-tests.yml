@@ -53,6 +53,6 @@ jobs:
       - name: Push image to Docker Hub
         run: |
           chmod +x ./push-tests.sh
+          DOCKERHUB_USERNAME=${{ secrets.DOCKERHUB_USERNAME }} \
+          DOCKERHUB_TOKEN=${{ secrets.DOCKERHUB_TOKEN }} \
           ./push-tests.sh
-        env:
-          DOCKERHUB_TOKEN: ${{ secrets.DOCKERHUB_TOKEN }}
