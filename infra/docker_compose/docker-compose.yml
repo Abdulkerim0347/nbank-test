@@ -24,7 +24,6 @@ services:
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - ./config:/etc/selenoid:ro
-
     command: ["-container-network","nbank-network","-conf","/etc/selenoid/browsers.json"]
     depends_on: [frontend]
     networks: [nbank-network]

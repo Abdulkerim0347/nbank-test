@@ -13,7 +13,7 @@ mkdir -p "$OUT_POSIX"/{logs,results,report}
 echo ">>> Building image..."
 docker build -t "$IMAGE_NAME" .
 
-echo ">>> Running tests..."
+echo ">>> Running ${TEST_PROFILE} tests..."
 MSYS_NO_PATHCONV=1 MSYS2_ARG_CONV_EXCL="*" docker run --rm \
   --add-host=host.docker.internal:host-gateway \
   -v "${OUT_WIN}\logs:/app/logs" \
@@ -21,9 +21,8 @@ MSYS_NO_PATHCONV=1 MSYS2_ARG_CONV_EXCL="*" docker run --rm \
   -v "${OUT_WIN}\report:/app/target/site" \
   -e TEST_PROFILE="$TEST_PROFILE" \
   -e APIBASEURL=http://host.docker.internal:4111 \
-  -e UIBASEURL=http://host.docker.internal:80 \
+  -e UIBASEURL=http://nginx:80 \
   -e UIREMOTE=http://host.docker.internal:4444/wd/hub \
-  -e BROWSER=chrome -e BROWSERVERSION=115.0 \
   "$IMAGE_NAME"
 
 echo "Log:     $OUT_POSIX/logs/run.log"
