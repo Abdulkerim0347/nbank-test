@@ -52,10 +52,7 @@ jobs:
           
       - name: Push image to Docker Hub
         run: |
-          COMMIT_HASH=$(git rev-parse --short HEAD)
-          echo "${{ secrets.DOCKERHUB_TOKEN }}" | docker login -u ${{ secrets.DOCKERHUB_USERNAME }} --password-stdin
-          docker tag myapp:${COMMIT_HASH} ${{ secrets.DOCKERHUB_USERNAME }}/myapp:${COMMIT_HASH}
-          docker tag myapp:${COMMIT_HASH} ${{ secrets.DOCKERHUB_USERNAME }}/myapp:latest
-          docker push ${{ secrets.DOCKERHUB_USERNAME }}/myapp:${COMMIT_HASH}
-          docker push ${{ secrets.DOCKERHUB_USERNAME }}/myapp:latest
-      
+          chmod +x ./infra/push-tests.sh
+          ./infra/push-tests.sh
+        env:
+          DOCKERHUB_TOKEN: ${{ secrets.DOCKERHUB_TOKEN }}
