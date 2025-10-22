@@ -1,13 +1,21 @@
 name: Run tests
 
-on: [ push, workflow_dispatch ]
+on:
+  push:
+    paths:
+      - 'src/**'
+  pull_request:
+    paths:
+      - 'src/**'
+  workflow_dispatch:
 
-jobs: # Этапы работы пайплайна
+jobs:
   run-tests:
     name: Set up services (review apps) and run tests
     runs-on: ubuntu-latest
-    steps: # Шаги внутри job
-      - name: Checkout repository # Копирование файлов репозитория внутрь CI агента
+
+    steps:
+      - name: Checkout repository
         uses: actions/checkout@v4
 
       - name: Set up JDK
@@ -27,8 +35,27 @@ jobs: # Этапы работы пайплайна
       - name: Set up services
         run: cd infra/docker_compose && bash restart_docker.sh && cd ../..
 
-      - name: Run tests # Запуск тестов с Maven
-        run: chmod +x ./mvnw && ./mvnw clean test -q
+      - name: Build project
+        run: chmod +x ./mvnw && ./mvnw clean package -q
+
+      - name: Run tests + Checkstyle
+        run: ./mvnw verify -q
         env:
           APIBASEURL: http://localhost:4111
           UIBASEURL: http://nginx:80
+
+      - name: Build Docker image
+        run: |
+          COMMIT_HASH=$(git rev-parse --short HEAD)
+          docker build -t myapp:${COMMIT_HASH} .
+          echo "✅ Built image: myapp:${COMMIT_HASH}"
+          
+      - name: Push image to Docker Hub
+        run: |
+          COMMIT_HASH=$(git rev-parse --short HEAD)
+          echo "${{ secrets.DOCKERHUB_TOKEN }}" | docker login -u ${{ secrets.DOCKERHUB_USERNAME }} --password-stdin
+          docker tag myapp:${COMMIT_HASH} ${{ secrets.DOCKERHUB_USERNAME }}/myapp:${COMMIT_HASH}
+          docker tag myapp:${COMMIT_HASH} ${{ secrets.DOCKERHUB_USERNAME }}/myapp:latest
+          docker push ${{ secrets.DOCKERHUB_USERNAME }}/myapp:${COMMIT_HASH}
+          docker push ${{ secrets.DOCKERHUB_USERNAME }}/myapp:latest
+      
