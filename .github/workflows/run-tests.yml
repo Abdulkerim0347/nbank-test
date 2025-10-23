@@ -36,8 +36,8 @@ jobs:
       - name: Run Swagger coverage
         if: always()
         run: |
-          chmod +x .swagger-coverage-commandline/bin/swagger-coverage-commandline
-          .swagger-coverage-commandline/bin/swagger-coverage-commandline \
+          chmod +x ./.swagger-coverage-commandline/bin/swagger-coverage-commandline
+          ./.swagger-coverage-commandline/bin/swagger-coverage-commandline \
             -s http://localhost:4111/v3/api-docs \
             -i target/swagger-coverage-output
 
