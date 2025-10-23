@@ -5,9 +5,7 @@
       "115.0": {
         "image": "selenoid/vnc:chrome_115.0",
         "port": "4444",
-        "path": "/",
-        "env": ["TZ=UTC"],
-        "volumes": ["/dev/shm:/dev/shm"]
+        "path": "/"
       }
     }
   }

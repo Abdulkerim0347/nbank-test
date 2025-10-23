@@ -5,6 +5,7 @@ import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.Selectors;
 import com.codeborne.selenide.SelenideElement;
+import common.helpers.StepLogger;
 
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selenide.$;
@@ -23,14 +24,16 @@ public class DepositPage extends BasePage<DepositPage> {
     }
 
     public DepositPage depositMoney(BaseAccountResponse account, int depositAmount) {
-        depositMoneyText.click();
-        chooseAccountText.click();
-        accountsOption.filter(Condition.visible)
-                .findBy(text(account.getAccountNumber()))
-                .click();
-        enterAmountPlaceholder.setValue(depositAmount + "");
-        button.click();
-        return this;
+        return StepLogger.log("Deposit money", () -> {
+            depositMoneyText.click();
+            chooseAccountText.click();
+            accountsOption.filter(Condition.visible)
+                    .findBy(text(account.getAccountNumber()))
+                    .click();
+            enterAmountPlaceholder.setValue(depositAmount + "");
+            button.click();
+            return this;
+        });
     }
 
     public DepositPage depositMoneyNoAmount(BaseAccountResponse account) {

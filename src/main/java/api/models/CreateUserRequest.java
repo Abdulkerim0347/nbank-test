@@ -2,15 +2,13 @@ package api.models;
 
 import api.configs.Config;
 import api.generators.GeneratingRule;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
+@EqualsAndHashCode(callSuper = true)
 public class CreateUserRequest extends BaseModel {
     @GeneratingRule(regex = "^[A-Za-z0-9]{3,15}$")
     private String username;

@@ -3,6 +3,7 @@ package ui.pages;
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.Selectors;
 import com.codeborne.selenide.SelenideElement;
+import common.helpers.StepLogger;
 import lombok.Getter;
 
 import static com.codeborne.selenide.Selenide.$;
@@ -25,6 +26,9 @@ public class AdminPanel extends BasePage<AdminPanel> {
     }
 
     public ElementsCollection getAllUsers() {
-        return $(Selectors.byText("All Users")).parent().findAll("li");
+        return StepLogger.log("Get all users from Dashboard", () -> {
+            return $(Selectors.byText("All Users")).parent().findAll("li");
+        });
     }
+
 }

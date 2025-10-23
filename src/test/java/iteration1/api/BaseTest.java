@@ -1,7 +1,7 @@
 package iteration1.api;
 
 import api.requests.steps.DataCleanupSteps;
-import extensions.TimingExtension;
+import common.extensions.TimingExtension;
 import org.assertj.core.api.SoftAssertions;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
