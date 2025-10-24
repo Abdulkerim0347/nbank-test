@@ -53,8 +53,8 @@ jobs:
         uses: simple-elf/allure-report-action@v1.7
         if: always()
         with:
-          gh-pages: gh-pages
-          allure-results: target/allure-results
+          gh_pages: gh-pages
+          allure_results: target/allure-results
           allure_history: allure-history
 
       - name: Build Swagger coverage report
