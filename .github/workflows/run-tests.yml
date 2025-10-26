@@ -39,8 +39,7 @@ jobs:
           chmod +x ./.swagger-coverage-commandline/bin/swagger-coverage-commandline
           ./.swagger-coverage-commandline/bin/swagger-coverage-commandline \
             -s http://localhost:4111/v3/api-docs \
-            -i target/swagger-coverage-output \
-            -o target/allure-results
+            -i target/swagger-coverage-output
 
       - name: Load test report history
         uses: actions/checkout@v4
