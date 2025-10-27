@@ -56,11 +56,15 @@ jobs:
           allure_results: target/allure-results
           allure_history: allure-history
 
+      - name: Build Swagger coverage report
+        if: always()
+        run: sudo cp swagger-coverage-report.html allure-history/${{ github.run_number }}
+
       - name: API coverage quality gate (>=50%)
         if: always()
         run: |
           sudo apt-get update -y && sudo apt-get install -y jq
-          
+
           # Ищем JSON с покрытием (возможные места)
           CANDIDATES=(
             "allure-history/${GITHUB_RUN_NUMBER}/widgets/swagger-coverage.json"
@@ -79,7 +83,7 @@ jobs:
             echo "Coverage JSON not found in known locations"; exit 1
           fi
           echo "Using coverage file: $FILE"
-          
+
           # Пытаемся достать процент (в %). Поддерживаем разные схемы JSON.
           PCT=$(jq -r '( .coverage // .total.coverage // .summary.coverage // .coverage.total ) // empty' "$FILE")
           if [ -z "$PCT" ] || [ "$PCT" = "null" ]; then
@@ -92,17 +96,13 @@ jobs:
           if [ -z "$PCT" ]; then
             echo "Could not parse coverage from $FILE"; cat "$FILE"; exit 1
           fi
-          
+
           # Если значение в долях (<=1), переводим в проценты и проверяем порог 50%
           awk -v p="$PCT" -v t="50" 'BEGIN{
             if (p<=1) p*=100;
             if (p<t) { printf "❌ API coverage %.2f%% < %d%%\n", p, t; exit 1 }
             else     { printf "✅ API coverage %.2f%% >= %d%%\n", p, t; exit 0 }
           }'
-
-      - name: Build Swagger coverage report
-        if: always()
-        run: sudo cp swagger-coverage-report.html allure-history/${{ github.run_number }}
 
       - name: Publish test report
         uses: peaceiris/actions-gh-pages@v3
