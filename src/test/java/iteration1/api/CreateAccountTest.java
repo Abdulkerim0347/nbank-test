@@ -17,13 +17,6 @@ public class CreateAccountTest extends BaseTest {
     public void userCanCreateAccountTest() {
         var userRequest = AdminSteps.createUser();
 
-        new CrudRequester(
-                RequestSpecs.authAsUser(userRequest.getUsername(), userRequest.getPassword()),
-                Endpoint.ACCOUNTS,
-                ResponseSpecs.entityWasCreated())
-                .post(null);
-
-
         var account = new ValidatedCrudRequester<BaseAccountResponse>(
                 RequestSpecs.authAsUser(userRequest.getUsername(), userRequest.getPassword()),
                 Endpoint.ACCOUNTS,
