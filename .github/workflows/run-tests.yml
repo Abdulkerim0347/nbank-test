@@ -58,7 +58,21 @@ jobs:
 
       - name: Build Swagger coverage report
         if: always()
-        run: sudo cp swagger-coverage-report.html allure-history/${{ github.run_number }}
+        run: |
+          # Создаём нужные папки
+          mkdir -p allure-history/${GITHUB_RUN_NUMBER}/widgets
+
+          # Копируем HTML-отчёт
+          sudo cp swagger-coverage-report.html allure-history/${GITHUB_RUN_NUMBER}/
+
+          # Копируем JSON с результатами покрытия
+          if [ -f swagger-coverage-results.json ]; then
+            sudo cp swagger-coverage-results.json allure-history/${GITHUB_RUN_NUMBER}/widgets/swagger-coverage.json
+          elif [ -f target/swagger-coverage-output/swagger-coverage-results.json ]; then
+            sudo cp target/swagger-coverage-output/swagger-coverage-results.json allure-history/${GITHUB_RUN_NUMBER}/widgets/swagger-coverage.json
+          else
+            echo "⚠️ swagger-coverage JSON not found"; ls -la target || true
+          fi
 
       - name: API coverage quality gate (>=50%)
         if: always()
