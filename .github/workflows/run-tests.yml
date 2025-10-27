@@ -98,18 +98,18 @@ jobs:
           fi
           echo "Using coverage file: $FILE"
 
-          # Пытаемся достать процент (в %). Поддерживаем разные схемы JSON.
-          PCT=$(jq -r '( .coverage // .total.coverage // .summary.coverage // .coverage.total ) // empty' "$FILE")
-          if [ -z "$PCT" ] || [ "$PCT" = "null" ]; then
-            C=$(jq -r '.covered // .stats.covered // .summary.covered // empty' "$FILE")
-            T=$(jq -r '.total   // .stats.total   // .summary.total   // empty' "$FILE")
-            if [ -n "$C" ] && [ -n "$T" ] && [ "$T" -gt 0 ]; then
-              PCT=$(awk -v c="$C" -v t="$T" 'BEGIN{ printf "%.2f", (c/t)*100 }')
-            fi
-          fi
-          if [ -z "$PCT" ]; then
-            echo "Could not parse coverage from $FILE"; cat "$FILE"; exit 1
-          fi
+          PCT=$(jq -r '
+          if (.summary? and .summary.coverage?) then .summary.coverage
+          elif (.coverage?) then .coverage
+          elif (.total? and .total.coverage?) then .total.coverage
+          elif (.coverage? and .coverage.total?) then .coverage.total
+          elif (.conditionCounter? and (.conditionCounter.all//0) > 0) then
+          ((.conditionCounter.covered / .conditionCounter.all) * 100)
+          elif (.coverageOperationMap?.counter? and (.coverageOperationMap.counter.all//0) > 0) then
+          (((.coverageOperationMap.counter.full + (0.5 * .coverageOperationMap.counter.party))
+          / .coverageOperationMap.counter.all) * 100)
+          else empty end
+          ' "$FILE")
 
           # Если значение в долях (<=1), переводим в проценты и проверяем порог 50%
           awk -v p="$PCT" -v t="50" 'BEGIN{
