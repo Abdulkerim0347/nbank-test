@@ -1,0 +1,4574 @@
+
+<head>
+    <meta charset="utf-8">
+    <title>Swagger Coverage</title>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+            integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+            crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+            integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+            crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+            integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+            crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/0b83173bdb.js" crossorigin="anonymous"></script>
+    <style>
+        .title {
+            margin-top: 60px;
+        }
+
+        .progress {
+            position: relative;
+        }
+
+        .progress span {
+            position: absolute;
+            display: block;
+            width: 100%;
+            color: black;
+        }
+    </style>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+    <div class="container">
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <a class="navbar-brand" href="#">NoBugs API Banking v1</a>
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="#summary-section">Summary</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#details-section">Operations details</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#tag-section">Tags details</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#condition-section">Conditions details</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#system-section">Generation info</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<main role="main" class="container">
+    <div class="container">
+        <section id="summary-section">
+            <div class="row">
+                <div class="col-12">
+                    <h2 class="title" id="summary">Summary</h2>
+                </div>
+            </div>
+    <div class="row">
+        <div class="col-12">
+            <h4>Operations coverage summary</h4>
+        </div>
+    </div>
+        <div class="card" style="margin-bottom: 16px;">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-sm">
+                        <div class="alert alert-success" role="alert">
+                            Full coverage: 45.455%
+                        </div>
+                    </div>
+                    <div class="col-sm">
+                        <div class="alert alert-warning" role="alert">
+                            Partial coverage: 27.273%
+                        </div>
+                    </div>
+                    <div class="col-sm">
+                        <div class="alert alert-danger" role="alert">
+                            Empty coverage: 27.273%
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <div class="progress" style="height: 16px;">
+                            <div
+                                    class="progress-bar bg-success" role="progressbar"
+                                    style="width: 45.454545454545%"
+                                    aria-valuenow="5"
+                                    aria-valuemin="0"
+                                    aria-valuemax="11">
+                            </div>
+                            <div
+                                    class="progress-bar bg-warning" role="progressbar"
+                                    style="width: 27.272727272727%"
+                                    aria-valuenow="3"
+                                    aria-valuemin="0"
+                                    aria-valuemax="11">
+                            </div>
+                            <div
+                                    class="progress-bar bg-danger" role="progressbar"
+                                    style="width: 27.272727272727%"
+                                    aria-valuenow="3"
+                                    aria-valuemin="0"
+                                    aria-valuemax="11">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <div class="row">
+        <div class="col-sm">
+            <div class="alert alert-primary" role="alert">
+                All operations: 11
+            </div>
+        </div>
+        <div class="col-sm">
+            <div class="alert alert-secondary" role="alert">
+                Operations without calls: 2
+            </div>
+        </div>
+        <div class="col-sm">
+            <div class="alert alert-secondary" role="alert">
+                Missed request: 0
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <h4>Tags coverage summary</h4>
+        </div>
+    </div>
+        <div class="card" style="margin-bottom: 16px;">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-sm">
+                        <div class="alert alert-success" role="alert">
+                            Full coverage: 50%
+                        </div>
+                    </div>
+                    <div class="col-sm">
+                        <div class="alert alert-warning" role="alert">
+                            Partial coverage: 50%
+                        </div>
+                    </div>
+                    <div class="col-sm">
+                        <div class="alert alert-danger" role="alert">
+                            Empty coverage: 0%
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <div class="progress" style="height: 16px;">
+                            <div
+                                    class="progress-bar bg-success" role="progressbar"
+                                    style="width: 50%"
+                                    aria-valuenow="2"
+                                    aria-valuemin="0"
+                                    aria-valuemax="4">
+                            </div>
+                            <div
+                                    class="progress-bar bg-warning" role="progressbar"
+                                    style="width: 50%"
+                                    aria-valuenow="2"
+                                    aria-valuemin="0"
+                                    aria-valuemax="4">
+                            </div>
+                            <div
+                                    class="progress-bar bg-danger" role="progressbar"
+                                    style="width: 0%"
+                                    aria-valuenow="0"
+                                    aria-valuemin="0"
+                                    aria-valuemax="4">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <div class="row">
+        <div class="col-sm">
+            <div class="alert alert-primary" role="alert">
+                All tags: 4
+            </div>
+        </div>
+        <div class="col-sm">
+            <div class="alert alert-secondary" role="alert">
+                Tags without calls: 0
+            </div>
+        </div>
+        <div class="col-sm"></div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <h4>Conditions coverage summary</h4>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm">
+            <div class="alert alert-primary" role="alert">
+                <div class="row">
+                    <div class="col-12">
+                        <strong>Total: 29</strong>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm">
+            <div class="alert alert-success" role="alert">
+                <div class="row">
+                    <div class="col-12">
+                        <strong>Covered: 58.621% (17/29)</strong>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm">
+            <div class="alert alert-danger" role="alert">
+                <div class="row">
+                    <div class="col-12">
+                        <strong>Uncovered:  41.379% (12/29)</strong>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+
+
+
+        <div class="progress" style="height: 50px;">
+            <div
+                    class="progress-bar bg-warning" role="progressbar"
+                    style="width: 58.620689655172%"
+                    aria-valuenow="17"
+                    aria-valuemin="0"
+                    aria-valuemax="29">
+            </div>
+
+        </div>
+        </div>
+    </div>
+        </section>
+
+        <section id="details-section">
+            <div class="row">
+                <div class="col-12">
+                    <h2 class="title" id="details">Operations details</h2>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <ul class="nav nav-pills nav-fill" id="detail-tabs" role="tablist">
+                        <li class="nav-item">
+                            <a class="nav-link active" id="condition-tab" data-toggle="tab" href="#condition" role="tab"
+                               aria-controls="condition" aria-selected="true">
+                                All: 11
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="full-tab" data-toggle="tab" href="#full" role="tab"
+                               aria-controls="full" aria-selected="true">
+                                Full: 5
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="party-tab" data-toggle="tab" href="#party" role="tab"
+                               aria-controls="party" aria-selected="true">
+                                Partial: 3
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="empty-tab" data-toggle="tab" href="#empty" role="tab"
+                               aria-controls="empty" aria-selected="true">
+                                Empty: 3
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="zero-tab" data-toggle="tab" href="#zero" role="tab"
+                               aria-controls="zero" aria-selected="true">
+                                No call: 2
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="missed-tab" data-toggle="tab" href="#missed" role="tab"
+                               aria-controls="missed" aria-selected="false">
+                                Missed: 0
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="deprecated-tab" data-toggle="tab" href="#deprecated" role="tab"
+                               aria-controls="deprecated" aria-selected="false">
+                                Deprecated: 0
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <br/>
+            <div class="row">
+                <div class="col-12">
+                    <div class="tab-content" id="details-content">
+                        <div class="tab-pane fade show active" id="condition" role="tabpanel" aria-labelledby="condition-tab">
+    <div class="accordion" id="condition-accordion">
+    <div class="card">
+        <div class="card-header">
+            <div class="row"
+                 data-toggle="collapse"
+                 data-target="#condition-1"
+                 aria-expanded="true"
+                 aria-controls="collapseOne">
+                <div class="col-1">
+                <span class="badge badge-success">Full</span>
+                </div>
+                <div class="col-1">
+                        <button type="button" class="btn btn-sm">GET</button>
+                </div>
+                <div class="col-4">
+                    <span>/api/v1/customer/accounts</span>
+                </div>
+                <div class="col-2">
+                    15 calls
+                </div>
+                <div class="col-4">
+    <div class="row">
+        <div class="col-12">
+                2/2
+                (100%)
+            condition covered
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+
+
+
+        <div class="progress" style="height: 16px;">
+            <div
+                    class="progress-bar bg-success" role="progressbar"
+                    style="width: 100%"
+                    aria-valuenow="2"
+                    aria-valuemin="0"
+                    aria-valuemax="2">
+            </div>
+
+        </div>
+        </div>
+    </div>
+                </div>
+            </div>
+        </div>
+        <div id="condition-1" class="collapse" aria-labelledby="headingOne">
+    <div class="card-body">
+        <table class="table table-sm">
+            <thead>
+            <tr>
+                <th scope="col">Condition name</th>
+                <th scope="col">Details</th>
+            </tr>
+            </thead>
+            <tbody>
+
+                <tr class="table-success">
+                    <td>
+                            <span>
+                                <i class="fas fa-check"></i>
+                            </span>
+                        &nbsp;HTTP status 200
+                    </td>
+                    <td></td>
+                </tr>
+
+                <tr class="table-success">
+                    <td>
+                            <span>
+                                <i class="fas fa-check"></i>
+                            </span>
+                        &nbsp;only declared status
+                    </td>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-header">
+            <div class="row"
+                 data-toggle="collapse"
+                 data-target="#condition-2"
+                 aria-expanded="true"
+                 aria-controls="collapseOne">
+                <div class="col-1">
+                <span class="badge badge-success">Full</span>
+                </div>
+                <div class="col-1">
+                        <button type="button" class="btn btn-sm">POST</button>
+                </div>
+                <div class="col-4">
+                    <span>/api/v1/auth/login</span>
+                </div>
+                <div class="col-2">
+                    22 calls
+                </div>
+                <div class="col-4">
+    <div class="row">
+        <div class="col-12">
+                3/3
+                (100%)
+            condition covered
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+
+
+
+        <div class="progress" style="height: 16px;">
+            <div
+                    class="progress-bar bg-success" role="progressbar"
+                    style="width: 100%"
+                    aria-valuenow="3"
+                    aria-valuemin="0"
+                    aria-valuemax="3">
+            </div>
+
+        </div>
+        </div>
+    </div>
+                </div>
+            </div>
+        </div>
+        <div id="condition-2" class="collapse" aria-labelledby="headingOne">
+    <div class="card-body">
+        <table class="table table-sm">
+            <thead>
+            <tr>
+                <th scope="col">Condition name</th>
+                <th scope="col">Details</th>
+            </tr>
+            </thead>
+            <tbody>
+
+                <tr class="table-success">
+                    <td>
+                            <span>
+                                <i class="fas fa-check"></i>
+                            </span>
+                        &nbsp;HTTP status 200
+                    </td>
+                    <td></td>
+                </tr>
+
+                <tr class="table-success">
+                    <td>
+                            <span>
+                                <i class="fas fa-check"></i>
+                            </span>
+                        &nbsp;not empty body request
+                    </td>
+                    <td></td>
+                </tr>
+
+                <tr class="table-success">
+                    <td>
+                            <span>
+                                <i class="fas fa-check"></i>
+                            </span>
+                        &nbsp;only declared status
+                    </td>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-header">
+            <div class="row"
+                 data-toggle="collapse"
+                 data-target="#condition-3"
+                 aria-expanded="true"
+                 aria-controls="collapseOne">
+                <div class="col-1">
+                <span class="badge badge-success">Full</span>
+                </div>
+                <div class="col-1">
+                        <button type="button" class="btn btn-sm">GET</button>
+                </div>
+                <div class="col-4">
+                    <span>/api/v1/customer/profile</span>
+                </div>
+                <div class="col-2">
+                    3 calls
+                </div>
+                <div class="col-4">
+    <div class="row">
+        <div class="col-12">
+                2/2
+                (100%)
+            condition covered
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+
+
+
+        <div class="progress" style="height: 16px;">
+            <div
+                    class="progress-bar bg-success" role="progressbar"
+                    style="width: 100%"
+                    aria-valuenow="2"
+                    aria-valuemin="0"
+                    aria-valuemax="2">
+            </div>
+
+        </div>
+        </div>
+    </div>
+                </div>
+            </div>
+        </div>
+        <div id="condition-3" class="collapse" aria-labelledby="headingOne">
+    <div class="card-body">
+        <table class="table table-sm">
+            <thead>
+            <tr>
+                <th scope="col">Condition name</th>
+                <th scope="col">Details</th>
+            </tr>
+            </thead>
+            <tbody>
+
+                <tr class="table-success">
+                    <td>
+                            <span>
+                                <i class="fas fa-check"></i>
+                            </span>
+                        &nbsp;HTTP status 200
+                    </td>
+                    <td></td>
+                </tr>
+
+                <tr class="table-success">
+                    <td>
+                            <span>
+                                <i class="fas fa-check"></i>
+                            </span>
+                        &nbsp;only declared status
+                    </td>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-header">
+            <div class="row"
+                 data-toggle="collapse"
+                 data-target="#condition-4"
+                 aria-expanded="true"
+                 aria-controls="collapseOne">
+                <div class="col-1">
+                <span class="badge badge-success">Full</span>
+                </div>
+                <div class="col-1">
+                        <button type="button" class="btn btn-sm">PUT</button>
+                </div>
+                <div class="col-4">
+                    <span>/api/v1/customer/profile</span>
+                </div>
+                <div class="col-2">
+                    1 calls
+                </div>
+                <div class="col-4">
+    <div class="row">
+        <div class="col-12">
+                3/3
+                (100%)
+            condition covered
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+
+
+
+        <div class="progress" style="height: 16px;">
+            <div
+                    class="progress-bar bg-success" role="progressbar"
+                    style="width: 100%"
+                    aria-valuenow="3"
+                    aria-valuemin="0"
+                    aria-valuemax="3">
+            </div>
+
+        </div>
+        </div>
+    </div>
+                </div>
+            </div>
+        </div>
+        <div id="condition-4" class="collapse" aria-labelledby="headingOne">
+    <div class="card-body">
+        <table class="table table-sm">
+            <thead>
+            <tr>
+                <th scope="col">Condition name</th>
+                <th scope="col">Details</th>
+            </tr>
+            </thead>
+            <tbody>
+
+                <tr class="table-success">
+                    <td>
+                            <span>
+                                <i class="fas fa-check"></i>
+                            </span>
+                        &nbsp;HTTP status 200
+                    </td>
+                    <td></td>
+                </tr>
+
+                <tr class="table-success">
+                    <td>
+                            <span>
+                                <i class="fas fa-check"></i>
+                            </span>
+                        &nbsp;not empty body request
+                    </td>
+                    <td></td>
+                </tr>
+
+                <tr class="table-success">
+                    <td>
+                            <span>
+                                <i class="fas fa-check"></i>
+                            </span>
+                        &nbsp;only declared status
+                    </td>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-header">
+            <div class="row"
+                 data-toggle="collapse"
+                 data-target="#condition-5"
+                 aria-expanded="true"
+                 aria-controls="collapseOne">
+                <div class="col-1">
+                <span class="badge badge-success">Full</span>
+                </div>
+                <div class="col-1">
+                        <button type="button" class="btn btn-sm">GET</button>
+                </div>
+                <div class="col-4">
+                    <span>/api/v1/admin/users</span>
+                </div>
+                <div class="col-2">
+                    40 calls
+                </div>
+                <div class="col-4">
+    <div class="row">
+        <div class="col-12">
+                2/2
+                (100%)
+            condition covered
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+
+
+
+        <div class="progress" style="height: 16px;">
+            <div
+                    class="progress-bar bg-success" role="progressbar"
+                    style="width: 100%"
+                    aria-valuenow="2"
+                    aria-valuemin="0"
+                    aria-valuemax="2">
+            </div>
+
+        </div>
+        </div>
+    </div>
+                </div>
+            </div>
+        </div>
+        <div id="condition-5" class="collapse" aria-labelledby="headingOne">
+    <div class="card-body">
+        <table class="table table-sm">
+            <thead>
+            <tr>
+                <th scope="col">Condition name</th>
+                <th scope="col">Details</th>
+            </tr>
+            </thead>
+            <tbody>
+
+                <tr class="table-success">
+                    <td>
+                            <span>
+                                <i class="fas fa-check"></i>
+                            </span>
+                        &nbsp;HTTP status 200
+                    </td>
+                    <td></td>
+                </tr>
+
+                <tr class="table-success">
+                    <td>
+                            <span>
+                                <i class="fas fa-check"></i>
+                            </span>
+                        &nbsp;only declared status
+                    </td>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-header">
+            <div class="row"
+                 data-toggle="collapse"
+                 data-target="#condition-6"
+                 aria-expanded="true"
+                 aria-controls="collapseOne">
+                <div class="col-1">
+                <span class="badge badge-warning">Partial</span>
+                </div>
+                <div class="col-1">
+                        <button type="button" class="btn btn-sm">POST</button>
+                </div>
+                <div class="col-4">
+                    <span>/api/v1/accounts/deposit</span>
+                </div>
+                <div class="col-2">
+                    10 calls
+                </div>
+                <div class="col-4">
+    <div class="row">
+        <div class="col-12">
+                2/3
+                (66.667%)
+            condition covered
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+
+
+
+        <div class="progress" style="height: 16px;">
+            <div
+                    class="progress-bar bg-success" role="progressbar"
+                    style="width: 66.666666666667%"
+                    aria-valuenow="2"
+                    aria-valuemin="0"
+                    aria-valuemax="3">
+            </div>
+
+        </div>
+        </div>
+    </div>
+                </div>
+            </div>
+        </div>
+        <div id="condition-6" class="collapse" aria-labelledby="headingOne">
+    <div class="card-body">
+        <table class="table table-sm">
+            <thead>
+            <tr>
+                <th scope="col">Condition name</th>
+                <th scope="col">Details</th>
+            </tr>
+            </thead>
+            <tbody>
+
+                <tr class="table-success">
+                    <td>
+                            <span>
+                                <i class="fas fa-check"></i>
+                            </span>
+                        &nbsp;HTTP status 200
+                    </td>
+                    <td></td>
+                </tr>
+
+                <tr class="table-success">
+                    <td>
+                            <span>
+                                <i class="fas fa-check"></i>
+                            </span>
+                        &nbsp;not empty body request
+                    </td>
+                    <td></td>
+                </tr>
+
+                <tr class="table-danger">
+                    <td>
+                            <span>
+                                <i class="fas fa-bug"></i>
+                            </span>
+                        &nbsp;only declared status
+                    </td>
+                    <td>Undeclared status: 400</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-header">
+            <div class="row"
+                 data-toggle="collapse"
+                 data-target="#condition-7"
+                 aria-expanded="true"
+                 aria-controls="collapseOne">
+                <div class="col-1">
+                <span class="badge badge-warning">Partial</span>
+                </div>
+                <div class="col-1">
+                        <button type="button" class="btn btn-sm">POST</button>
+                </div>
+                <div class="col-4">
+                    <span>/api/v1/accounts/transfer</span>
+                </div>
+                <div class="col-2">
+                    2 calls
+                </div>
+                <div class="col-4">
+    <div class="row">
+        <div class="col-12">
+                2/3
+                (66.667%)
+            condition covered
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+
+
+
+        <div class="progress" style="height: 16px;">
+            <div
+                    class="progress-bar bg-success" role="progressbar"
+                    style="width: 66.666666666667%"
+                    aria-valuenow="2"
+                    aria-valuemin="0"
+                    aria-valuemax="3">
+            </div>
+
+        </div>
+        </div>
+    </div>
+                </div>
+            </div>
+        </div>
+        <div id="condition-7" class="collapse" aria-labelledby="headingOne">
+    <div class="card-body">
+        <table class="table table-sm">
+            <thead>
+            <tr>
+                <th scope="col">Condition name</th>
+                <th scope="col">Details</th>
+            </tr>
+            </thead>
+            <tbody>
+
+                <tr class="table-success">
+                    <td>
+                            <span>
+                                <i class="fas fa-check"></i>
+                            </span>
+                        &nbsp;HTTP status 200
+                    </td>
+                    <td></td>
+                </tr>
+
+                <tr class="table-success">
+                    <td>
+                            <span>
+                                <i class="fas fa-check"></i>
+                            </span>
+                        &nbsp;not empty body request
+                    </td>
+                    <td></td>
+                </tr>
+
+                <tr class="table-danger">
+                    <td>
+                            <span>
+                                <i class="fas fa-bug"></i>
+                            </span>
+                        &nbsp;only declared status
+                    </td>
+                    <td>Undeclared status: 400</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-header">
+            <div class="row"
+                 data-toggle="collapse"
+                 data-target="#condition-8"
+                 aria-expanded="true"
+                 aria-controls="collapseOne">
+                <div class="col-1">
+                <span class="badge badge-warning">Partial</span>
+                </div>
+                <div class="col-1">
+                        <button type="button" class="btn btn-sm">POST</button>
+                </div>
+                <div class="col-4">
+                    <span>/api/v1/admin/users</span>
+                </div>
+                <div class="col-2">
+                    34 calls
+                </div>
+                <div class="col-4">
+    <div class="row">
+        <div class="col-12">
+                1/3
+                (33.333%)
+            condition covered
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+
+
+
+        <div class="progress" style="height: 16px;">
+            <div
+                    class="progress-bar bg-warning" role="progressbar"
+                    style="width: 33.333333333333%"
+                    aria-valuenow="1"
+                    aria-valuemin="0"
+                    aria-valuemax="3">
+            </div>
+
+        </div>
+        </div>
+    </div>
+                </div>
+            </div>
+        </div>
+        <div id="condition-8" class="collapse" aria-labelledby="headingOne">
+    <div class="card-body">
+        <table class="table table-sm">
+            <thead>
+            <tr>
+                <th scope="col">Condition name</th>
+                <th scope="col">Details</th>
+            </tr>
+            </thead>
+            <tbody>
+
+                <tr class="table-danger">
+                    <td>
+                            <span>
+                                <i class="fas fa-bug"></i>
+                            </span>
+                        &nbsp;HTTP status 200
+                    </td>
+                    <td></td>
+                </tr>
+
+                <tr class="table-success">
+                    <td>
+                            <span>
+                                <i class="fas fa-check"></i>
+                            </span>
+                        &nbsp;not empty body request
+                    </td>
+                    <td></td>
+                </tr>
+
+                <tr class="table-danger">
+                    <td>
+                            <span>
+                                <i class="fas fa-bug"></i>
+                            </span>
+                        &nbsp;only declared status
+                    </td>
+                    <td>Undeclared status: 201,400</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-header">
+            <div class="row"
+                 data-toggle="collapse"
+                 data-target="#condition-9"
+                 aria-expanded="true"
+                 aria-controls="collapseOne">
+                <div class="col-1">
+        <span class="badge badge-dark">No call</span>
+                </div>
+                <div class="col-1">
+                        <button type="button" class="btn btn-sm">GET</button>
+                </div>
+                <div class="col-4">
+                    <span>/api/v1/accounts/{accountId}/transactions</span>
+                </div>
+                <div class="col-2">
+                    0 calls
+                </div>
+                <div class="col-4">
+    <div class="row">
+        <div class="col-12">
+                0/3
+                (0%)
+            condition covered
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+
+
+
+        <div class="progress" style="height: 16px;">
+            <div
+                    class="progress-bar bg-danger" role="progressbar"
+                    style="width: 0%"
+                    aria-valuenow="0"
+                    aria-valuemin="0"
+                    aria-valuemax="3">
+            </div>
+
+        </div>
+        </div>
+    </div>
+                </div>
+            </div>
+        </div>
+        <div id="condition-9" class="collapse" aria-labelledby="headingOne">
+    <div class="card-body">
+        <table class="table table-sm">
+            <thead>
+            <tr>
+                <th scope="col">Condition name</th>
+                <th scope="col">Details</th>
+            </tr>
+            </thead>
+            <tbody>
+
+                <tr class="table-danger">
+                    <td>
+                            <span>
+                                <i class="fas fa-bug"></i>
+                            </span>
+                        &nbsp;HTTP status 200
+                    </td>
+                    <td></td>
+                </tr>
+
+                <tr class="table-danger">
+                    <td>
+                            <span>
+                                <i class="fas fa-bug"></i>
+                            </span>
+                        &nbsp;path «accountId» is not empty
+                    </td>
+                    <td></td>
+                </tr>
+
+                <tr class="table-danger">
+                    <td>
+                            <span>
+                                <i class="fas fa-bug"></i>
+                            </span>
+                        &nbsp;only declared status
+                    </td>
+                    <td>No call - no statuses...</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-header">
+            <div class="row"
+                 data-toggle="collapse"
+                 data-target="#condition-10"
+                 aria-expanded="true"
+                 aria-controls="collapseOne">
+                <div class="col-1">
+        <span class="badge badge-dark">No call</span>
+                </div>
+                <div class="col-1">
+                        <button type="button" class="btn btn-sm">DELETE</button>
+                </div>
+                <div class="col-4">
+                    <span>/api/v1/admin/users/{id}</span>
+                </div>
+                <div class="col-2">
+                    0 calls
+                </div>
+                <div class="col-4">
+    <div class="row">
+        <div class="col-12">
+                0/3
+                (0%)
+            condition covered
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+
+
+
+        <div class="progress" style="height: 16px;">
+            <div
+                    class="progress-bar bg-danger" role="progressbar"
+                    style="width: 0%"
+                    aria-valuenow="0"
+                    aria-valuemin="0"
+                    aria-valuemax="3">
+            </div>
+
+        </div>
+        </div>
+    </div>
+                </div>
+            </div>
+        </div>
+        <div id="condition-10" class="collapse" aria-labelledby="headingOne">
+    <div class="card-body">
+        <table class="table table-sm">
+            <thead>
+            <tr>
+                <th scope="col">Condition name</th>
+                <th scope="col">Details</th>
+            </tr>
+            </thead>
+            <tbody>
+
+                <tr class="table-danger">
+                    <td>
+                            <span>
+                                <i class="fas fa-bug"></i>
+                            </span>
+                        &nbsp;HTTP status 200
+                    </td>
+                    <td></td>
+                </tr>
+
+                <tr class="table-danger">
+                    <td>
+                            <span>
+                                <i class="fas fa-bug"></i>
+                            </span>
+                        &nbsp;path «id» is not empty
+                    </td>
+                    <td></td>
+                </tr>
+
+                <tr class="table-danger">
+                    <td>
+                            <span>
+                                <i class="fas fa-bug"></i>
+                            </span>
+                        &nbsp;only declared status
+                    </td>
+                    <td>No call - no statuses...</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-header">
+            <div class="row"
+                 data-toggle="collapse"
+                 data-target="#condition-11"
+                 aria-expanded="true"
+                 aria-controls="collapseOne">
+                <div class="col-1">
+                <span class="badge badge-danger">Empty</span>
+                </div>
+                <div class="col-1">
+                        <button type="button" class="btn btn-sm">POST</button>
+                </div>
+                <div class="col-4">
+                    <span>/api/v1/accounts</span>
+                </div>
+                <div class="col-2">
+                    21 calls
+                </div>
+                <div class="col-4">
+    <div class="row">
+        <div class="col-12">
+                0/2
+                (0%)
+            condition covered
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+
+
+
+        <div class="progress" style="height: 16px;">
+            <div
+                    class="progress-bar bg-danger" role="progressbar"
+                    style="width: 0%"
+                    aria-valuenow="0"
+                    aria-valuemin="0"
+                    aria-valuemax="2">
+            </div>
+
+        </div>
+        </div>
+    </div>
+                </div>
+            </div>
+        </div>
+        <div id="condition-11" class="collapse" aria-labelledby="headingOne">
+    <div class="card-body">
+        <table class="table table-sm">
+            <thead>
+            <tr>
+                <th scope="col">Condition name</th>
+                <th scope="col">Details</th>
+            </tr>
+            </thead>
+            <tbody>
+
+                <tr class="table-danger">
+                    <td>
+                            <span>
+                                <i class="fas fa-bug"></i>
+                            </span>
+                        &nbsp;HTTP status 200
+                    </td>
+                    <td></td>
+                </tr>
+
+                <tr class="table-danger">
+                    <td>
+                            <span>
+                                <i class="fas fa-bug"></i>
+                            </span>
+                        &nbsp;only declared status
+                    </td>
+                    <td>Undeclared status: 201</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+        </div>
+    </div>
+    </div>
+                        </div>
+                        <div class="tab-pane fade" id="full" role="tabpanel" aria-labelledby="full-tab">
+    <div class="accordion" id="full-accordion">
+    <div class="card">
+        <div class="card-header">
+            <div class="row"
+                 data-toggle="collapse"
+                 data-target="#full-1"
+                 aria-expanded="true"
+                 aria-controls="collapseOne">
+                <div class="col-1">
+                <span class="badge badge-success">Full</span>
+                </div>
+                <div class="col-1">
+                        <button type="button" class="btn btn-sm">GET</button>
+                </div>
+                <div class="col-4">
+                    <span>/api/v1/customer/accounts</span>
+                </div>
+                <div class="col-2">
+                    15 calls
+                </div>
+                <div class="col-4">
+    <div class="row">
+        <div class="col-12">
+                2/2
+                (100%)
+            condition covered
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+
+
+
+        <div class="progress" style="height: 16px;">
+            <div
+                    class="progress-bar bg-success" role="progressbar"
+                    style="width: 100%"
+                    aria-valuenow="2"
+                    aria-valuemin="0"
+                    aria-valuemax="2">
+            </div>
+
+        </div>
+        </div>
+    </div>
+                </div>
+            </div>
+        </div>
+        <div id="full-1" class="collapse" aria-labelledby="headingOne">
+    <div class="card-body">
+        <table class="table table-sm">
+            <thead>
+            <tr>
+                <th scope="col">Condition name</th>
+                <th scope="col">Details</th>
+            </tr>
+            </thead>
+            <tbody>
+
+                <tr class="table-success">
+                    <td>
+                            <span>
+                                <i class="fas fa-check"></i>
+                            </span>
+                        &nbsp;HTTP status 200
+                    </td>
+                    <td></td>
+                </tr>
+
+                <tr class="table-success">
+                    <td>
+                            <span>
+                                <i class="fas fa-check"></i>
+                            </span>
+                        &nbsp;only declared status
+                    </td>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-header">
+            <div class="row"
+                 data-toggle="collapse"
+                 data-target="#full-2"
+                 aria-expanded="true"
+                 aria-controls="collapseOne">
+                <div class="col-1">
+                <span class="badge badge-success">Full</span>
+                </div>
+                <div class="col-1">
+                        <button type="button" class="btn btn-sm">POST</button>
+                </div>
+                <div class="col-4">
+                    <span>/api/v1/auth/login</span>
+                </div>
+                <div class="col-2">
+                    22 calls
+                </div>
+                <div class="col-4">
+    <div class="row">
+        <div class="col-12">
+                3/3
+                (100%)
+            condition covered
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+
+
+
+        <div class="progress" style="height: 16px;">
+            <div
+                    class="progress-bar bg-success" role="progressbar"
+                    style="width: 100%"
+                    aria-valuenow="3"
+                    aria-valuemin="0"
+                    aria-valuemax="3">
+            </div>
+
+        </div>
+        </div>
+    </div>
+                </div>
+            </div>
+        </div>
+        <div id="full-2" class="collapse" aria-labelledby="headingOne">
+    <div class="card-body">
+        <table class="table table-sm">
+            <thead>
+            <tr>
+                <th scope="col">Condition name</th>
+                <th scope="col">Details</th>
+            </tr>
+            </thead>
+            <tbody>
+
+                <tr class="table-success">
+                    <td>
+                            <span>
+                                <i class="fas fa-check"></i>
+                            </span>
+                        &nbsp;HTTP status 200
+                    </td>
+                    <td></td>
+                </tr>
+
+                <tr class="table-success">
+                    <td>
+                            <span>
+                                <i class="fas fa-check"></i>
+                            </span>
+                        &nbsp;not empty body request
+                    </td>
+                    <td></td>
+                </tr>
+
+                <tr class="table-success">
+                    <td>
+                            <span>
+                                <i class="fas fa-check"></i>
+                            </span>
+                        &nbsp;only declared status
+                    </td>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-header">
+            <div class="row"
+                 data-toggle="collapse"
+                 data-target="#full-3"
+                 aria-expanded="true"
+                 aria-controls="collapseOne">
+                <div class="col-1">
+                <span class="badge badge-success">Full</span>
+                </div>
+                <div class="col-1">
+                        <button type="button" class="btn btn-sm">GET</button>
+                </div>
+                <div class="col-4">
+                    <span>/api/v1/customer/profile</span>
+                </div>
+                <div class="col-2">
+                    3 calls
+                </div>
+                <div class="col-4">
+    <div class="row">
+        <div class="col-12">
+                2/2
+                (100%)
+            condition covered
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+
+
+
+        <div class="progress" style="height: 16px;">
+            <div
+                    class="progress-bar bg-success" role="progressbar"
+                    style="width: 100%"
+                    aria-valuenow="2"
+                    aria-valuemin="0"
+                    aria-valuemax="2">
+            </div>
+
+        </div>
+        </div>
+    </div>
+                </div>
+            </div>
+        </div>
+        <div id="full-3" class="collapse" aria-labelledby="headingOne">
+    <div class="card-body">
+        <table class="table table-sm">
+            <thead>
+            <tr>
+                <th scope="col">Condition name</th>
+                <th scope="col">Details</th>
+            </tr>
+            </thead>
+            <tbody>
+
+                <tr class="table-success">
+                    <td>
+                            <span>
+                                <i class="fas fa-check"></i>
+                            </span>
+                        &nbsp;HTTP status 200
+                    </td>
+                    <td></td>
+                </tr>
+
+                <tr class="table-success">
+                    <td>
+                            <span>
+                                <i class="fas fa-check"></i>
+                            </span>
+                        &nbsp;only declared status
+                    </td>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-header">
+            <div class="row"
+                 data-toggle="collapse"
+                 data-target="#full-4"
+                 aria-expanded="true"
+                 aria-controls="collapseOne">
+                <div class="col-1">
+                <span class="badge badge-success">Full</span>
+                </div>
+                <div class="col-1">
+                        <button type="button" class="btn btn-sm">PUT</button>
+                </div>
+                <div class="col-4">
+                    <span>/api/v1/customer/profile</span>
+                </div>
+                <div class="col-2">
+                    1 calls
+                </div>
+                <div class="col-4">
+    <div class="row">
+        <div class="col-12">
+                3/3
+                (100%)
+            condition covered
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+
+
+
+        <div class="progress" style="height: 16px;">
+            <div
+                    class="progress-bar bg-success" role="progressbar"
+                    style="width: 100%"
+                    aria-valuenow="3"
+                    aria-valuemin="0"
+                    aria-valuemax="3">
+            </div>
+
+        </div>
+        </div>
+    </div>
+                </div>
+            </div>
+        </div>
+        <div id="full-4" class="collapse" aria-labelledby="headingOne">
+    <div class="card-body">
+        <table class="table table-sm">
+            <thead>
+            <tr>
+                <th scope="col">Condition name</th>
+                <th scope="col">Details</th>
+            </tr>
+            </thead>
+            <tbody>
+
+                <tr class="table-success">
+                    <td>
+                            <span>
+                                <i class="fas fa-check"></i>
+                            </span>
+                        &nbsp;HTTP status 200
+                    </td>
+                    <td></td>
+                </tr>
+
+                <tr class="table-success">
+                    <td>
+                            <span>
+                                <i class="fas fa-check"></i>
+                            </span>
+                        &nbsp;not empty body request
+                    </td>
+                    <td></td>
+                </tr>
+
+                <tr class="table-success">
+                    <td>
+                            <span>
+                                <i class="fas fa-check"></i>
+                            </span>
+                        &nbsp;only declared status
+                    </td>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-header">
+            <div class="row"
+                 data-toggle="collapse"
+                 data-target="#full-5"
+                 aria-expanded="true"
+                 aria-controls="collapseOne">
+                <div class="col-1">
+                <span class="badge badge-success">Full</span>
+                </div>
+                <div class="col-1">
+                        <button type="button" class="btn btn-sm">GET</button>
+                </div>
+                <div class="col-4">
+                    <span>/api/v1/admin/users</span>
+                </div>
+                <div class="col-2">
+                    40 calls
+                </div>
+                <div class="col-4">
+    <div class="row">
+        <div class="col-12">
+                2/2
+                (100%)
+            condition covered
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+
+
+
+        <div class="progress" style="height: 16px;">
+            <div
+                    class="progress-bar bg-success" role="progressbar"
+                    style="width: 100%"
+                    aria-valuenow="2"
+                    aria-valuemin="0"
+                    aria-valuemax="2">
+            </div>
+
+        </div>
+        </div>
+    </div>
+                </div>
+            </div>
+        </div>
+        <div id="full-5" class="collapse" aria-labelledby="headingOne">
+    <div class="card-body">
+        <table class="table table-sm">
+            <thead>
+            <tr>
+                <th scope="col">Condition name</th>
+                <th scope="col">Details</th>
+            </tr>
+            </thead>
+            <tbody>
+
+                <tr class="table-success">
+                    <td>
+                            <span>
+                                <i class="fas fa-check"></i>
+                            </span>
+                        &nbsp;HTTP status 200
+                    </td>
+                    <td></td>
+                </tr>
+
+                <tr class="table-success">
+                    <td>
+                            <span>
+                                <i class="fas fa-check"></i>
+                            </span>
+                        &nbsp;only declared status
+                    </td>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+        </div>
+    </div>
+    </div>
+                        </div>
+                        <div class="tab-pane fade" id="party" role="tabpanel" aria-labelledby="party-tab">
+    <div class="accordion" id="party-accordion">
+    <div class="card">
+        <div class="card-header">
+            <div class="row"
+                 data-toggle="collapse"
+                 data-target="#party-1"
+                 aria-expanded="true"
+                 aria-controls="collapseOne">
+                <div class="col-1">
+                <span class="badge badge-warning">Partial</span>
+                </div>
+                <div class="col-1">
+                        <button type="button" class="btn btn-sm">POST</button>
+                </div>
+                <div class="col-4">
+                    <span>/api/v1/accounts/deposit</span>
+                </div>
+                <div class="col-2">
+                    10 calls
+                </div>
+                <div class="col-4">
+    <div class="row">
+        <div class="col-12">
+                2/3
+                (66.667%)
+            condition covered
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+
+
+
+        <div class="progress" style="height: 16px;">
+            <div
+                    class="progress-bar bg-success" role="progressbar"
+                    style="width: 66.666666666667%"
+                    aria-valuenow="2"
+                    aria-valuemin="0"
+                    aria-valuemax="3">
+            </div>
+
+        </div>
+        </div>
+    </div>
+                </div>
+            </div>
+        </div>
+        <div id="party-1" class="collapse" aria-labelledby="headingOne">
+    <div class="card-body">
+        <table class="table table-sm">
+            <thead>
+            <tr>
+                <th scope="col">Condition name</th>
+                <th scope="col">Details</th>
+            </tr>
+            </thead>
+            <tbody>
+
+                <tr class="table-success">
+                    <td>
+                            <span>
+                                <i class="fas fa-check"></i>
+                            </span>
+                        &nbsp;HTTP status 200
+                    </td>
+                    <td></td>
+                </tr>
+
+                <tr class="table-success">
+                    <td>
+                            <span>
+                                <i class="fas fa-check"></i>
+                            </span>
+                        &nbsp;not empty body request
+                    </td>
+                    <td></td>
+                </tr>
+
+                <tr class="table-danger">
+                    <td>
+                            <span>
+                                <i class="fas fa-bug"></i>
+                            </span>
+                        &nbsp;only declared status
+                    </td>
+                    <td>Undeclared status: 400</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-header">
+            <div class="row"
+                 data-toggle="collapse"
+                 data-target="#party-2"
+                 aria-expanded="true"
+                 aria-controls="collapseOne">
+                <div class="col-1">
+                <span class="badge badge-warning">Partial</span>
+                </div>
+                <div class="col-1">
+                        <button type="button" class="btn btn-sm">POST</button>
+                </div>
+                <div class="col-4">
+                    <span>/api/v1/accounts/transfer</span>
+                </div>
+                <div class="col-2">
+                    2 calls
+                </div>
+                <div class="col-4">
+    <div class="row">
+        <div class="col-12">
+                2/3
+                (66.667%)
+            condition covered
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+
+
+
+        <div class="progress" style="height: 16px;">
+            <div
+                    class="progress-bar bg-success" role="progressbar"
+                    style="width: 66.666666666667%"
+                    aria-valuenow="2"
+                    aria-valuemin="0"
+                    aria-valuemax="3">
+            </div>
+
+        </div>
+        </div>
+    </div>
+                </div>
+            </div>
+        </div>
+        <div id="party-2" class="collapse" aria-labelledby="headingOne">
+    <div class="card-body">
+        <table class="table table-sm">
+            <thead>
+            <tr>
+                <th scope="col">Condition name</th>
+                <th scope="col">Details</th>
+            </tr>
+            </thead>
+            <tbody>
+
+                <tr class="table-success">
+                    <td>
+                            <span>
+                                <i class="fas fa-check"></i>
+                            </span>
+                        &nbsp;HTTP status 200
+                    </td>
+                    <td></td>
+                </tr>
+
+                <tr class="table-success">
+                    <td>
+                            <span>
+                                <i class="fas fa-check"></i>
+                            </span>
+                        &nbsp;not empty body request
+                    </td>
+                    <td></td>
+                </tr>
+
+                <tr class="table-danger">
+                    <td>
+                            <span>
+                                <i class="fas fa-bug"></i>
+                            </span>
+                        &nbsp;only declared status
+                    </td>
+                    <td>Undeclared status: 400</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-header">
+            <div class="row"
+                 data-toggle="collapse"
+                 data-target="#party-3"
+                 aria-expanded="true"
+                 aria-controls="collapseOne">
+                <div class="col-1">
+                <span class="badge badge-warning">Partial</span>
+                </div>
+                <div class="col-1">
+                        <button type="button" class="btn btn-sm">POST</button>
+                </div>
+                <div class="col-4">
+                    <span>/api/v1/admin/users</span>
+                </div>
+                <div class="col-2">
+                    34 calls
+                </div>
+                <div class="col-4">
+    <div class="row">
+        <div class="col-12">
+                1/3
+                (33.333%)
+            condition covered
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+
+
+
+        <div class="progress" style="height: 16px;">
+            <div
+                    class="progress-bar bg-warning" role="progressbar"
+                    style="width: 33.333333333333%"
+                    aria-valuenow="1"
+                    aria-valuemin="0"
+                    aria-valuemax="3">
+            </div>
+
+        </div>
+        </div>
+    </div>
+                </div>
+            </div>
+        </div>
+        <div id="party-3" class="collapse" aria-labelledby="headingOne">
+    <div class="card-body">
+        <table class="table table-sm">
+            <thead>
+            <tr>
+                <th scope="col">Condition name</th>
+                <th scope="col">Details</th>
+            </tr>
+            </thead>
+            <tbody>
+
+                <tr class="table-danger">
+                    <td>
+                            <span>
+                                <i class="fas fa-bug"></i>
+                            </span>
+                        &nbsp;HTTP status 200
+                    </td>
+                    <td></td>
+                </tr>
+
+                <tr class="table-success">
+                    <td>
+                            <span>
+                                <i class="fas fa-check"></i>
+                            </span>
+                        &nbsp;not empty body request
+                    </td>
+                    <td></td>
+                </tr>
+
+                <tr class="table-danger">
+                    <td>
+                            <span>
+                                <i class="fas fa-bug"></i>
+                            </span>
+                        &nbsp;only declared status
+                    </td>
+                    <td>Undeclared status: 201,400</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+        </div>
+    </div>
+    </div>
+                        </div>
+                        <div class="tab-pane fade" id="empty" role="tabpanel" aria-labelledby="empty-tab">
+    <div class="accordion" id="empty-accordion">
+    <div class="card">
+        <div class="card-header">
+            <div class="row"
+                 data-toggle="collapse"
+                 data-target="#empty-1"
+                 aria-expanded="true"
+                 aria-controls="collapseOne">
+                <div class="col-1">
+        <span class="badge badge-dark">No call</span>
+                </div>
+                <div class="col-1">
+                        <button type="button" class="btn btn-sm">GET</button>
+                </div>
+                <div class="col-4">
+                    <span>/api/v1/accounts/{accountId}/transactions</span>
+                </div>
+                <div class="col-2">
+                    0 calls
+                </div>
+                <div class="col-4">
+    <div class="row">
+        <div class="col-12">
+                0/3
+                (0%)
+            condition covered
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+
+
+
+        <div class="progress" style="height: 16px;">
+            <div
+                    class="progress-bar bg-danger" role="progressbar"
+                    style="width: 0%"
+                    aria-valuenow="0"
+                    aria-valuemin="0"
+                    aria-valuemax="3">
+            </div>
+
+        </div>
+        </div>
+    </div>
+                </div>
+            </div>
+        </div>
+        <div id="empty-1" class="collapse" aria-labelledby="headingOne">
+    <div class="card-body">
+        <table class="table table-sm">
+            <thead>
+            <tr>
+                <th scope="col">Condition name</th>
+                <th scope="col">Details</th>
+            </tr>
+            </thead>
+            <tbody>
+
+                <tr class="table-danger">
+                    <td>
+                            <span>
+                                <i class="fas fa-bug"></i>
+                            </span>
+                        &nbsp;HTTP status 200
+                    </td>
+                    <td></td>
+                </tr>
+
+                <tr class="table-danger">
+                    <td>
+                            <span>
+                                <i class="fas fa-bug"></i>
+                            </span>
+                        &nbsp;path «accountId» is not empty
+                    </td>
+                    <td></td>
+                </tr>
+
+                <tr class="table-danger">
+                    <td>
+                            <span>
+                                <i class="fas fa-bug"></i>
+                            </span>
+                        &nbsp;only declared status
+                    </td>
+                    <td>No call - no statuses...</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-header">
+            <div class="row"
+                 data-toggle="collapse"
+                 data-target="#empty-2"
+                 aria-expanded="true"
+                 aria-controls="collapseOne">
+                <div class="col-1">
+        <span class="badge badge-dark">No call</span>
+                </div>
+                <div class="col-1">
+                        <button type="button" class="btn btn-sm">DELETE</button>
+                </div>
+                <div class="col-4">
+                    <span>/api/v1/admin/users/{id}</span>
+                </div>
+                <div class="col-2">
+                    0 calls
+                </div>
+                <div class="col-4">
+    <div class="row">
+        <div class="col-12">
+                0/3
+                (0%)
+            condition covered
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+
+
+
+        <div class="progress" style="height: 16px;">
+            <div
+                    class="progress-bar bg-danger" role="progressbar"
+                    style="width: 0%"
+                    aria-valuenow="0"
+                    aria-valuemin="0"
+                    aria-valuemax="3">
+            </div>
+
+        </div>
+        </div>
+    </div>
+                </div>
+            </div>
+        </div>
+        <div id="empty-2" class="collapse" aria-labelledby="headingOne">
+    <div class="card-body">
+        <table class="table table-sm">
+            <thead>
+            <tr>
+                <th scope="col">Condition name</th>
+                <th scope="col">Details</th>
+            </tr>
+            </thead>
+            <tbody>
+
+                <tr class="table-danger">
+                    <td>
+                            <span>
+                                <i class="fas fa-bug"></i>
+                            </span>
+                        &nbsp;HTTP status 200
+                    </td>
+                    <td></td>
+                </tr>
+
+                <tr class="table-danger">
+                    <td>
+                            <span>
+                                <i class="fas fa-bug"></i>
+                            </span>
+                        &nbsp;path «id» is not empty
+                    </td>
+                    <td></td>
+                </tr>
+
+                <tr class="table-danger">
+                    <td>
+                            <span>
+                                <i class="fas fa-bug"></i>
+                            </span>
+                        &nbsp;only declared status
+                    </td>
+                    <td>No call - no statuses...</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-header">
+            <div class="row"
+                 data-toggle="collapse"
+                 data-target="#empty-3"
+                 aria-expanded="true"
+                 aria-controls="collapseOne">
+                <div class="col-1">
+                <span class="badge badge-danger">Empty</span>
+                </div>
+                <div class="col-1">
+                        <button type="button" class="btn btn-sm">POST</button>
+                </div>
+                <div class="col-4">
+                    <span>/api/v1/accounts</span>
+                </div>
+                <div class="col-2">
+                    21 calls
+                </div>
+                <div class="col-4">
+    <div class="row">
+        <div class="col-12">
+                0/2
+                (0%)
+            condition covered
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+
+
+
+        <div class="progress" style="height: 16px;">
+            <div
+                    class="progress-bar bg-danger" role="progressbar"
+                    style="width: 0%"
+                    aria-valuenow="0"
+                    aria-valuemin="0"
+                    aria-valuemax="2">
+            </div>
+
+        </div>
+        </div>
+    </div>
+                </div>
+            </div>
+        </div>
+        <div id="empty-3" class="collapse" aria-labelledby="headingOne">
+    <div class="card-body">
+        <table class="table table-sm">
+            <thead>
+            <tr>
+                <th scope="col">Condition name</th>
+                <th scope="col">Details</th>
+            </tr>
+            </thead>
+            <tbody>
+
+                <tr class="table-danger">
+                    <td>
+                            <span>
+                                <i class="fas fa-bug"></i>
+                            </span>
+                        &nbsp;HTTP status 200
+                    </td>
+                    <td></td>
+                </tr>
+
+                <tr class="table-danger">
+                    <td>
+                            <span>
+                                <i class="fas fa-bug"></i>
+                            </span>
+                        &nbsp;only declared status
+                    </td>
+                    <td>Undeclared status: 201</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+        </div>
+    </div>
+    </div>
+                        </div>
+                        <div class="tab-pane fade" id="zero" role="tabpanel" aria-labelledby="zero-tab">
+    <div class="accordion" id="zero-accordion">
+    <div class="card">
+        <div class="card-header">
+            <div class="row"
+                 data-toggle="collapse"
+                 data-target="#zero-1"
+                 aria-expanded="true"
+                 aria-controls="collapseOne">
+                <div class="col-1">
+        <span class="badge badge-dark">No call</span>
+                </div>
+                <div class="col-1">
+                        <button type="button" class="btn btn-sm">GET</button>
+                </div>
+                <div class="col-4">
+                    <span>/api/v1/accounts/{accountId}/transactions</span>
+                </div>
+                <div class="col-2">
+                    0 calls
+                </div>
+                <div class="col-4">
+    <div class="row">
+        <div class="col-12">
+                0/3
+                (0%)
+            condition covered
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+
+
+
+        <div class="progress" style="height: 16px;">
+            <div
+                    class="progress-bar bg-danger" role="progressbar"
+                    style="width: 0%"
+                    aria-valuenow="0"
+                    aria-valuemin="0"
+                    aria-valuemax="3">
+            </div>
+
+        </div>
+        </div>
+    </div>
+                </div>
+            </div>
+        </div>
+        <div id="zero-1" class="collapse" aria-labelledby="headingOne">
+    <div class="card-body">
+        <table class="table table-sm">
+            <thead>
+            <tr>
+                <th scope="col">Condition name</th>
+                <th scope="col">Details</th>
+            </tr>
+            </thead>
+            <tbody>
+
+                <tr class="table-danger">
+                    <td>
+                            <span>
+                                <i class="fas fa-bug"></i>
+                            </span>
+                        &nbsp;HTTP status 200
+                    </td>
+                    <td></td>
+                </tr>
+
+                <tr class="table-danger">
+                    <td>
+                            <span>
+                                <i class="fas fa-bug"></i>
+                            </span>
+                        &nbsp;path «accountId» is not empty
+                    </td>
+                    <td></td>
+                </tr>
+
+                <tr class="table-danger">
+                    <td>
+                            <span>
+                                <i class="fas fa-bug"></i>
+                            </span>
+                        &nbsp;only declared status
+                    </td>
+                    <td>No call - no statuses...</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-header">
+            <div class="row"
+                 data-toggle="collapse"
+                 data-target="#zero-2"
+                 aria-expanded="true"
+                 aria-controls="collapseOne">
+                <div class="col-1">
+        <span class="badge badge-dark">No call</span>
+                </div>
+                <div class="col-1">
+                        <button type="button" class="btn btn-sm">DELETE</button>
+                </div>
+                <div class="col-4">
+                    <span>/api/v1/admin/users/{id}</span>
+                </div>
+                <div class="col-2">
+                    0 calls
+                </div>
+                <div class="col-4">
+    <div class="row">
+        <div class="col-12">
+                0/3
+                (0%)
+            condition covered
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+
+
+
+        <div class="progress" style="height: 16px;">
+            <div
+                    class="progress-bar bg-danger" role="progressbar"
+                    style="width: 0%"
+                    aria-valuenow="0"
+                    aria-valuemin="0"
+                    aria-valuemax="3">
+            </div>
+
+        </div>
+        </div>
+    </div>
+                </div>
+            </div>
+        </div>
+        <div id="zero-2" class="collapse" aria-labelledby="headingOne">
+    <div class="card-body">
+        <table class="table table-sm">
+            <thead>
+            <tr>
+                <th scope="col">Condition name</th>
+                <th scope="col">Details</th>
+            </tr>
+            </thead>
+            <tbody>
+
+                <tr class="table-danger">
+                    <td>
+                            <span>
+                                <i class="fas fa-bug"></i>
+                            </span>
+                        &nbsp;HTTP status 200
+                    </td>
+                    <td></td>
+                </tr>
+
+                <tr class="table-danger">
+                    <td>
+                            <span>
+                                <i class="fas fa-bug"></i>
+                            </span>
+                        &nbsp;path «id» is not empty
+                    </td>
+                    <td></td>
+                </tr>
+
+                <tr class="table-danger">
+                    <td>
+                            <span>
+                                <i class="fas fa-bug"></i>
+                            </span>
+                        &nbsp;only declared status
+                    </td>
+                    <td>No call - no statuses...</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+        </div>
+    </div>
+    </div>
+                        </div>
+                        <div class="tab-pane fade" id="missed" role="tabpanel" aria-labelledby="missed-tab">
+    <div class="accordion" id="missed-accordion">
+            No data
+    </div>
+                        </div>
+                        <div class="tab-pane fade" id="deprecated" role="tabpanel" aria-labelledby="deprecated-tab">
+    <div class="accordion" id="deprecated-accordion">
+            No data
+    </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="tag-section">
+            <div class="row">
+                <div class="col-12">
+                    <h2 class="title" id="tags">Tags details</h2>
+                </div>
+            </div>
+    <div class="accordion" id="tags-accordion">
+            <div class="card">
+                <div class="card-header">
+                    <div class="row"
+                         data-toggle="collapse"
+                         data-target="#tag-0"
+                         aria-expanded="true"
+                         aria-controls="collapseOne">
+                        <div class="col-4">
+                            <strong>Customer: Customer management endpoints</strong>
+                        </div>
+                        <div class="col-2">
+                            3 operations
+                        </div>
+                        <div class="col-2">
+                            19 calls
+                        </div>
+                        <div class="col-4">
+    <div class="row">
+        <div class="col-12">
+                7/7
+                (100%)
+            condition covered
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+
+
+
+        <div class="progress" style="height: 16px;">
+            <div
+                    class="progress-bar bg-success" role="progressbar"
+                    style="width: 100%"
+                    aria-valuenow="7"
+                    aria-valuemin="0"
+                    aria-valuemax="7">
+            </div>
+
+        </div>
+        </div>
+    </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="tag-0" class="collapse" aria-labelledby="headingOne">
+                    <div class="card-body">
+        <div class="card" style="margin-bottom: 16px;">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-sm">
+                        <div class="alert alert-success" role="alert">
+                            Full coverage: 100%
+                        </div>
+                    </div>
+                    <div class="col-sm">
+                        <div class="alert alert-warning" role="alert">
+                            Partial coverage: 0%
+                        </div>
+                    </div>
+                    <div class="col-sm">
+                        <div class="alert alert-danger" role="alert">
+                            Empty coverage: 0%
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <div class="progress" style="height: 16px;">
+                            <div
+                                    class="progress-bar bg-success" role="progressbar"
+                                    style="width: 100%"
+                                    aria-valuenow="3"
+                                    aria-valuemin="0"
+                                    aria-valuemax="3">
+                            </div>
+                            <div
+                                    class="progress-bar bg-warning" role="progressbar"
+                                    style="width: 0%"
+                                    aria-valuenow="0"
+                                    aria-valuemin="0"
+                                    aria-valuemax="3">
+                            </div>
+                            <div
+                                    class="progress-bar bg-danger" role="progressbar"
+                                    style="width: 0%"
+                                    aria-valuenow="0"
+                                    aria-valuemin="0"
+                                    aria-valuemax="3">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <div class="card">
+        <div class="card-header">
+            <div class="row"
+                 data-toggle="collapse"
+                 data-target="#tag-Customer-1"
+                 aria-expanded="true"
+                 aria-controls="collapseOne">
+                <div class="col-1">
+                <span class="badge badge-success">Full</span>
+                </div>
+                <div class="col-1">
+                        <button type="button" class="btn btn-sm">PUT</button>
+                </div>
+                <div class="col-4">
+                    <span>/api/v1/customer/profile</span>
+                </div>
+                <div class="col-2">
+                    1 calls
+                </div>
+                <div class="col-4">
+    <div class="row">
+        <div class="col-12">
+                3/3
+                (100%)
+            condition covered
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+
+
+
+        <div class="progress" style="height: 16px;">
+            <div
+                    class="progress-bar bg-success" role="progressbar"
+                    style="width: 100%"
+                    aria-valuenow="3"
+                    aria-valuemin="0"
+                    aria-valuemax="3">
+            </div>
+
+        </div>
+        </div>
+    </div>
+                </div>
+            </div>
+        </div>
+        <div id="tag-Customer-1" class="collapse" aria-labelledby="headingOne">
+    <div class="card-body">
+        <table class="table table-sm">
+            <thead>
+            <tr>
+                <th scope="col">Condition name</th>
+                <th scope="col">Details</th>
+            </tr>
+            </thead>
+            <tbody>
+
+                <tr class="table-success">
+                    <td>
+                            <span>
+                                <i class="fas fa-check"></i>
+                            </span>
+                        &nbsp;HTTP status 200
+                    </td>
+                    <td></td>
+                </tr>
+
+                <tr class="table-success">
+                    <td>
+                            <span>
+                                <i class="fas fa-check"></i>
+                            </span>
+                        &nbsp;not empty body request
+                    </td>
+                    <td></td>
+                </tr>
+
+                <tr class="table-success">
+                    <td>
+                            <span>
+                                <i class="fas fa-check"></i>
+                            </span>
+                        &nbsp;only declared status
+                    </td>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-header">
+            <div class="row"
+                 data-toggle="collapse"
+                 data-target="#tag-Customer-2"
+                 aria-expanded="true"
+                 aria-controls="collapseOne">
+                <div class="col-1">
+                <span class="badge badge-success">Full</span>
+                </div>
+                <div class="col-1">
+                        <button type="button" class="btn btn-sm">GET</button>
+                </div>
+                <div class="col-4">
+                    <span>/api/v1/customer/accounts</span>
+                </div>
+                <div class="col-2">
+                    15 calls
+                </div>
+                <div class="col-4">
+    <div class="row">
+        <div class="col-12">
+                2/2
+                (100%)
+            condition covered
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+
+
+
+        <div class="progress" style="height: 16px;">
+            <div
+                    class="progress-bar bg-success" role="progressbar"
+                    style="width: 100%"
+                    aria-valuenow="2"
+                    aria-valuemin="0"
+                    aria-valuemax="2">
+            </div>
+
+        </div>
+        </div>
+    </div>
+                </div>
+            </div>
+        </div>
+        <div id="tag-Customer-2" class="collapse" aria-labelledby="headingOne">
+    <div class="card-body">
+        <table class="table table-sm">
+            <thead>
+            <tr>
+                <th scope="col">Condition name</th>
+                <th scope="col">Details</th>
+            </tr>
+            </thead>
+            <tbody>
+
+                <tr class="table-success">
+                    <td>
+                            <span>
+                                <i class="fas fa-check"></i>
+                            </span>
+                        &nbsp;HTTP status 200
+                    </td>
+                    <td></td>
+                </tr>
+
+                <tr class="table-success">
+                    <td>
+                            <span>
+                                <i class="fas fa-check"></i>
+                            </span>
+                        &nbsp;only declared status
+                    </td>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-header">
+            <div class="row"
+                 data-toggle="collapse"
+                 data-target="#tag-Customer-3"
+                 aria-expanded="true"
+                 aria-controls="collapseOne">
+                <div class="col-1">
+                <span class="badge badge-success">Full</span>
+                </div>
+                <div class="col-1">
+                        <button type="button" class="btn btn-sm">GET</button>
+                </div>
+                <div class="col-4">
+                    <span>/api/v1/customer/profile</span>
+                </div>
+                <div class="col-2">
+                    3 calls
+                </div>
+                <div class="col-4">
+    <div class="row">
+        <div class="col-12">
+                2/2
+                (100%)
+            condition covered
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+
+
+
+        <div class="progress" style="height: 16px;">
+            <div
+                    class="progress-bar bg-success" role="progressbar"
+                    style="width: 100%"
+                    aria-valuenow="2"
+                    aria-valuemin="0"
+                    aria-valuemax="2">
+            </div>
+
+        </div>
+        </div>
+    </div>
+                </div>
+            </div>
+        </div>
+        <div id="tag-Customer-3" class="collapse" aria-labelledby="headingOne">
+    <div class="card-body">
+        <table class="table table-sm">
+            <thead>
+            <tr>
+                <th scope="col">Condition name</th>
+                <th scope="col">Details</th>
+            </tr>
+            </thead>
+            <tbody>
+
+                <tr class="table-success">
+                    <td>
+                            <span>
+                                <i class="fas fa-check"></i>
+                            </span>
+                        &nbsp;HTTP status 200
+                    </td>
+                    <td></td>
+                </tr>
+
+                <tr class="table-success">
+                    <td>
+                            <span>
+                                <i class="fas fa-check"></i>
+                            </span>
+                        &nbsp;only declared status
+                    </td>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+        </div>
+    </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-header">
+                    <div class="row"
+                         data-toggle="collapse"
+                         data-target="#tag-1"
+                         aria-expanded="true"
+                         aria-controls="collapseOne">
+                        <div class="col-4">
+                            <strong>Authentication: User authentication endpoints</strong>
+                        </div>
+                        <div class="col-2">
+                            1 operations
+                        </div>
+                        <div class="col-2">
+                            22 calls
+                        </div>
+                        <div class="col-4">
+    <div class="row">
+        <div class="col-12">
+                3/3
+                (100%)
+            condition covered
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+
+
+
+        <div class="progress" style="height: 16px;">
+            <div
+                    class="progress-bar bg-success" role="progressbar"
+                    style="width: 100%"
+                    aria-valuenow="3"
+                    aria-valuemin="0"
+                    aria-valuemax="3">
+            </div>
+
+        </div>
+        </div>
+    </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="tag-1" class="collapse" aria-labelledby="headingOne">
+                    <div class="card-body">
+        <div class="card" style="margin-bottom: 16px;">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-sm">
+                        <div class="alert alert-success" role="alert">
+                            Full coverage: 100%
+                        </div>
+                    </div>
+                    <div class="col-sm">
+                        <div class="alert alert-warning" role="alert">
+                            Partial coverage: 0%
+                        </div>
+                    </div>
+                    <div class="col-sm">
+                        <div class="alert alert-danger" role="alert">
+                            Empty coverage: 0%
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <div class="progress" style="height: 16px;">
+                            <div
+                                    class="progress-bar bg-success" role="progressbar"
+                                    style="width: 100%"
+                                    aria-valuenow="1"
+                                    aria-valuemin="0"
+                                    aria-valuemax="1">
+                            </div>
+                            <div
+                                    class="progress-bar bg-warning" role="progressbar"
+                                    style="width: 0%"
+                                    aria-valuenow="0"
+                                    aria-valuemin="0"
+                                    aria-valuemax="1">
+                            </div>
+                            <div
+                                    class="progress-bar bg-danger" role="progressbar"
+                                    style="width: 0%"
+                                    aria-valuenow="0"
+                                    aria-valuemin="0"
+                                    aria-valuemax="1">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <div class="card">
+        <div class="card-header">
+            <div class="row"
+                 data-toggle="collapse"
+                 data-target="#tag-Authentication-1"
+                 aria-expanded="true"
+                 aria-controls="collapseOne">
+                <div class="col-1">
+                <span class="badge badge-success">Full</span>
+                </div>
+                <div class="col-1">
+                        <button type="button" class="btn btn-sm">POST</button>
+                </div>
+                <div class="col-4">
+                    <span>/api/v1/auth/login</span>
+                </div>
+                <div class="col-2">
+                    22 calls
+                </div>
+                <div class="col-4">
+    <div class="row">
+        <div class="col-12">
+                3/3
+                (100%)
+            condition covered
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+
+
+
+        <div class="progress" style="height: 16px;">
+            <div
+                    class="progress-bar bg-success" role="progressbar"
+                    style="width: 100%"
+                    aria-valuenow="3"
+                    aria-valuemin="0"
+                    aria-valuemax="3">
+            </div>
+
+        </div>
+        </div>
+    </div>
+                </div>
+            </div>
+        </div>
+        <div id="tag-Authentication-1" class="collapse" aria-labelledby="headingOne">
+    <div class="card-body">
+        <table class="table table-sm">
+            <thead>
+            <tr>
+                <th scope="col">Condition name</th>
+                <th scope="col">Details</th>
+            </tr>
+            </thead>
+            <tbody>
+
+                <tr class="table-success">
+                    <td>
+                            <span>
+                                <i class="fas fa-check"></i>
+                            </span>
+                        &nbsp;HTTP status 200
+                    </td>
+                    <td></td>
+                </tr>
+
+                <tr class="table-success">
+                    <td>
+                            <span>
+                                <i class="fas fa-check"></i>
+                            </span>
+                        &nbsp;not empty body request
+                    </td>
+                    <td></td>
+                </tr>
+
+                <tr class="table-success">
+                    <td>
+                            <span>
+                                <i class="fas fa-check"></i>
+                            </span>
+                        &nbsp;only declared status
+                    </td>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+        </div>
+    </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-header">
+                    <div class="row"
+                         data-toggle="collapse"
+                         data-target="#tag-2"
+                         aria-expanded="true"
+                         aria-controls="collapseOne">
+                        <div class="col-4">
+                            <strong>Admin: Admin management endpoints</strong>
+                        </div>
+                        <div class="col-2">
+                            3 operations
+                        </div>
+                        <div class="col-2">
+                            74 calls
+                        </div>
+                        <div class="col-4">
+    <div class="row">
+        <div class="col-12">
+                3/8
+                (37.5%)
+            condition covered
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+
+
+
+        <div class="progress" style="height: 16px;">
+            <div
+                    class="progress-bar bg-warning" role="progressbar"
+                    style="width: 37.5%"
+                    aria-valuenow="3"
+                    aria-valuemin="0"
+                    aria-valuemax="8">
+            </div>
+
+        </div>
+        </div>
+    </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="tag-2" class="collapse" aria-labelledby="headingOne">
+                    <div class="card-body">
+        <div class="card" style="margin-bottom: 16px;">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-sm">
+                        <div class="alert alert-success" role="alert">
+                            Full coverage: 33.333%
+                        </div>
+                    </div>
+                    <div class="col-sm">
+                        <div class="alert alert-warning" role="alert">
+                            Partial coverage: 33.333%
+                        </div>
+                    </div>
+                    <div class="col-sm">
+                        <div class="alert alert-danger" role="alert">
+                            Empty coverage: 33.333%
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <div class="progress" style="height: 16px;">
+                            <div
+                                    class="progress-bar bg-success" role="progressbar"
+                                    style="width: 33.333333333333%"
+                                    aria-valuenow="1"
+                                    aria-valuemin="0"
+                                    aria-valuemax="3">
+                            </div>
+                            <div
+                                    class="progress-bar bg-warning" role="progressbar"
+                                    style="width: 33.333333333333%"
+                                    aria-valuenow="1"
+                                    aria-valuemin="0"
+                                    aria-valuemax="3">
+                            </div>
+                            <div
+                                    class="progress-bar bg-danger" role="progressbar"
+                                    style="width: 33.333333333333%"
+                                    aria-valuenow="1"
+                                    aria-valuemin="0"
+                                    aria-valuemax="3">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <div class="card">
+        <div class="card-header">
+            <div class="row"
+                 data-toggle="collapse"
+                 data-target="#tag-Admin-1"
+                 aria-expanded="true"
+                 aria-controls="collapseOne">
+                <div class="col-1">
+                <span class="badge badge-success">Full</span>
+                </div>
+                <div class="col-1">
+                        <button type="button" class="btn btn-sm">GET</button>
+                </div>
+                <div class="col-4">
+                    <span>/api/v1/admin/users</span>
+                </div>
+                <div class="col-2">
+                    40 calls
+                </div>
+                <div class="col-4">
+    <div class="row">
+        <div class="col-12">
+                2/2
+                (100%)
+            condition covered
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+
+
+
+        <div class="progress" style="height: 16px;">
+            <div
+                    class="progress-bar bg-success" role="progressbar"
+                    style="width: 100%"
+                    aria-valuenow="2"
+                    aria-valuemin="0"
+                    aria-valuemax="2">
+            </div>
+
+        </div>
+        </div>
+    </div>
+                </div>
+            </div>
+        </div>
+        <div id="tag-Admin-1" class="collapse" aria-labelledby="headingOne">
+    <div class="card-body">
+        <table class="table table-sm">
+            <thead>
+            <tr>
+                <th scope="col">Condition name</th>
+                <th scope="col">Details</th>
+            </tr>
+            </thead>
+            <tbody>
+
+                <tr class="table-success">
+                    <td>
+                            <span>
+                                <i class="fas fa-check"></i>
+                            </span>
+                        &nbsp;HTTP status 200
+                    </td>
+                    <td></td>
+                </tr>
+
+                <tr class="table-success">
+                    <td>
+                            <span>
+                                <i class="fas fa-check"></i>
+                            </span>
+                        &nbsp;only declared status
+                    </td>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-header">
+            <div class="row"
+                 data-toggle="collapse"
+                 data-target="#tag-Admin-2"
+                 aria-expanded="true"
+                 aria-controls="collapseOne">
+                <div class="col-1">
+        <span class="badge badge-dark">No call</span>
+                </div>
+                <div class="col-1">
+                        <button type="button" class="btn btn-sm">DELETE</button>
+                </div>
+                <div class="col-4">
+                    <span>/api/v1/admin/users/{id}</span>
+                </div>
+                <div class="col-2">
+                    0 calls
+                </div>
+                <div class="col-4">
+    <div class="row">
+        <div class="col-12">
+                0/3
+                (0%)
+            condition covered
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+
+
+
+        <div class="progress" style="height: 16px;">
+            <div
+                    class="progress-bar bg-danger" role="progressbar"
+                    style="width: 0%"
+                    aria-valuenow="0"
+                    aria-valuemin="0"
+                    aria-valuemax="3">
+            </div>
+
+        </div>
+        </div>
+    </div>
+                </div>
+            </div>
+        </div>
+        <div id="tag-Admin-2" class="collapse" aria-labelledby="headingOne">
+    <div class="card-body">
+        <table class="table table-sm">
+            <thead>
+            <tr>
+                <th scope="col">Condition name</th>
+                <th scope="col">Details</th>
+            </tr>
+            </thead>
+            <tbody>
+
+                <tr class="table-danger">
+                    <td>
+                            <span>
+                                <i class="fas fa-bug"></i>
+                            </span>
+                        &nbsp;HTTP status 200
+                    </td>
+                    <td></td>
+                </tr>
+
+                <tr class="table-danger">
+                    <td>
+                            <span>
+                                <i class="fas fa-bug"></i>
+                            </span>
+                        &nbsp;path «id» is not empty
+                    </td>
+                    <td></td>
+                </tr>
+
+                <tr class="table-danger">
+                    <td>
+                            <span>
+                                <i class="fas fa-bug"></i>
+                            </span>
+                        &nbsp;only declared status
+                    </td>
+                    <td>No call - no statuses...</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-header">
+            <div class="row"
+                 data-toggle="collapse"
+                 data-target="#tag-Admin-3"
+                 aria-expanded="true"
+                 aria-controls="collapseOne">
+                <div class="col-1">
+                <span class="badge badge-warning">Partial</span>
+                </div>
+                <div class="col-1">
+                        <button type="button" class="btn btn-sm">POST</button>
+                </div>
+                <div class="col-4">
+                    <span>/api/v1/admin/users</span>
+                </div>
+                <div class="col-2">
+                    34 calls
+                </div>
+                <div class="col-4">
+    <div class="row">
+        <div class="col-12">
+                1/3
+                (33.333%)
+            condition covered
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+
+
+
+        <div class="progress" style="height: 16px;">
+            <div
+                    class="progress-bar bg-warning" role="progressbar"
+                    style="width: 33.333333333333%"
+                    aria-valuenow="1"
+                    aria-valuemin="0"
+                    aria-valuemax="3">
+            </div>
+
+        </div>
+        </div>
+    </div>
+                </div>
+            </div>
+        </div>
+        <div id="tag-Admin-3" class="collapse" aria-labelledby="headingOne">
+    <div class="card-body">
+        <table class="table table-sm">
+            <thead>
+            <tr>
+                <th scope="col">Condition name</th>
+                <th scope="col">Details</th>
+            </tr>
+            </thead>
+            <tbody>
+
+                <tr class="table-danger">
+                    <td>
+                            <span>
+                                <i class="fas fa-bug"></i>
+                            </span>
+                        &nbsp;HTTP status 200
+                    </td>
+                    <td></td>
+                </tr>
+
+                <tr class="table-success">
+                    <td>
+                            <span>
+                                <i class="fas fa-check"></i>
+                            </span>
+                        &nbsp;not empty body request
+                    </td>
+                    <td></td>
+                </tr>
+
+                <tr class="table-danger">
+                    <td>
+                            <span>
+                                <i class="fas fa-bug"></i>
+                            </span>
+                        &nbsp;only declared status
+                    </td>
+                    <td>Undeclared status: 201,400</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+        </div>
+    </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-header">
+                    <div class="row"
+                         data-toggle="collapse"
+                         data-target="#tag-3"
+                         aria-expanded="true"
+                         aria-controls="collapseOne">
+                        <div class="col-4">
+                            <strong>Accounts: Manage user accounts</strong>
+                        </div>
+                        <div class="col-2">
+                            4 operations
+                        </div>
+                        <div class="col-2">
+                            33 calls
+                        </div>
+                        <div class="col-4">
+    <div class="row">
+        <div class="col-12">
+                4/11
+                (36.364%)
+            condition covered
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+
+
+
+        <div class="progress" style="height: 16px;">
+            <div
+                    class="progress-bar bg-warning" role="progressbar"
+                    style="width: 36.363636363636%"
+                    aria-valuenow="4"
+                    aria-valuemin="0"
+                    aria-valuemax="11">
+            </div>
+
+        </div>
+        </div>
+    </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="tag-3" class="collapse" aria-labelledby="headingOne">
+                    <div class="card-body">
+        <div class="card" style="margin-bottom: 16px;">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-sm">
+                        <div class="alert alert-success" role="alert">
+                            Full coverage: 0%
+                        </div>
+                    </div>
+                    <div class="col-sm">
+                        <div class="alert alert-warning" role="alert">
+                            Partial coverage: 50%
+                        </div>
+                    </div>
+                    <div class="col-sm">
+                        <div class="alert alert-danger" role="alert">
+                            Empty coverage: 50%
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <div class="progress" style="height: 16px;">
+                            <div
+                                    class="progress-bar bg-success" role="progressbar"
+                                    style="width: 0%"
+                                    aria-valuenow="0"
+                                    aria-valuemin="0"
+                                    aria-valuemax="4">
+                            </div>
+                            <div
+                                    class="progress-bar bg-warning" role="progressbar"
+                                    style="width: 50%"
+                                    aria-valuenow="2"
+                                    aria-valuemin="0"
+                                    aria-valuemax="4">
+                            </div>
+                            <div
+                                    class="progress-bar bg-danger" role="progressbar"
+                                    style="width: 50%"
+                                    aria-valuenow="2"
+                                    aria-valuemin="0"
+                                    aria-valuemax="4">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <div class="card">
+        <div class="card-header">
+            <div class="row"
+                 data-toggle="collapse"
+                 data-target="#tag-Accounts-1"
+                 aria-expanded="true"
+                 aria-controls="collapseOne">
+                <div class="col-1">
+                <span class="badge badge-danger">Empty</span>
+                </div>
+                <div class="col-1">
+                        <button type="button" class="btn btn-sm">POST</button>
+                </div>
+                <div class="col-4">
+                    <span>/api/v1/accounts</span>
+                </div>
+                <div class="col-2">
+                    21 calls
+                </div>
+                <div class="col-4">
+    <div class="row">
+        <div class="col-12">
+                0/2
+                (0%)
+            condition covered
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+
+
+
+        <div class="progress" style="height: 16px;">
+            <div
+                    class="progress-bar bg-danger" role="progressbar"
+                    style="width: 0%"
+                    aria-valuenow="0"
+                    aria-valuemin="0"
+                    aria-valuemax="2">
+            </div>
+
+        </div>
+        </div>
+    </div>
+                </div>
+            </div>
+        </div>
+        <div id="tag-Accounts-1" class="collapse" aria-labelledby="headingOne">
+    <div class="card-body">
+        <table class="table table-sm">
+            <thead>
+            <tr>
+                <th scope="col">Condition name</th>
+                <th scope="col">Details</th>
+            </tr>
+            </thead>
+            <tbody>
+
+                <tr class="table-danger">
+                    <td>
+                            <span>
+                                <i class="fas fa-bug"></i>
+                            </span>
+                        &nbsp;HTTP status 200
+                    </td>
+                    <td></td>
+                </tr>
+
+                <tr class="table-danger">
+                    <td>
+                            <span>
+                                <i class="fas fa-bug"></i>
+                            </span>
+                        &nbsp;only declared status
+                    </td>
+                    <td>Undeclared status: 201</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-header">
+            <div class="row"
+                 data-toggle="collapse"
+                 data-target="#tag-Accounts-2"
+                 aria-expanded="true"
+                 aria-controls="collapseOne">
+                <div class="col-1">
+                <span class="badge badge-warning">Partial</span>
+                </div>
+                <div class="col-1">
+                        <button type="button" class="btn btn-sm">POST</button>
+                </div>
+                <div class="col-4">
+                    <span>/api/v1/accounts/transfer</span>
+                </div>
+                <div class="col-2">
+                    2 calls
+                </div>
+                <div class="col-4">
+    <div class="row">
+        <div class="col-12">
+                2/3
+                (66.667%)
+            condition covered
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+
+
+
+        <div class="progress" style="height: 16px;">
+            <div
+                    class="progress-bar bg-success" role="progressbar"
+                    style="width: 66.666666666667%"
+                    aria-valuenow="2"
+                    aria-valuemin="0"
+                    aria-valuemax="3">
+            </div>
+
+        </div>
+        </div>
+    </div>
+                </div>
+            </div>
+        </div>
+        <div id="tag-Accounts-2" class="collapse" aria-labelledby="headingOne">
+    <div class="card-body">
+        <table class="table table-sm">
+            <thead>
+            <tr>
+                <th scope="col">Condition name</th>
+                <th scope="col">Details</th>
+            </tr>
+            </thead>
+            <tbody>
+
+                <tr class="table-success">
+                    <td>
+                            <span>
+                                <i class="fas fa-check"></i>
+                            </span>
+                        &nbsp;HTTP status 200
+                    </td>
+                    <td></td>
+                </tr>
+
+                <tr class="table-success">
+                    <td>
+                            <span>
+                                <i class="fas fa-check"></i>
+                            </span>
+                        &nbsp;not empty body request
+                    </td>
+                    <td></td>
+                </tr>
+
+                <tr class="table-danger">
+                    <td>
+                            <span>
+                                <i class="fas fa-bug"></i>
+                            </span>
+                        &nbsp;only declared status
+                    </td>
+                    <td>Undeclared status: 400</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-header">
+            <div class="row"
+                 data-toggle="collapse"
+                 data-target="#tag-Accounts-3"
+                 aria-expanded="true"
+                 aria-controls="collapseOne">
+                <div class="col-1">
+        <span class="badge badge-dark">No call</span>
+                </div>
+                <div class="col-1">
+                        <button type="button" class="btn btn-sm">GET</button>
+                </div>
+                <div class="col-4">
+                    <span>/api/v1/accounts/{accountId}/transactions</span>
+                </div>
+                <div class="col-2">
+                    0 calls
+                </div>
+                <div class="col-4">
+    <div class="row">
+        <div class="col-12">
+                0/3
+                (0%)
+            condition covered
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+
+
+
+        <div class="progress" style="height: 16px;">
+            <div
+                    class="progress-bar bg-danger" role="progressbar"
+                    style="width: 0%"
+                    aria-valuenow="0"
+                    aria-valuemin="0"
+                    aria-valuemax="3">
+            </div>
+
+        </div>
+        </div>
+    </div>
+                </div>
+            </div>
+        </div>
+        <div id="tag-Accounts-3" class="collapse" aria-labelledby="headingOne">
+    <div class="card-body">
+        <table class="table table-sm">
+            <thead>
+            <tr>
+                <th scope="col">Condition name</th>
+                <th scope="col">Details</th>
+            </tr>
+            </thead>
+            <tbody>
+
+                <tr class="table-danger">
+                    <td>
+                            <span>
+                                <i class="fas fa-bug"></i>
+                            </span>
+                        &nbsp;HTTP status 200
+                    </td>
+                    <td></td>
+                </tr>
+
+                <tr class="table-danger">
+                    <td>
+                            <span>
+                                <i class="fas fa-bug"></i>
+                            </span>
+                        &nbsp;path «accountId» is not empty
+                    </td>
+                    <td></td>
+                </tr>
+
+                <tr class="table-danger">
+                    <td>
+                            <span>
+                                <i class="fas fa-bug"></i>
+                            </span>
+                        &nbsp;only declared status
+                    </td>
+                    <td>No call - no statuses...</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-header">
+            <div class="row"
+                 data-toggle="collapse"
+                 data-target="#tag-Accounts-4"
+                 aria-expanded="true"
+                 aria-controls="collapseOne">
+                <div class="col-1">
+                <span class="badge badge-warning">Partial</span>
+                </div>
+                <div class="col-1">
+                        <button type="button" class="btn btn-sm">POST</button>
+                </div>
+                <div class="col-4">
+                    <span>/api/v1/accounts/deposit</span>
+                </div>
+                <div class="col-2">
+                    10 calls
+                </div>
+                <div class="col-4">
+    <div class="row">
+        <div class="col-12">
+                2/3
+                (66.667%)
+            condition covered
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+
+
+
+        <div class="progress" style="height: 16px;">
+            <div
+                    class="progress-bar bg-success" role="progressbar"
+                    style="width: 66.666666666667%"
+                    aria-valuenow="2"
+                    aria-valuemin="0"
+                    aria-valuemax="3">
+            </div>
+
+        </div>
+        </div>
+    </div>
+                </div>
+            </div>
+        </div>
+        <div id="tag-Accounts-4" class="collapse" aria-labelledby="headingOne">
+    <div class="card-body">
+        <table class="table table-sm">
+            <thead>
+            <tr>
+                <th scope="col">Condition name</th>
+                <th scope="col">Details</th>
+            </tr>
+            </thead>
+            <tbody>
+
+                <tr class="table-success">
+                    <td>
+                            <span>
+                                <i class="fas fa-check"></i>
+                            </span>
+                        &nbsp;HTTP status 200
+                    </td>
+                    <td></td>
+                </tr>
+
+                <tr class="table-success">
+                    <td>
+                            <span>
+                                <i class="fas fa-check"></i>
+                            </span>
+                        &nbsp;not empty body request
+                    </td>
+                    <td></td>
+                </tr>
+
+                <tr class="table-danger">
+                    <td>
+                            <span>
+                                <i class="fas fa-bug"></i>
+                            </span>
+                        &nbsp;only declared status
+                    </td>
+                    <td>Undeclared status: 400</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+        </div>
+    </div>
+                    </div>
+                </div>
+            </div>
+    </div>
+        </section>
+
+        <section id="condition-section">
+            <div class="row">
+                <div class="col-12">
+                    <h2 class="title" id="conditions">Conditions details</h2>
+                </div>
+            </div>
+            <div class="row">
+                <div class="accordion col-12" id="conditions-by-type-accordion">
+                        <div class="card">
+                            <div class="card-header">
+                                <div class="row"
+                                     data-toggle="collapse"
+                                     data-target="#conditions-by-type-0"
+                                     aria-expanded="true"
+                                     aria-controls="collapseOne">
+                                    <div class="col-8">
+                                        <p><strong>Response Status</strong></p>
+                                        <small>Check that there is an answer with the http status described in responses</small>
+                                    </div>
+                                    <div class="col-4">
+    <div class="row">
+        <div class="col-12">
+                7/11
+                (63.636%)
+            condition covered
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+
+
+
+        <div class="progress" style="height: 16px;">
+            <div
+                    class="progress-bar bg-warning" role="progressbar"
+                    style="width: 63.636363636364%"
+                    aria-valuenow="7"
+                    aria-valuemin="0"
+                    aria-valuemax="11">
+            </div>
+
+        </div>
+        </div>
+    </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="conditions-by-type-0" class="collapse" aria-labelledby="headingOne">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <ul class="nav nav-pills nav-fill" id="condition-tabs-0" role="tablist">
+                                                <li class="nav-item">
+                                                    <a class="nav-link active" id="tab-condition-covered-0" data-toggle="tab" href="#condition-covered-0" role="tab"
+                                                       aria-controls="condition-covered-0" aria-selected="true">
+                                                        Covered: 7
+                                                    </a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a class="nav-link" id="tab-condition-uncovered-0" data-toggle="tab" href="#condition-uncovered-0" role="tab"
+                                                       aria-controls="condition-uncovered-0" aria-selected="true">
+                                                        Uncovered: 4
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <br>
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <div class="tab-content" id="details-content-0">
+                                                <div class="tab-pane fade show active" id="condition-covered-0" role="tabpanel" aria-labelledby="tab-condition-covered-0">
+                                                    <table class="table table-sm">
+                                                        <thead>
+                                                        <tr>
+                                                            <th scope="col">Operation name</th>
+                                                            <th scope="col">Condition namee</th>
+                                                            <th scope="col">Details</th>
+                                                        </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr class="table-success">
+                                                                <td>
+                                                                    <span>
+                                                                        <i class="fas fa-check"></i>
+                                                                    </span>
+                                                                    &nbsp;/api/v1/accounts/deposit POST
+                                                                </td>
+                                                                <td>HTTP status 200</td>
+                                                                <td></td>
+                                                            </tr>
+                                                            <tr class="table-success">
+                                                                <td>
+                                                                    <span>
+                                                                        <i class="fas fa-check"></i>
+                                                                    </span>
+                                                                    &nbsp;/api/v1/accounts/transfer POST
+                                                                </td>
+                                                                <td>HTTP status 200</td>
+                                                                <td></td>
+                                                            </tr>
+                                                            <tr class="table-success">
+                                                                <td>
+                                                                    <span>
+                                                                        <i class="fas fa-check"></i>
+                                                                    </span>
+                                                                    &nbsp;/api/v1/admin/users GET
+                                                                </td>
+                                                                <td>HTTP status 200</td>
+                                                                <td></td>
+                                                            </tr>
+                                                            <tr class="table-success">
+                                                                <td>
+                                                                    <span>
+                                                                        <i class="fas fa-check"></i>
+                                                                    </span>
+                                                                    &nbsp;/api/v1/auth/login POST
+                                                                </td>
+                                                                <td>HTTP status 200</td>
+                                                                <td></td>
+                                                            </tr>
+                                                            <tr class="table-success">
+                                                                <td>
+                                                                    <span>
+                                                                        <i class="fas fa-check"></i>
+                                                                    </span>
+                                                                    &nbsp;/api/v1/customer/accounts GET
+                                                                </td>
+                                                                <td>HTTP status 200</td>
+                                                                <td></td>
+                                                            </tr>
+                                                            <tr class="table-success">
+                                                                <td>
+                                                                    <span>
+                                                                        <i class="fas fa-check"></i>
+                                                                    </span>
+                                                                    &nbsp;/api/v1/customer/profile GET
+                                                                </td>
+                                                                <td>HTTP status 200</td>
+                                                                <td></td>
+                                                            </tr>
+                                                            <tr class="table-success">
+                                                                <td>
+                                                                    <span>
+                                                                        <i class="fas fa-check"></i>
+                                                                    </span>
+                                                                    &nbsp;/api/v1/customer/profile PUT
+                                                                </td>
+                                                                <td>HTTP status 200</td>
+                                                                <td></td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                                <div class="tab-pane fade" id="condition-uncovered-0" role="tabpanel" aria-labelledby="tab-condition-uncovered-0">
+                                                    <table class="table table-sm">
+                                                        <thead>
+                                                        <tr>
+                                                            <th scope="col">Operation name</th>
+                                                            <th scope="col">Condition namee</th>
+                                                            <th scope="col">Details</th>
+                                                        </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr class="table-danger">
+                                                                <td>
+                                                                    <span>
+                                                                        <i class="fas fa-bug"></i>
+                                                                    </span>
+                                                                    &nbsp;/api/v1/accounts POST
+                                                                </td>
+                                                                <td>HTTP status 200</td>
+                                                                <td></td>
+                                                            </tr>
+                                                            <tr class="table-danger">
+                                                                <td>
+                                                                    <span>
+                                                                        <i class="fas fa-bug"></i>
+                                                                    </span>
+                                                                    &nbsp;/api/v1/accounts/{accountId}/transactions GET
+                                                                </td>
+                                                                <td>HTTP status 200</td>
+                                                                <td></td>
+                                                            </tr>
+                                                            <tr class="table-danger">
+                                                                <td>
+                                                                    <span>
+                                                                        <i class="fas fa-bug"></i>
+                                                                    </span>
+                                                                    &nbsp;/api/v1/admin/users POST
+                                                                </td>
+                                                                <td>HTTP status 200</td>
+                                                                <td></td>
+                                                            </tr>
+                                                            <tr class="table-danger">
+                                                                <td>
+                                                                    <span>
+                                                                        <i class="fas fa-bug"></i>
+                                                                    </span>
+                                                                    &nbsp;/api/v1/admin/users/{id} DELETE
+                                                                </td>
+                                                                <td>HTTP status 200</td>
+                                                                <td></td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-header">
+                                <div class="row"
+                                     data-toggle="collapse"
+                                     data-target="#conditions-by-type-1"
+                                     aria-expanded="true"
+                                     aria-controls="collapseOne">
+                                    <div class="col-8">
+                                        <p><strong>Check parameter value</strong></p>
+                                        <small>Check that the parameter is empty or not empty</small>
+                                    </div>
+                                    <div class="col-4">
+    <div class="row">
+        <div class="col-12">
+                0/2
+                (0%)
+            condition covered
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+
+
+
+        <div class="progress" style="height: 16px;">
+            <div
+                    class="progress-bar bg-danger" role="progressbar"
+                    style="width: 0%"
+                    aria-valuenow="0"
+                    aria-valuemin="0"
+                    aria-valuemax="2">
+            </div>
+
+        </div>
+        </div>
+    </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="conditions-by-type-1" class="collapse" aria-labelledby="headingOne">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <ul class="nav nav-pills nav-fill" id="condition-tabs-1" role="tablist">
+                                                <li class="nav-item">
+                                                    <a class="nav-link active" id="tab-condition-covered-1" data-toggle="tab" href="#condition-covered-1" role="tab"
+                                                       aria-controls="condition-covered-1" aria-selected="true">
+                                                        Covered: 0
+                                                    </a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a class="nav-link" id="tab-condition-uncovered-1" data-toggle="tab" href="#condition-uncovered-1" role="tab"
+                                                       aria-controls="condition-uncovered-1" aria-selected="true">
+                                                        Uncovered: 2
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <br>
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <div class="tab-content" id="details-content-1">
+                                                <div class="tab-pane fade show active" id="condition-covered-1" role="tabpanel" aria-labelledby="tab-condition-covered-1">
+                                                    <table class="table table-sm">
+                                                        <thead>
+                                                        <tr>
+                                                            <th scope="col">Operation name</th>
+                                                            <th scope="col">Condition namee</th>
+                                                            <th scope="col">Details</th>
+                                                        </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                                <div class="tab-pane fade" id="condition-uncovered-1" role="tabpanel" aria-labelledby="tab-condition-uncovered-1">
+                                                    <table class="table table-sm">
+                                                        <thead>
+                                                        <tr>
+                                                            <th scope="col">Operation name</th>
+                                                            <th scope="col">Condition namee</th>
+                                                            <th scope="col">Details</th>
+                                                        </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr class="table-danger">
+                                                                <td>
+                                                                    <span>
+                                                                        <i class="fas fa-bug"></i>
+                                                                    </span>
+                                                                    &nbsp;/api/v1/accounts/{accountId}/transactions GET
+                                                                </td>
+                                                                <td>path «accountId» is not empty</td>
+                                                                <td></td>
+                                                            </tr>
+                                                            <tr class="table-danger">
+                                                                <td>
+                                                                    <span>
+                                                                        <i class="fas fa-bug"></i>
+                                                                    </span>
+                                                                    &nbsp;/api/v1/admin/users/{id} DELETE
+                                                                </td>
+                                                                <td>path «id» is not empty</td>
+                                                                <td></td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-header">
+                                <div class="row"
+                                     data-toggle="collapse"
+                                     data-target="#conditions-by-type-2"
+                                     aria-expanded="true"
+                                     aria-controls="collapseOne">
+                                    <div class="col-8">
+                                        <p><strong>Only the described statuses</strong></p>
+                                        <small>Check that no status was received that was not described</small>
+                                    </div>
+                                    <div class="col-4">
+    <div class="row">
+        <div class="col-12">
+                5/11
+                (45.455%)
+            condition covered
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+
+
+
+        <div class="progress" style="height: 16px;">
+            <div
+                    class="progress-bar bg-warning" role="progressbar"
+                    style="width: 45.454545454545%"
+                    aria-valuenow="5"
+                    aria-valuemin="0"
+                    aria-valuemax="11">
+            </div>
+
+        </div>
+        </div>
+    </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="conditions-by-type-2" class="collapse" aria-labelledby="headingOne">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <ul class="nav nav-pills nav-fill" id="condition-tabs-2" role="tablist">
+                                                <li class="nav-item">
+                                                    <a class="nav-link active" id="tab-condition-covered-2" data-toggle="tab" href="#condition-covered-2" role="tab"
+                                                       aria-controls="condition-covered-2" aria-selected="true">
+                                                        Covered: 5
+                                                    </a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a class="nav-link" id="tab-condition-uncovered-2" data-toggle="tab" href="#condition-uncovered-2" role="tab"
+                                                       aria-controls="condition-uncovered-2" aria-selected="true">
+                                                        Uncovered: 6
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <br>
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <div class="tab-content" id="details-content-2">
+                                                <div class="tab-pane fade show active" id="condition-covered-2" role="tabpanel" aria-labelledby="tab-condition-covered-2">
+                                                    <table class="table table-sm">
+                                                        <thead>
+                                                        <tr>
+                                                            <th scope="col">Operation name</th>
+                                                            <th scope="col">Condition namee</th>
+                                                            <th scope="col">Details</th>
+                                                        </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr class="table-success">
+                                                                <td>
+                                                                    <span>
+                                                                        <i class="fas fa-check"></i>
+                                                                    </span>
+                                                                    &nbsp;/api/v1/admin/users GET
+                                                                </td>
+                                                                <td>only declared status</td>
+                                                                <td></td>
+                                                            </tr>
+                                                            <tr class="table-success">
+                                                                <td>
+                                                                    <span>
+                                                                        <i class="fas fa-check"></i>
+                                                                    </span>
+                                                                    &nbsp;/api/v1/auth/login POST
+                                                                </td>
+                                                                <td>only declared status</td>
+                                                                <td></td>
+                                                            </tr>
+                                                            <tr class="table-success">
+                                                                <td>
+                                                                    <span>
+                                                                        <i class="fas fa-check"></i>
+                                                                    </span>
+                                                                    &nbsp;/api/v1/customer/accounts GET
+                                                                </td>
+                                                                <td>only declared status</td>
+                                                                <td></td>
+                                                            </tr>
+                                                            <tr class="table-success">
+                                                                <td>
+                                                                    <span>
+                                                                        <i class="fas fa-check"></i>
+                                                                    </span>
+                                                                    &nbsp;/api/v1/customer/profile GET
+                                                                </td>
+                                                                <td>only declared status</td>
+                                                                <td></td>
+                                                            </tr>
+                                                            <tr class="table-success">
+                                                                <td>
+                                                                    <span>
+                                                                        <i class="fas fa-check"></i>
+                                                                    </span>
+                                                                    &nbsp;/api/v1/customer/profile PUT
+                                                                </td>
+                                                                <td>only declared status</td>
+                                                                <td></td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                                <div class="tab-pane fade" id="condition-uncovered-2" role="tabpanel" aria-labelledby="tab-condition-uncovered-2">
+                                                    <table class="table table-sm">
+                                                        <thead>
+                                                        <tr>
+                                                            <th scope="col">Operation name</th>
+                                                            <th scope="col">Condition namee</th>
+                                                            <th scope="col">Details</th>
+                                                        </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr class="table-danger">
+                                                                <td>
+                                                                    <span>
+                                                                        <i class="fas fa-bug"></i>
+                                                                    </span>
+                                                                    &nbsp;/api/v1/accounts POST
+                                                                </td>
+                                                                <td>only declared status</td>
+                                                                <td>Undeclared status: 201</td>
+                                                            </tr>
+                                                            <tr class="table-danger">
+                                                                <td>
+                                                                    <span>
+                                                                        <i class="fas fa-bug"></i>
+                                                                    </span>
+                                                                    &nbsp;/api/v1/accounts/deposit POST
+                                                                </td>
+                                                                <td>only declared status</td>
+                                                                <td>Undeclared status: 400</td>
+                                                            </tr>
+                                                            <tr class="table-danger">
+                                                                <td>
+                                                                    <span>
+                                                                        <i class="fas fa-bug"></i>
+                                                                    </span>
+                                                                    &nbsp;/api/v1/accounts/transfer POST
+                                                                </td>
+                                                                <td>only declared status</td>
+                                                                <td>Undeclared status: 400</td>
+                                                            </tr>
+                                                            <tr class="table-danger">
+                                                                <td>
+                                                                    <span>
+                                                                        <i class="fas fa-bug"></i>
+                                                                    </span>
+                                                                    &nbsp;/api/v1/accounts/{accountId}/transactions GET
+                                                                </td>
+                                                                <td>only declared status</td>
+                                                                <td>No call - no statuses...</td>
+                                                            </tr>
+                                                            <tr class="table-danger">
+                                                                <td>
+                                                                    <span>
+                                                                        <i class="fas fa-bug"></i>
+                                                                    </span>
+                                                                    &nbsp;/api/v1/admin/users POST
+                                                                </td>
+                                                                <td>only declared status</td>
+                                                                <td>Undeclared status: 201,400</td>
+                                                            </tr>
+                                                            <tr class="table-danger">
+                                                                <td>
+                                                                    <span>
+                                                                        <i class="fas fa-bug"></i>
+                                                                    </span>
+                                                                    &nbsp;/api/v1/admin/users/{id} DELETE
+                                                                </td>
+                                                                <td>only declared status</td>
+                                                                <td>No call - no statuses...</td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-header">
+                                <div class="row"
+                                     data-toggle="collapse"
+                                     data-target="#conditions-by-type-3"
+                                     aria-expanded="true"
+                                     aria-controls="collapseOne">
+                                    <div class="col-8">
+                                        <p><strong>Request Body Availability</strong></p>
+                                        <small>Verify that the request body was not empty</small>
+                                    </div>
+                                    <div class="col-4">
+    <div class="row">
+        <div class="col-12">
+                5/5
+                (100%)
+            condition covered
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+
+
+
+        <div class="progress" style="height: 16px;">
+            <div
+                    class="progress-bar bg-success" role="progressbar"
+                    style="width: 100%"
+                    aria-valuenow="5"
+                    aria-valuemin="0"
+                    aria-valuemax="5">
+            </div>
+
+        </div>
+        </div>
+    </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="conditions-by-type-3" class="collapse" aria-labelledby="headingOne">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <ul class="nav nav-pills nav-fill" id="condition-tabs-3" role="tablist">
+                                                <li class="nav-item">
+                                                    <a class="nav-link active" id="tab-condition-covered-3" data-toggle="tab" href="#condition-covered-3" role="tab"
+                                                       aria-controls="condition-covered-3" aria-selected="true">
+                                                        Covered: 5
+                                                    </a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a class="nav-link" id="tab-condition-uncovered-3" data-toggle="tab" href="#condition-uncovered-3" role="tab"
+                                                       aria-controls="condition-uncovered-3" aria-selected="true">
+                                                        Uncovered: 0
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <br>
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <div class="tab-content" id="details-content-3">
+                                                <div class="tab-pane fade show active" id="condition-covered-3" role="tabpanel" aria-labelledby="tab-condition-covered-3">
+                                                    <table class="table table-sm">
+                                                        <thead>
+                                                        <tr>
+                                                            <th scope="col">Operation name</th>
+                                                            <th scope="col">Condition namee</th>
+                                                            <th scope="col">Details</th>
+                                                        </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr class="table-success">
+                                                                <td>
+                                                                    <span>
+                                                                        <i class="fas fa-check"></i>
+                                                                    </span>
+                                                                    &nbsp;/api/v1/accounts/deposit POST
+                                                                </td>
+                                                                <td>not empty body request</td>
+                                                                <td></td>
+                                                            </tr>
+                                                            <tr class="table-success">
+                                                                <td>
+                                                                    <span>
+                                                                        <i class="fas fa-check"></i>
+                                                                    </span>
+                                                                    &nbsp;/api/v1/accounts/transfer POST
+                                                                </td>
+                                                                <td>not empty body request</td>
+                                                                <td></td>
+                                                            </tr>
+                                                            <tr class="table-success">
+                                                                <td>
+                                                                    <span>
+                                                                        <i class="fas fa-check"></i>
+                                                                    </span>
+                                                                    &nbsp;/api/v1/admin/users POST
+                                                                </td>
+                                                                <td>not empty body request</td>
+                                                                <td></td>
+                                                            </tr>
+                                                            <tr class="table-success">
+                                                                <td>
+                                                                    <span>
+                                                                        <i class="fas fa-check"></i>
+                                                                    </span>
+                                                                    &nbsp;/api/v1/auth/login POST
+                                                                </td>
+                                                                <td>not empty body request</td>
+                                                                <td></td>
+                                                            </tr>
+                                                            <tr class="table-success">
+                                                                <td>
+                                                                    <span>
+                                                                        <i class="fas fa-check"></i>
+                                                                    </span>
+                                                                    &nbsp;/api/v1/customer/profile PUT
+                                                                </td>
+                                                                <td>not empty body request</td>
+                                                                <td></td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                                <div class="tab-pane fade" id="condition-uncovered-3" role="tabpanel" aria-labelledby="tab-condition-uncovered-3">
+                                                    <table class="table table-sm">
+                                                        <thead>
+                                                        <tr>
+                                                            <th scope="col">Operation name</th>
+                                                            <th scope="col">Condition namee</th>
+                                                            <th scope="col">Details</th>
+                                                        </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="system-section">
+            <div class="row">
+                <div class="col-12">
+                    <h2 class="title" id="system">Generation info</h2>
+                </div>
+            </div>
+    <div class="row">
+        <div class="col-sm">
+            <div class="col-12">
+                Parsed result files: 148<br>
+                Generation time: 490 ms<br>
+                Result file create interval: 2025-10-29 08:17:03 - 2025-10-29 08:17:29<br>
+                Generation report date: 2025-10-29 08:17:31<br>
+            </div>
+        </div>
+    </div>
+            <div class="row">
+                <div class="col-12">
+                    <h4>Configuration</h4>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <div class="col-sm">
+                        <div class="alert alert-secondary" role="alert">
+                            <pre>{
+  &quot;rules&quot; : { },
+  &quot;writers&quot; : { },
+  &quot;parseOptions&quot; : null
+} </pre>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer class="page-footer font-small mdb-color lighten-3 pt-4">
+            <div class="footer-copyright text-center py-3"></div>
+        </footer>
+
+    </div>
+</main>
+
+</body>
