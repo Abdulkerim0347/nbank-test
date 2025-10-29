@@ -38,3 +38,4 @@ allure-report/
 **/target/allure-results/
 target/
 build/
+test-output/
