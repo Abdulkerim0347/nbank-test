@@ -35,6 +35,6 @@ build/
 .DS_Store
 # ignore generated files
 allure-report/
-ÐµÑure-results/
+**/target/allure-results/
 target/
 build/
