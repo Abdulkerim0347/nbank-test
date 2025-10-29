@@ -1,0 +1,6 @@
+deployment.apps/backend scaled
+
+NAME                       READY   STATUS    RESTARTS   AGE    IP            NODE       NOMINATED NODE   READINESS GATES
+backend-5b6fcf4984-4zj5d   1/1     Running   0          7s     10.244.0.11   minikube   <none>           <none>
+backend-5b6fcf4984-6pg26   1/1     Running   0          103m   10.244.0.6    minikube   <none>           <none>
+backend-5b6fcf4984-xbm6s   1/1     Running   0          7s     10.244.0.12   minikube   <none>           <none>

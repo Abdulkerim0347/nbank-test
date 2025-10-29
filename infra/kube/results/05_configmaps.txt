@@ -1,0 +1,4 @@
+NAME               DATA   AGE
+kube-root-ca.crt   1      19h
+nbank-selenoid     1      18m
+selenoid-config    1      113m

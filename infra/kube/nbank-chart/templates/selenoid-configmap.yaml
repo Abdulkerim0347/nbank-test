@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ .Release.Name }}-selenoid
+data:
+  browsers.json: |
+{{ (.Files.Get "files/browsers.json") | nindent 4 }}

@@ -1,0 +1,6 @@
+2025/10/29 06:39:40 [-] [INIT] [Loading configuration files...]
+2025/10/29 06:39:40 [-] [INIT] [Loaded configuration from /etc/selenoid/browsers.json]
+2025/10/29 06:39:40 [-] [INIT] [Video Dir: /opt/selenoid/video]
+2025/10/29 06:39:40 [-] [INIT] [Did not manage to determine your Docker API version - using default version: 1.45]
+2025/10/29 06:39:40 [-] [INIT] [Timezone: UTC]
+2025/10/29 06:39:40 [-] [INIT] [Listening on :4444]

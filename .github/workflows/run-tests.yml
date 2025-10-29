@@ -31,7 +31,7 @@ jobs:
         run: chmod +x ./mvnw && ./mvnw -q verify
         env:
           APIBASEURL: http://localhost:4111
-          UIBASEURL: http://nginx:80
+          UIBASEURL: http://frontend:80
 
       - name: Run Swagger coverage
         if: always()

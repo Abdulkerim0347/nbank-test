@@ -1,0 +1,28 @@
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::                (v3.2.5)
+
+{"timestamp":"2025-10-29T05:20:50.752345368Z","logger_name":"me.nobugs.bank.BankApplication","thread_name":"main","level":"INFO","message":"Starting BankApplication v0.0.1-SNAPSHOT using Java 17.0.16 with PID 1 (/app/app.jar started by root in /app)"}
+{"timestamp":"2025-10-29T05:20:50.782537033Z","logger_name":"me.nobugs.bank.BankApplication","thread_name":"main","level":"INFO","message":"No active profile set, falling back to 1 default profile: \"default\""}
+{"timestamp":"2025-10-29T05:20:53.902049962Z","logger_name":"org.springframework.boot.web.embedded.tomcat.TomcatWebServer","thread_name":"main","level":"INFO","message":"Tomcat initialized with port 4111 (http)"}
+{"timestamp":"2025-10-29T05:20:53.912118237Z","logger_name":"org.apache.catalina.core.StandardService","thread_name":"main","level":"INFO","message":"Starting service [Tomcat]"}
+{"timestamp":"2025-10-29T05:20:53.91234276Z","logger_name":"org.apache.catalina.core.StandardEngine","thread_name":"main","level":"INFO","message":"Starting Servlet engine: [Apache Tomcat/10.1.20]"}
+{"timestamp":"2025-10-29T05:20:54.014476366Z","logger_name":"org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/]","thread_name":"main","level":"INFO","message":"Initializing Spring embedded WebApplicationContext"}
+{"timestamp":"2025-10-29T05:20:54.015895949Z","logger_name":"org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext","thread_name":"main","level":"INFO","message":"Root WebApplicationContext: initialization completed in 3107 ms"}
+🧪 MeterRegistry class = io.micrometer.prometheus.PrometheusMeterRegistry
+{"timestamp":"2025-10-29T05:20:55.905861991Z","logger_name":"org.springframework.boot.actuate.endpoint.web.EndpointLinksResolver","thread_name":"main","level":"INFO","message":"Exposing 3 endpoint(s) beneath base path '/actuator'"}
+{"timestamp":"2025-10-29T05:20:56.014988781Z","logger_name":"org.springframework.security.web.DefaultSecurityFilterChain","thread_name":"main","level":"INFO","message":"Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@1c72189f, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@14be750c, org.springframework.security.web.context.SecurityContextHolderFilter@2ef041bb, org.springframework.security.web.header.HeaderWriterFilter@48a46b0f, org.springframework.web.filter.CorsFilter@58882a93, org.springframework.security.web.authentication.logout.LogoutFilter@5ab63a04, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@5112b7, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@605c7a9e, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@21c75084, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@15e08615, org.springframework.security.web.access.ExceptionTranslationFilter@4b5ad306, org.springframework.security.web.access.intercept.AuthorizationFilter@56c42964]"}
+{"timestamp":"2025-10-29T05:20:56.792698602Z","logger_name":"org.springframework.boot.web.embedded.tomcat.TomcatWebServer","thread_name":"main","level":"INFO","message":"Tomcat started on port 4111 (http) with context path ''"}
+{"timestamp":"2025-10-29T05:20:56.817504125Z","logger_name":"me.nobugs.bank.BankApplication","thread_name":"main","level":"INFO","message":"Started BankApplication in 7.422 seconds (process running for 8.079)"}
+{"timestamp":"2025-10-29T05:42:44.33477099Z","logger_name":"org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/]","thread_name":"http-nio-4111-exec-2","level":"INFO","message":"Initializing Spring DispatcherServlet 'dispatcherServlet'"}
+{"timestamp":"2025-10-29T05:42:44.335297805Z","logger_name":"org.springframework.web.servlet.DispatcherServlet","thread_name":"http-nio-4111-exec-2","level":"INFO","message":"Initializing Servlet 'dispatcherServlet'"}
+{"timestamp":"2025-10-29T05:42:44.337541543Z","logger_name":"org.springframework.web.servlet.DispatcherServlet","thread_name":"http-nio-4111-exec-2","level":"INFO","message":"Completed initialization in 2 ms"}
+{"timestamp":"2025-10-29T05:42:55.835902578Z","logger_name":"me.nobugs.bank.controllers.AuthController","thread_name":"http-nio-4111-exec-5","level":"INFO","message":"Login attempt for user 'admin'"}
+{"timestamp":"2025-10-29T05:42:55.926095803Z","logger_name":"me.nobugs.bank.controllers.AuthController","thread_name":"http-nio-4111-exec-5","level":"INFO","message":"Login successful for user 'admin' with role 'ADMIN'"}
+{"timestamp":"2025-10-29T05:42:56.014461539Z","logger_name":"me.nobugs.bank.controllers.AdminController","thread_name":"http-nio-4111-exec-6","level":"INFO","message":"Admin requested list of all users"}
+{"timestamp":"2025-10-29T05:42:56.01464356Z","logger_name":"me.nobugs.bank.controllers.AdminController","thread_name":"http-nio-4111-exec-6","level":"INFO","message":"Returned 0 users"}

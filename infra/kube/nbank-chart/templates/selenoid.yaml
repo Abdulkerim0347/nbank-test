@@ -1,0 +1,56 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: selenoid
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: selenoid
+  template:
+    metadata:
+      labels:
+        app: selenoid
+    spec:
+      containers:
+        - name: selenoid
+          image: aerokube/selenoid:latest
+          args:
+            - "-conf"
+            - "/etc/selenoid/browsers.json"
+            - "-limit"
+            - "4"
+            - "-container-network"
+            - "nbank-network"
+          ports:
+            - containerPort: 4444
+          volumeMounts:
+            - name: docker-sock
+              mountPath: /var/run/docker.sock
+            - name: selenoid-config
+              mountPath: /etc/selenoid
+              readOnly: true
+      volumes:
+        - name: docker-sock
+          hostPath:
+            path: /var/run/docker.sock
+        - name: selenoid-config
+          configMap:
+            name: {{ .Release.Name }}-selenoid
+            items:
+              - key: browsers.json
+                path: browsers.json
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: selenoid
+spec:
+  selector:
+    app: selenoid
+  ports:
+    - protocol: TCP
+      port: 4444
+      targetPort: 4444
+  type: NodePort

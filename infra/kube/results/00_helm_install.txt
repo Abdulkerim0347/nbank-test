@@ -1,0 +1,13 @@
+Release "nbank" has been upgraded. Happy Helming!
+NAME: nbank
+LAST DEPLOYED: Wed Oct 29 11:54:23 2025
+NAMESPACE: default
+STATUS: deployed
+REVISION: 3
+TEST SUITE: None
+
+deployment "backend" successfully rolled out
+deployment "frontend" successfully rolled out
+deployment "selenoid" successfully rolled out
+deployment "selenoid-ui" successfully rolled out
+

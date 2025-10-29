@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend
+spec:
+  replicas: 1 # number of copies
+  selector:
+    matchLabels:
+      app: frontend
+  template:
+    metadata:
+      labels:
+        app: frontend # Pod label
+    spec:
+      containers:
+        - name: frontend
+          image: nobugsme/nbank-ui:with_nginx
+          ports:
+            - containerPort: 80
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: frontend
+spec:
+  selector:
+    app: frontend # Service will route the traffic to pods with app=backend
+  ports:
+    - protocol: TCP
+      port: 80 # service working port
+      targetPort: 80 # container listens this port
+  type: NodePort

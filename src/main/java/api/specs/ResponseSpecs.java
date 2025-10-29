@@ -11,7 +11,8 @@ import static org.hamcrest.Matchers.*;
 
 public final class ResponseSpecs {
 
-    private ResponseSpecs() {}
+    private ResponseSpecs() {
+    }
 
     private static ResponseSpecBuilder defaultResponseBuilder() {
         return new ResponseSpecBuilder()
@@ -41,10 +42,10 @@ public final class ResponseSpecs {
                 .build();
     }
 
-    public static ResponseSpecification requestReturnsDepositAmountMustBeAtLeast001() {
+    public static ResponseSpecification requestReturnsInvalidAccountOrAmount() {
         return defaultResponseBuilder()
                 .expectStatusCode(HttpStatus.SC_BAD_REQUEST)
-                .expectBody(equalTo("Deposit amount must be at least 0.01"))
+                .expectBody(equalTo("Invalid account or amount"))
                 .build();
     }
 
@@ -52,13 +53,6 @@ public final class ResponseSpecs {
         return defaultResponseBuilder()
                 .expectStatusCode(HttpStatus.SC_BAD_REQUEST)
                 .expectBody(equalTo("Invalid transfer: insufficient funds or invalid accounts"))
-                .build();
-    }
-
-    public static ResponseSpecification requestReturnsDepositAmountCannotExceed5000() {
-        return defaultResponseBuilder()
-                .expectStatusCode(HttpStatus.SC_BAD_REQUEST)
-                .expectBody(equalTo("Deposit amount cannot exceed 5000"))
                 .build();
     }
 }

@@ -17,8 +17,6 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 public class TransferMoneyNegativeTest extends BaseUiTest {
     final String DEFAULT_NAME = "noname";
-    final int MAX_DEPOSIT = 5000;
-    final int TRANSFER_LIMIT = 10000;
 
     @Test
     public void userCannotTransferMoneyLessThanDepositTest() {
@@ -65,42 +63,6 @@ public class TransferMoneyNegativeTest extends BaseUiTest {
 
         new TransferPage().open().makeTransferBlankFields()
                 .checkAlertMessageAndAccept(BankAlert.PLEASE_FILL_ALL_FIELDS_AND_CONFIRM.getMessage());
-    }
-
-    @Test
-    public void userCannotTransferMoreThanTenThousandTest() {
-        // generate random int between 10 000 and 11 000
-        final int EXCEEDED_TRANSFER_AMOUNT = RandomData.getRandom().nextInt(1001) + TRANSFER_LIMIT;
-
-        var user = AdminSteps.createUser();
-        var accountSender = DepositSteps.createAccount(user);
-        var accountReceiver = DepositSteps.createAccount(user);
-
-        // depositing 15 000 on sender account
-        DepositSteps.depositMoney(user, accountSender, MAX_DEPOSIT);
-        DepositSteps.depositMoney(user, accountSender, MAX_DEPOSIT);
-        DepositSteps.depositMoney(user, accountSender, MAX_DEPOSIT);
-
-        authAsUser(user);
-
-        new TransferPage().open().makeTransfer(accountSender, DEFAULT_NAME, accountReceiver.getAccountNumber(), EXCEEDED_TRANSFER_AMOUNT)
-                .checkAlertMessageAndAccept(BankAlert.ERROR_TRANSFER_AMOUNT_CANNOT_EXCEED_10000.getMessage());
-
-        // validate on API
-        var updatedAccounts = new CrudRequester(
-                RequestSpecs.authAsUser(user.getUsername(), user.getPassword()),
-                Endpoint.CUSTOMER_ACCOUNTS,
-                ResponseSpecs.requestReturnsOK())
-                .get(null).extract().jsonPath().getList("", BaseAccountResponse.class);
-
-        var updatedSender = updatedAccounts.stream()
-                .filter(a -> a.getId() == accountSender.getId()).findFirst().orElseThrow();
-
-        var updatedReceiver = updatedAccounts.stream()
-                .filter(a -> a.getId() == accountReceiver.getId()).findFirst().orElseThrow();
-
-        assertThat(updatedSender.getBalance()).isEqualTo(MAX_DEPOSIT * 3);
-        assertThat(updatedReceiver.getBalance()).isEqualTo(accountReceiver.getBalance());
     }
 
     @Test

@@ -1,0 +1,6 @@
+NAME          TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)          AGE    SELECTOR
+backend       NodePort    10.97.19.8      <none>        4111:31503/TCP   100m   app=backend
+frontend      NodePort    10.106.165.89   <none>        80:31868/TCP     100m   app=frontend
+kubernetes    ClusterIP   10.96.0.1       <none>        443/TCP          19h    <none>
+selenoid      NodePort    10.97.6.138     <none>        4444:31190/TCP   100m   app=selenoid
+selenoid-ui   NodePort    10.102.157.28   <none>        8080:32113/TCP   100m   app=selenoid-ui

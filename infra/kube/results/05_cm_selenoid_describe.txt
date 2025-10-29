@@ -1,0 +1,30 @@
+Name:         nbank-selenoid
+Namespace:    default
+Labels:       app.kubernetes.io/managed-by=Helm
+Annotations:  meta.helm.sh/release-name: nbank
+              meta.helm.sh/release-namespace: default
+
+Data
+====
+browsers.json:
+----
+
+{
+  "chrome": {
+    "default": "115.0",
+    "versions": {
+      "115.0": {
+        "image": "selenoid/vnc:chrome_115.0",
+        "port": "4444",
+        "path": "/"
+      }
+    }
+  }
+}
+
+
+
+BinaryData
+====
+
+Events:  <none>
